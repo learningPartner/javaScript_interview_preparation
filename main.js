@@ -26,22 +26,21 @@ const menu = [
     {
         name: "Angular",
         children: [
-            { name: "Components", link: "angular-components.html" },
-            { name: "Services", link: "angular-services.html" }
+            { name: "Coming Soon", link: "comingsoon.html" },
+            { name: "Coming Soon", link: "comingsoon.html" }
         ]
     },
     {
         name: "React",
         children: [
-            { name: "Hooks", link: "react-hooks.html" },
-            { name: "State Management", link: "react-state.html" }
+            { name: "Coming Soon", link: "comingsoon.html" },
+            { name: "Coming Soon", link: "comingsoon.html" }
         ]
     },
     {
         name: "Dot Net",
         children: [
-            { name: "Web API", link: "dotnet-api.html" },
-            { name: "Entity Framework", link: "dotnet-ef.html" }
+            { name: "Coming Soon", link: "comingsoon.html" } 
         ]
     }
 ];
