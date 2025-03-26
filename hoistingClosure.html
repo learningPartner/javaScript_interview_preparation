@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"> 
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is Hoisting In JavaScript
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Hoisting is a JavaScript behavior where variable and function declarations are moved
+                            ("hoisted") to the top of their scope during compilation, before the code executes.
+                        </p>
+                        <ul>
+                            <li>Variable declared with var and Normal function supports hoisting</li>
+                            <li>let & const support does't support hoisting as it does with var</li>
+                            <li>is </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+console.log(name); // ✅ Undefined
+var name = "John";
+console.log(name); // John
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+var name;  // Hoisted to the top
+console.log(name); // undefined
+name = "John";
+console.log(name); // John
+    
+
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Temporal Dead Zone
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            The Temporal Dead Zone is the period between the start of a function or block execution and
+                            the point where a let or const variable is initialized.
+                        </p>
+                        <pre>
+ function prinetName() {
+    var nam1= "sss";
+console.log(x); // ❌ ReferenceError
+let x = 10;
+console.log(x); // ✅ 10
+
+}
+                                      </pre>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is a Closure?
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A closure is a function that remembers the variables from its lexical scope even after the
+                            function has finished executing.
+                        </p>
+                        <p>
+                            A closure is created when an inner function accesses variables from its outer function even
+                            after the outer function has executed.
+                        </p>
+                        <pre>
+function outer() {
+    let count = 0;
+    function inner() {
+        count++;
+        console.log(count);
+    } 
+    return inner;
+} 
+const counter = outer();
+counter(); // Output: 1
+counter(); // Output: 2
+counter(); // Output: 3 
+</pre>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        How Closures Work Internally
+                    </div>
+                    <div class="card-body">
+                        <p>When JavaScript executes a function, it creates an execution context with:</p>
+                        <ul>
+                            <li>Local Variables</li>
+                            <li>Scope Chain (Lexical Environment)</li>
+                            <li>Function Reference (if returned)</li>
+                        </ul>
+                        <p> Memory Allocation: The variable (count) is not garbage collected because the returned function still references it.</p>
+                    <div class="row">
+                        <div class="col-6">
+                            
+                        </div>
+                    </div>
+                        <pre>
+function createCounter() {
+    let count = 0;
+    return {
+        increment: function () {
+            count++;
+            console.log(count);
+        },
+        decrement: function () {
+            count--;
+            console.log(count);
+        }
+    };
+}
+const counter = createCounter();
+const counter2 = createCounter();
+counter.increment(); // 1
+counter.increment(); // 2
+counter.decrement(); // 1
+counter2.increment(); //1             
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./main.js"></script>
+
+
+</body>
+
+</html>

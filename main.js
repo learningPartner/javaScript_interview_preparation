@@ -20,7 +20,7 @@ const menu = [
         children: [
             { name: "Introduction", link: "javaScriptBackground.html" },
             { name: "How Js Works", link: "howJsWorks.html" },
-            { name: "Async", link: "js-async.html" }
+            { name: "Hoisting & Closure", link: "hoistingClosure.html" }
         ]
     },
     {
