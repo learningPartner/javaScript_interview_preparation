@@ -48,10 +48,14 @@ const menu = [
 
  
 function generateNavbar() {
+    debugger;
     const navbarHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-static">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Tech Topics</a>
+        
+            <a class="navbar-brand" href="./index.html">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -80,3 +84,96 @@ function generateNavbar() {
 
 // Ensure script runs after DOM is loaded
 document.addEventListener("DOMContentLoaded", generateNavbar);
+// Initialize AOS
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic'
+    });
+
+    // Generate navigation menu
+   // generateNavMenu();
+   //generateNavbar();
+    // Generate topic cards
+    generateTopicCards();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+ 
+function generateNavMenu() {
+    const navbarNav = document.getElementById('navbarNav');
+    const ul = document.createElement('ul');
+    ul.className = 'navbar-nav ms-auto';
+
+    menu.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'nav-item dropdown';
+        
+        li.innerHTML = `
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="bi ${item.icon} me-1"></i>${item.name}
+            </a>
+            <ul class="dropdown-menu">
+                ${item.children.map(child => `
+                    <li>
+                        <a class="dropdown-item" href="${child.link}">
+                            <i class="bi bi-arrow-right-short"></i>${child.name}
+                        </a>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+        
+        ul.appendChild(li);
+    });
+
+    navbarNav.appendChild(ul);
+}
+
+function generateTopicCards() {
+    const topicCards = document.getElementById('topic-cards');
+    
+    menu.forEach((topic, index) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6';
+        col.setAttribute('data-aos', 'fade-up');
+        col.setAttribute('data-aos-delay', (index * 100).toString());
+        
+        col.innerHTML = `
+            <div class="card topic-card h-100">
+                <div class="card-body text-center">
+                    <div class="topic-icon">
+                        <i class="bi ${topic.icon}"></i>
+                    </div>
+                    <h3 class="card-title">${topic.name}</h3>
+                    <ul class="subtopic-list">
+                        ${topic.children.map(child => `
+                            <li>
+                                <a href="${child.link}">
+                                    <i class="bi bi-arrow-right-short"></i>
+                                    ${child.name}
+                                </a>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
+        
+        topicCards.appendChild(col);
+    });
+}
