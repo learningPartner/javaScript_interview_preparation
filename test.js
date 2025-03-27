@@ -399,7 +399,7 @@ function loadQuestions() {
     
     const filteredSnippets = currentCategory === 'all' 
         ? codeSnippets 
-        : codeSnippets.filter(s => s.category === currentCategory);
+        : codeSnippets.filter(s => s.category.toLowerCase() === currentCategory);
     
     filteredSnippets.forEach(snippet => {
         container.appendChild(createQuestionCard(snippet));
@@ -446,8 +446,16 @@ function loadQuestions() {
     });
 }
 
+const uniqueCategories = ['All'].concat([...new Set(codeSnippets.map(item => item.category))]);
+
+// Populate dropdown
+const categorySelect = document.getElementById('categorySelect');
+categorySelect.innerHTML = uniqueCategories.map(category => 
+    `<option value="${category.toLowerCase().replace(/\s+/g, '-')}">${category}</option>`
+).join('');
 // Category selection handler
 document.getElementById('categorySelect').addEventListener('change', (e) => {
+    debugger;
     currentCategory = e.target.value;
     loadQuestions();
 });
