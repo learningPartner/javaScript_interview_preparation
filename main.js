@@ -1,178 +1,195 @@
- 
 // Define an array of background colors
-const colors = ["#FDF7E4", "#FAEED1", "#D8EBF1", "#E3F4F4", "#F7EBEC", "#F6FDC3", "#FFF8E3", "#EAE0DA","#F8EDE3", "#EADBC8", "#F5EEE6", "#DFCCFB", "#E3F2FD"];
+const colors = [
+  "#FDF7E4",
+  "#FAEED1",
+  "#D8EBF1",
+  "#E3F4F4",
+  "#F7EBEC",
+  "#F6FDC3",
+  "#FFF8E3",
+  "#EAE0DA",
+  "#F8EDE3",
+  "#EADBC8",
+  "#F5EEE6",
+  "#DFCCFB",
+  "#E3F2FD",
+];
 
 // Select all columns
 const columns = document.querySelectorAll(".myCol");
 
 // Loop through and assign colors
 columns.forEach((col) => {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Pick a random color
-    col.style.backgroundColor = randomColor;
+  const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Pick a random color
+  col.style.backgroundColor = randomColor;
 });
- 
-
- 
 
 const menu = [
-    {
-        name: "JavaScript",
-        children: [
-            { name: "Introduction", link: "javaScriptBackground.html" },
-            { name: "How Js Works", link: "howJsWorks.html" },
-            { name: "Hoisting & Closure", link: "hoistingClosure.html" }
-        ]
-    },
-    {
-        name: "Angular",
-        children: [
-            { name: "Coming Soon", link: "comingsoon.html" },
-            { name: "Coming Soon", link: "comingsoon.html" }
-        ]
-    },
-    {
-        name: "React",
-        children: [
-            { name: "Coming Soon", link: "comingsoon.html" },
-            { name: "Coming Soon", link: "comingsoon.html" }
-        ]
-    },
-    {
-        name: "Dot Net",
-        children: [
-            { name: "Coming Soon", link: "comingsoon.html" } 
-        ]
-    }
+  {
+    name: "JavaScript",
+    children: [
+      { name: "Introduction", link: "javaScriptBackground.html" },
+      { name: "How Js Works", link: "howJsWorks.html" },
+      { name: "Hoisting & Closure", link: "hoistingClosure.html" },
+    ],
+  },
+  {
+    name: "Angular",
+    children: [
+      { name: "Coming Soon", link: "comingsoon.html" },
+      { name: "Coming Soon", link: "comingsoon.html" },
+    ],
+  },
+  {
+    name: "React",
+    children: [
+      { name: "Coming Soon", link: "comingsoon.html" },
+      { name: "Coming Soon", link: "comingsoon.html" },
+    ],
+  },
+  {
+    name: "Dot Net",
+    children: [{ name: "Coming Soon", link: "comingsoon.html" }],
+  },
 ];
 
- 
-function generateNavbar() {
-    debugger;
-    const navbarHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-static">
-        <div class="container-fluid">
-        
-            <a class="navbar-brand" href="./index.html">
-                <i class="bi bi-code-square"></i> TechPrep Pro
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav" id="menuContainer">
-                    ${menu.map(category => `
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="${category.name}Dropdown" role="button" data-bs-toggle="dropdown">
-                                ${category.name}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="${category.name}Dropdown">
-                                ${category.children.map(item => `
-                                    <li><a class="dropdown-item" href="${item.link}">${item.name}</a></li>
-                                `).join('')}
-                            </ul>
-                        </li>
-                    `).join('')}
-                </ul>
-            </div>
-        </div>
-    </nav>`;
+// Initialize AOS and theme
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100,
+    easing: "ease-out-cubic",
+  });
 
-    // Insert navbar at the beginning of the body
-    document.body.insertAdjacentHTML("afterbegin", navbarHTML);
-}
+  // Generate navigation menu
+  generateNavMenu();
 
-// Ensure script runs after DOM is loaded
-document.addEventListener("DOMContentLoaded", generateNavbar);
-// Initialize AOS
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100,
-        easing: 'ease-out-cubic'
+  // Generate topic cards
+  generateTopicCards();
+
+  // Initialize theme
+  initializeTheme();
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+      if (href !== "#") {
+        const target = document.querySelector(href);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 100,
+            behavior: "smooth",
+          });
+        }
+      }
     });
-
-    // Generate navigation menu
-   // generateNavMenu();
-   //generateNavbar();
-    // Generate topic cards
-    generateTopicCards();
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+  });
 });
- 
-function generateNavMenu() {
-    const navbarNav = document.getElementById('navbarNav');
-    const ul = document.createElement('ul');
-    ul.className = 'navbar-nav ms-auto';
 
-    menu.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'nav-item dropdown';
-        
-        li.innerHTML = `
+function generateNavMenu() {
+  const navbarNav = document.getElementById("navbarNav");
+  const ul = document.createElement("ul");
+  ul.className = "navbar-nav me-auto";
+
+  menu.forEach((item) => {
+    const li = document.createElement("li");
+    li.className = "nav-item dropdown";
+
+    li.innerHTML = `
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                 <i class="bi ${item.icon} me-1"></i>${item.name}
             </a>
             <ul class="dropdown-menu">
-                ${item.children.map(child => `
+                ${item.children
+                  .map(
+                    (child) => `
                     <li>
                         <a class="dropdown-item" href="${child.link}">
                             <i class="bi bi-arrow-right-short"></i>${child.name}
                         </a>
                     </li>
-                `).join('')}
+                `
+                  )
+                  .join("")}
             </ul>
         `;
-        
-        ul.appendChild(li);
-    });
 
-    navbarNav.appendChild(ul);
+    ul.appendChild(li);
+  });
+
+  const testli = document.createElement("li");
+  testli.className = "nav-item dropdown";
+  testli.innerHTML = `<li>
+                        <a class="dropdown-item" href="test.html">
+                            <i class="bi bi-arrow-right-short"></i>Test Snipets
+                        </a>
+                    </li>`;
+  ul.appendChild(testli);
+  // Insert the menu before the theme toggle button
+  const themeToggle = document.getElementById("themeToggle");
+  navbarNav.insertBefore(ul, themeToggle);
 }
 
 function generateTopicCards() {
-    const topicCards = document.getElementById('topic-cards');
-    
+  const topicCards = document.getElementById("topic-cards");
+  if (topicCards) {
     menu.forEach((topic, index) => {
-        const col = document.createElement('div');
-        col.className = 'col-md-6';
-        col.setAttribute('data-aos', 'fade-up');
-        col.setAttribute('data-aos-delay', (index * 100).toString());
-        
-        col.innerHTML = `
-            <div class="card topic-card h-100">
-                <div class="card-body text-center">
-                    <div class="topic-icon">
-                        <i class="bi ${topic.icon}"></i>
+      const col = document.createElement("div");
+      col.className = "col-md-6";
+      col.setAttribute("data-aos", "fade-up");
+      col.setAttribute("data-aos-delay", (index * 100).toString());
+
+      col.innerHTML = `
+                <div class="card topic-card h-100">
+                    <div class="card-body text-center">
+                        <div class="topic-icon">
+                            <i class="bi ${topic.icon}"></i>
+                        </div>
+                        <h3 class="card-title">${topic.name}</h3>
+                        <ul class="subtopic-list">
+                            ${topic.children
+                              .map(
+                                (child) => `
+                                <li>
+                                    <a href="${child.link}">
+                                        <i class="bi bi-arrow-right-short"></i>
+                                        ${child.name}
+                                    </a>
+                                </li>
+                            `
+                              )
+                              .join("")}
+                        </ul>
                     </div>
-                    <h3 class="card-title">${topic.name}</h3>
-                    <ul class="subtopic-list">
-                        ${topic.children.map(child => `
-                            <li>
-                                <a href="${child.link}">
-                                    <i class="bi bi-arrow-right-short"></i>
-                                    ${child.name}
-                                </a>
-                            </li>
-                        `).join('')}
-                    </ul>
                 </div>
-            </div>
-        `;
-        
-        topicCards.appendChild(col);
+            `;
+
+      topicCards.appendChild(col);
     });
+  }
+}
+
+function initializeTheme() {
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = themeToggle.querySelector("i");
+
+  // Check for saved theme preference or default to light
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.toggle("dark-theme", savedTheme === "dark");
+  updateThemeIcon(themeIcon, savedTheme);
+
+  // Theme toggle click handler
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark-theme");
+    const theme = isDark ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    updateThemeIcon(themeIcon, theme);
+  });
+}
+
+function updateThemeIcon(icon, theme) {
+  icon.className = theme === "dark" ? "bi bi-moon-fill" : "bi bi-sun-fill";
 }
