@@ -132,8 +132,8 @@ pre {
     background-color: var(--pre-bg) !important;
     color: var(--pre-color) !important;
     border-radius: 8px;
-    padding: 1rem;
-    margin: 1rem 0;
+    padding: 0.2rem;
+    margin: 0.2rem 0;
     overflow-x: auto;
     font-family: 'Monaco', 'Consolas', monospace;
     width: 100%;
@@ -366,6 +366,10 @@ footer {
 .dark-theme .dropdown-item:hover {
     background-color: #334155;
     color: var(--secondary-color);
+}
+p {
+   
+    margin-bottom: 0rem !important;
 }
 
 @media (max-width: 768px) {
