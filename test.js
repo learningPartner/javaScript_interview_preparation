@@ -211,6 +211,142 @@ console.log(typeof b);
     {
         id: 12,
         category: 'Hoisting',
+        code: `console.log(typeof foo);
+    var foo = function () {
+      console.log("Hello!");
+    };`,
+        expectedOutput: `"undefined"`,
+        explanation: `<p>Variable <code>foo</code> is declared with <code>var</code>, so it is hoisted, but only the declaration—not the assignment.</p>
+    <p>Before the function expression is assigned, <code>typeof foo</code> evaluates to:</p>
+    <pre>"undefined"</pre>
+    <p>If it were a function declaration instead of an expression, <code>typeof foo</code> would return <code>"function"</code>.</p>`
+    },
+    {
+        id: 13,
+        category: 'Hoisting',
+        code: `console.log(a);
+    let a = 5;`,
+        expectedOutput: `Uncaught ReferenceError: Cannot access 'a' before initialization`,
+        explanation: `<p>Variables declared with <code>let</code> are hoisted but remain in the **Temporal Dead Zone (TDZ)** until they are initialized.</p>
+    <p>Since <code>a</code> is accessed before its initialization, it throws:</p>
+    <pre>Uncaught ReferenceError: Cannot access 'a' before initialization</pre>`
+    },
+    {
+        id: 14,
+        category: 'Hoisting',
+        code: `var x = 1;
+    function test() {
+      console.log(x);
+      var x = 2;
+    }
+    test();`,
+        expectedOutput: `undefined`,
+        explanation: `<p>Due to **hoisting**, the local <code>var x</code> declaration inside <code>test()</code> is moved to the top.</p>
+    <p>Thus, inside <code>test()</code>, <code>x</code> is hoisted as <code>var x;</code>, making it <code>undefined</code> at the time of <code>console.log(x)</code>.</p>
+    <p>Even though there's a global <code>x = 1</code>, the local <code>x</code> shadows it, so the output is:</p>
+    <pre>undefined</pre>`
+    },
+    {
+        id: 15,
+        category: 'Hoisting',
+        code: `console.log(foo());
+    function foo() {
+      return "Hello";
+    }
+    var foo = function () {
+      return "Hi";
+    };`,
+        expectedOutput: `"Hello"`,
+        explanation: `<p>Function declarations are hoisted before variable assignments.</p>
+    <p>So, <code>function foo() { return "Hello"; }</code> is fully hoisted and available at runtime.</p>
+    <p>The <code>var foo</code> declaration is also hoisted, but the function expression is assigned later, so it doesn't override the function declaration at the time of execution.</p>
+    <p>Thus, <code>console.log(foo())</code> prints:</p>
+    <pre>"Hello"</pre>`
+    },
+    {
+        id: 16,
+        category: 'Hoisting',
+        code: `(function() {
+      console.log(x);
+      var x = 10;
+    })();`,
+        expectedOutput: `undefined`,
+        explanation: `<p>The variable <code>x</code> is declared with <code>var</code> inside the IIFE (Immediately Invoked Function Expression).</p>
+    <p>Due to **hoisting**, only the declaration is moved to the top, making <code>x</code> <code>undefined</code> before assignment.</p>
+    <p>Thus, <code>console.log(x)</code> prints:</p>
+    <pre>undefined</pre>`
+    },
+    {
+        id: 17,
+        category: 'Hoisting',
+        code: `console.log(foo);
+    var foo = 10;
+    function foo() {}
+    console.log(foo);`,
+        expectedOutput: `[Function: foo]
+    10`,
+        explanation: `<p>The function declaration <code>function foo() {}</code> is hoisted first, then the <code>var foo</code> declaration.</p>
+    <p>Initially, <code>foo</code> is a function, so <code>console.log(foo)</code> prints:</p>
+    <pre>[Function: foo]</pre>
+    <p>Later, <code>foo</code> is reassigned to <code>10</code>, so the second <code>console.log(foo)</code> prints:</p>
+    <pre>10</pre>`
+    },
+    {
+        id: 18,
+        category: 'Hoisting',
+        code: `console.log(bar);
+    function bar() {
+      console.log("I am bar!");
+    }
+    var bar = 5;
+    console.log(bar);`,
+        expectedOutput: `[Function: bar]
+    5`,
+        explanation: `<p>The function declaration <code>bar()</code> is hoisted first.</p>
+    <p>The <code>var bar</code> declaration is hoisted but not its assignment.</p>
+    <p>So, initially, <code>console.log(bar)</code> prints the function:</p>
+    <pre>[Function: bar]</pre>
+    <p>After <code>bar = 5</code>, the second <code>console.log(bar)</code> prints:</p>
+    <pre>5</pre>`
+    },
+    {
+        id: 19,
+        category: 'Hoisting',
+        code: `foo();
+    var foo = function() {
+      console.log("Hello!");
+    };`,
+        expectedOutput: `Uncaught TypeError: foo is not a function`,
+        explanation: `<p>Function expressions are not hoisted like function declarations.</p>
+    <p><code>var foo</code> is hoisted as <code>undefined</code>, so calling <code>foo()</code> before assignment throws:</p>
+    <pre>Uncaught TypeError: foo is not a function</pre>`
+    },
+    {
+        id: 20,
+        category: 'Hoisting',
+        code: `console.log(a);
+    let a;
+    console.log(a);`,
+        expectedOutput: `Uncaught ReferenceError: Cannot access 'a' before initialization`,
+        explanation: `<p>The <code>let</code> variable <code>a</code> is hoisted but remains in the **Temporal Dead Zone (TDZ)** until it is initialized.</p>
+    <p>Accessing it before initialization throws:</p>
+    <pre>Uncaught ReferenceError: Cannot access 'a' before initialization</pre>`
+    },
+    {
+        id: 21,
+        category: 'Hoisting',
+        code: `console.log(x);
+    var x;
+    console.log(x);`,
+        expectedOutput: `undefined
+    undefined`,
+        explanation: `<p>The variable <code>x</code> is declared with <code>var</code>, so it is hoisted with an initial value of <code>undefined</code>.</p>
+    <p>Thus, both <code>console.log(x)</code> statements print:</p>
+    <pre>undefined</pre>`
+    },
+    {
+        id: 22,
+        category: 'Hoisting',
         code: `var a = 10;
 console.log(a);
 function fn() {
@@ -247,9 +383,10 @@ console.log(a);`,
 <p><strong>Takeaway:</strong> <code>var</code> is function-scoped, causing shadowing.</p>
 `
     },
+    
     {
         id: 3,
-        category: 'Hoisting',
+        category: 'Closure',
         code: ``,
         expectedOutput: ``,
         explanation: ``

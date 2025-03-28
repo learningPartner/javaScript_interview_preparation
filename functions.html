@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        anonymous Function
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            An anonymous function is a function that does not have a name. These functions are often used in callbacks,
+                             event handlers and functional programming.
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+let greet = function() {
+    console.log("Hello, World!");
+};
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+setTimeout(function() {
+    console.log("Executed after 2 seconds");
+}, 2000);
+    
+
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+document.getElementById("btn").addEventListener("click", function() {
+    console.log("Button Clicked!");
+});
+    
+
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+(function() {
+    console.log("This runs immediately!");
+})();
+    
+
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is a Named Function Expression?
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A Named Function  is a kind of anonymous function that has an explicit name, 
+                            which can be used inside the function itself for recursion and debugging.
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+const greet = function sayHello() {
+    console.log("Hello!");
+};
+
+greet(); // Output: Hello!
+sayHello(); // 
+❌ ReferenceError: sayHello is not defined (name is local)
+    
+
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+const factorial = function fact(n) {
+    if (n <= 1) return 1;
+    return n * fact(n - 1); // Using the function name inside itself (recursion)
+};
+
+console.log(factorial(5)); // Output: 120
+</pre>
+                            </div>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is a Pure Functions in JavaScript
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A pure function is a function that:
+                            <ul>
+                                <li> Always produces the same output for the same input.</li>
+                                <li> Has no side effects (does not modify external states).</li>
+                                <li>A function where we don't use any global variable</li>
+                            </ul>
+
+                           
+                            
+                           
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+ function add(a, b) {
+     return a + b;
+ }
+ 
+ console.log(add(3, 5)); // 8
+ console.log(add(3, 5)); // 8 (Same input, same output)
+                                    
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+const numbers = [1, 2, 3, 4];
+const squaredNumbers = numbers.map(num => num * num); 
+// ✅ Pure function
+
+console.log(squaredNumbers); // [1, 4, 9, 16]
+                                    
+</pre>
+                            </div>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        First-Class Functions in JavaScript
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            functions whioch can do following things
+                            <ul>
+                                <li> Assigned to variables (fun can be stored into another variable).</li>
+                                <li> Passed as arguments to other functions (we can pass a fun as a args while executing another fun).</li>
+                                <li>Returned from functions (we can return a function from a fun)</li>
+                                <li>Stored in data structures like arrays or objects (means we store func in object keys or we can create array os function)</li>
+                            </ul> 
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+console.log(greet("Alice"));    
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+function process(callback) {
+    console.log("Processing...");
+    callback();
+}
+process(function() {
+    console.log("Callback executed!");
+});               
+</pre>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <pre>
+function multiplier(factor) {
+    return function(num) {
+        return num * factor;
+    };
+}
+const double = multiplier(2);
+console.log(double(5)); // Output: 10  
+    </pre>
+                                </div>
+                                <div class="col-4">
+                                    <pre>
+const operations = [
+    function(a, b) { return a + b; },
+    function(a, b) { return a - b; },
+    function(a, b) { return a * b; }
+];
+console.log(operations[0](4, 2)); //: 6 
+console.log(operations[1](4, 2)); //: 2         
+    </pre>
+                                </div>
+                                <div class="col-5">
+                                    <pre>
+ const mathOperations = {
+     add: function(a, b) {
+         return a + b;
+     },
+     multiply: function(a, b) {
+         return a * b;
+     }
+ };
+ console.log(mathOperations.add(3, 4)); // 7
+ console.log(mathOperations.multiply(3, 4)); // 12
+                                    </pre>
+
+                                </div>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Higher-Order Functions in JavaScript
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A Higher-Order Function (HOF) is a function that takes another function as an argument or returns a function as its result.
+This is possible because JavaScript has first-class functions, meaning functions can be treated like variables (assigned, passed, and returned)
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+function greet(name, callback) {
+    console.log("Hello, " + name);
+    callback();
+}
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+greet("Alice", sayGoodbye);                          
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+function multiplier(factor) {
+    return function(num) {
+        return num * factor;
+    };
+}
+const double = multiplier(2); // Returns a function
+console.log(double(5)); // Output: 10
+</pre>
+                            </div>
+                            
+                             
+                        </div>
+                        <p>
+                            JavaScript provides many built-in Higher-Order Functions in Array.prototype like:
+                            <ul>
+                                <li>
+                                    <p><code>.map()</code></p>
+                                </li>
+                                <li>
+                                    <p><code>.filter()</code></p>
+                                </li>
+                                <li>
+                                    <p><code>.reduce()</code></p>
+                                </li>
+                                <li>
+                                    <p><code>.forEach()</code></p>
+                                </li>
+                                <li>
+                                    <p><code>.sort()</code></p>
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is a Pure Functions in JavaScript
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A callback function is a function passed as an argument to another function and executed later. This is useful for handling asynchronous operations, event handling, and higher-order functions.
+                            
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+function greet(name, callback) {
+    console.log("Hello, " + name);
+    callback(); // Execute the callback function
+}
+function sayGoodbye() {
+    console.log("Goodbye!");
+}
+greet("Alice", sayGoodbye);                                  
+</pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+console.log("Start");
+
+setTimeout(() => {
+    console.log("Executed after 2 seconds");
+}, 2000);
+
+console.log("End");                                    
+</pre>
+                            </div>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Self-Executing Function
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A Self-Executing Function, also known as an Immediately Invoked function
+                            , is a function that executes immediately after being defined.
+                        </p>
+ 
+                        <div class="row">
+                            <div class="col-4">
+                                <pre>
+ 
+(function() {
+   console.log("This function runs immediately!");
+})();
+                               
+</pre>
+                            </div>
+                            <div class="col-4">
+                                <pre>
+(function(name) {
+    console.log("Hello, " + name + "!");
+})("Alice");                                    
+</pre>
+                            </div>
+                            <div class="col-4">
+                                <pre>
+(() => {
+    console.log("IIFE using an arrow function!");
+})();
+                                </pre>
+                            </div>
+                            
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Functional Programming in JavaScript 
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Functional Programming is a way we structure our code where you mostly construct and structure your code using functions. These functions take input which is called as
+                             arguments then shows the output based on the inputs being taken which, given the same input always results in the same output.
+                        </p>
+ 
+                        <table  class="table table-bordered table-sm">
+                            <thead data-start="291" data-end="316">
+                                <tr data-start="291" data-end="316">
+                                    <th data-start="291" data-end="301">Concept</th>
+                                    <th data-start="301" data-end="316">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody data-start="343" data-end="778">
+                                <tr data-start="343" data-end="412">
+                                    <td><strong data-start="345" data-end="363">Pure Functions</strong></td>
+                                    <td>Functions that do not modify external state.</td>
+                                </tr>
+                                <tr data-start="413" data-end="479">
+                                    <td><strong data-start="415" data-end="431">Immutability</strong></td>
+                                    <td>Data cannot be changed after it is created.</td>
+                                </tr>
+                                <tr data-start="480" data-end="589">
+                                    <td><strong data-start="482" data-end="507">First-Class Functions</strong></td>
+                                    <td>Functions are treated like variables (can be assigned, passed, and returned).</td>
+                                </tr>
+                                <tr data-start="590" data-end="692">
+                                    <td><strong data-start="592" data-end="618">Higher-Order Functions</strong></td>
+                                    <td>Functions that take other functions as arguments or return functions.</td>
+                                </tr>
+                                <tr data-start="693" data-end="778">
+                                    <td><strong data-start="695" data-end="719">Function Composition</strong></td>
+                                    <td>Combining multiple functions to create a new function.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       <ul>
+                        <li>✔ Functional Programming makes code predictable, reusable, and easier to test.</li>
+                        <li>✔ Focuses on pure functions, immutability, and higher-order functions.</li>
+                        <li>✔ Uses .map(), .filter(), .reduce() for clean and declarative code.</li>
+                        <li>✔ Avoids side effects and global state changes.</li>
+                       </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./main.js"></script>
+  
+
+</body>
+
+</html>

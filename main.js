@@ -31,6 +31,7 @@ const menu = [
       { name: "Introduction", link: "javaScriptBackground.html" },
       { name: "How Js Works", link: "howJsWorks.html" },
       { name: "Hoisting & Closure", link: "hoistingClosure.html" },
+      { name: "Functions n more...", link: "functions.html" },
     ],
   },
   {
@@ -121,12 +122,12 @@ function generateNavMenu() {
   });
 
   const testli = document.createElement("li");
-  testli.className = "nav-item dropdown";
-  testli.innerHTML = `<li>
-                        <a class="dropdown-item" href="test.html">
+  testli.className = "nav-item ";
+  testli.innerHTML = ` 
+                        <a class="nav-link" href="test.html">
                             <i class="bi bi-arrow-right-short"></i>Test Snipets
                         </a>
-                    </li>`;
+                    `;
   ul.appendChild(testli);
   // Insert the menu before the theme toggle button
   const themeToggle = document.getElementById("themeToggle");
