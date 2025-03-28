@@ -32,6 +32,7 @@ const menu = [
       { name: "How Js Works", link: "howJsWorks.html" },
       { name: "Hoisting & Closure", link: "hoistingClosure.html" },
       { name: "Functions n more...", link: "functions.html" },
+      { name: "Prototype...", link: "prototype.html" },
     ],
   },
   {

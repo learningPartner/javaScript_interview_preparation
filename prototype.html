@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <script>
+                    function person(nameParam){
+                        this.name =  nameParam;
+                    }
+                    person.prototype.greet = function() {
+                        return `hello ${this.name}`
+                    }
+
+                    const chetan = new person('chetan');
+                    console.log(chetan.greet());
+                    console.log(chetan.hasOwnProperty('greet'))
+
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is Prototype in JavaScript?
+                    </div>
+                    <div class="card-body">
+                        <p>Prototype is a mechanism in JavaScript that allows objects to inherit properties and methods from another object. 
+                            Every JavaScript function automatically has a prototype property that allows for inheritance.</p>
+                       
+                    </div>
+                </div>
+              
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                    function myCar (car) {
+                        this.myCarName =  car;
+                    }
+                    myCar.prototype.printName = function() {
+                        console.log(`my car name is ${this.myCarName}`) 
+                    }
+                    const tesla =  new myCar('Tesla');
+                    console.log(tesla.__proto__ == myCar.prototype)//true
+                    console.log(myCar.prototype.constructor === myCar)//true
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        __proto__ vs prototype
+                    </div>
+                    <div class="card-body">
+                         <ul>
+                            <li>prototype: A property of constructor functions used to define methods for objects.</li>
+                            <li>__proto__: A reference to the prototype of an instance.</li>
+                         </ul>
+                        <pre>
+function myCar (car) {
+    this.myCarName =  car;
+}
+myCar.prototype.printName = function() {
+    console.log(`my car name is ${this.myCarName}`) 
+}
+const tesla =  new myCar('Tesla');
+console.log(tesla.__proto__ == myCar.prototype)//true
+console.log(myCar.prototype.constructor === myCar)//true
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                    function animal(name) {
+                        this.animalName =  name;
+                    } 
+                    animal.prototype.speak = function( ){
+                        console.log(`${this.animalName} makes a sound`)
+                    }
+                    animal.prototype.eat = function(item) {
+                        console.log(`${this.animalName} eats ${item}`)
+                    }
+
+                    const dog = new animal('Dog');
+                    dog.eat('Chips')
+                    dog.speak()
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Adding Methods to Prototypes
+                    </div>
+                    <div class="card-body">
+                          
+                        <pre>
+ function animal(name) {
+     this.animalName =  name;
+ } 
+ animal.prototype.speak = function( ){
+     console.log(`${this.animalName} makes a sound`)
+ }
+ animal.prototype.eat = function(item) {
+     console.log(`${this.animalName} eats ${item}`)
+ }
+ 
+ const dog = new animal('Dog');
+ dog.eat('Chips')
+ dog.speak()
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                  function teacher (name) {
+                    this.teacherName =  name;
+                  }
+
+                  teacher.prototype.teach = function(subjectName){
+                    console.log(`${this.teacherName} teaches ${subjectName}`)
+                  }
+                  const rahul = new teacher("Rahul");
+                  rahul.teach('React.js')//Rahul teaches React.js
+                  rahul.teach =  function (subjectName) {
+                    console.log(`${this.teacherName} sir teaches ${subjectName}`)
+                  }
+                  rahul.teach('React.js')//Rahul sir teaches React.js
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Adding Methods to Prototypes
+                    </div>
+                    <div class="card-body">
+                          
+                        <pre>
+ function animal(name) {
+     this.animalName =  name;
+ } 
+ animal.prototype.speak = function( ){
+     console.log(`${this.animalName} makes a sound`)
+ }
+ animal.prototype.eat = function(item) {
+     console.log(`${this.animalName} eats ${item}`)
+ }
+ 
+ const dog = new animal('Dog');
+ dog.eat('Chips')
+ dog.speak()
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                  function person (name) {
+                    this.personName = name;
+                  }
+                  person.prototype.getPersonName = function () {
+                    console.log(`Teacher Name is ${this.personName}`)
+                  }
+                  function teacher(name, subject) {
+                    person.call(this,name)
+                    this.subjectName = subject;
+                  }
+
+                  teacher.prototype = Object.create(person.prototype);
+                  teacher.prototype.constructor = teacher;
+
+                  teacher.prototype.teaches =  function() {
+                    console.log(`${this.personName} teaches ${this.subjectName}`)
+                  }
+
+                  const sahil = new teacher('Sahil','Angular')
+                  sahil.getPersonName();//Teacher Name is Sahil
+                  sahil.teaches();//Sahil teaches Angular
+
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Prototype-Based Inheritance
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+function person (name) {
+  this.personName = name;
+}
+person.prototype.getPersonName = function () {
+  console.log(`Teacher Name is ${this.personName}`)
+}
+function teacher(name, subject) {
+  person.call(this,name)
+  this.subjectName = subject;
+}
+
+teacher.prototype = Object.create(person.prototype);
+teacher.prototype.constructor = teacher;
+
+teacher.prototype.teaches =  function() {
+  console.log(`${this.personName} teaches ${this.subjectName}`)
+}
+
+const sahil = new teacher('Sahil','Angular')
+sahil.getPersonName();//Teacher Name is Sahil
+sahil.teaches();//Sahil teaches Angular
+                                                            </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+let student = {
+    name:'Chetan',
+    city:'Nagpur',
+    getIntro : function() {
+        console.log(this.name + ' is From '+ this.city);
+    }
+}
+let student2 = {
+    name:"Ankita"
+};
+student2.__proto__ = student; 
+=>here we are assigning prototype of student object to student2
+we can access getIntro function and city from student obj 
+and name will be taken from student2 obj
+console.log(student2.getIntro());
+                                </pre>
+                            </div>
+                        </div>
+                          
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                  
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Checking Prototypes
+                    </div>
+                    <div class="card-body">
+                          
+                        <pre>
+console.log(sahil instanceof teacher); // true
+console.log(sahil instanceof person); // true (Inherited)
+console.log(person.prototype.isPrototypeOf(sahil)); // true
+                            
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                  class Person {
+                    constructor(name) {
+                        this.personaName = name; 
+                    }
+                    getPersonName() {
+                        debugger;
+                        return `person Name is ${this.personaName}`
+                    }
+                  } 
+                  class Employee extends Person {
+                    constructor(personaName,id) {
+                        super(personaName)
+                        this.empId = id;
+                    }
+                    getEmployeeId() {
+                        debugger;
+                        return `Person name is ${this.personaName} and his empId is ${this.empId}`
+                    }
+                  } 
+                  const newEmployee =  new Employee('Chetan','ERP-22334');
+                  debugger;
+                  console.log(newEmployee.getPersonName());//person Name is Chetan
+                  console.log(newEmployee.getEmployeeId());//Person name is Chetan and his empId is ERP-22334
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Class-Based Inheritance
+                    </div>
+                    <div class="card-body">
+                          
+                        <pre> 
+class Person {
+  constructor(name) {
+      this.personaName = name; 
+  }
+  getPersonName() { 
+      return `person Name is ${this.personaName}`
+  }
+} 
+class Employee extends Person {
+  constructor(personaName,id) {
+      super(personaName)
+      this.empId = id;
+  }
+  getEmployeeId() { 
+      return `Person name is ${this.personaName} and his empId is ${this.empId}`
+  }
+} 
+const newEmployee =  new Employee('Chetan','ERP-22334');
+debugger;
+console.log(newEmployee.getPersonName());//person Name is Chetan
+console.log(newEmployee.getEmployeeId());//Person name is Chetan and his empId is ERP-22334
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./main.js"></script>
+  
+
+</body>
+
+</html>

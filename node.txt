@@ -1,0 +1,6 @@
+in arrown fun this diff we can expain with prototype 
+ teacher.prototype.teach = function(subjectName){
+                    console.log(`${this.teacherName} teaches ${subjectName}`)
+                  }
+                  this works
+                  but if we use arrown fun it won;t work
