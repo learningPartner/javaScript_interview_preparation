@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        JavaScript Class
+                    </div>
+                    <script>
+                        class Student {
+                            constructor(surname,email) {
+                                this.surName = surname;
+                                this.emialId = email
+                            }
+                            printDetail() {
+                                console.log(this.surName + " "+ this.emialId)
+                            }
+                        }
+
+                        class Subject extends Student {
+                            constructor(surname,email,subName){
+                                super(surname,email);
+                                this.subjectName =subName; 
+                            }
+                            printSubName() {
+                                console.log("Subject is ", this.subjectName)
+                            }
+                        }
+
+                        const ramesh = new Subject("Tendular","sachin@gmial.com","English");
+                        ramesh.printDetail()
+                        ramesh.printSubName()
+                    </script>
+                    <div class="card-body">
+                        <p>Classes in JavaScript are templates for creating objects. They encapsulate data with code to work on that data. Classes were introduced in ES6 and provide a more structured and cleaner syntax to work with objects and inheritance compared to traditional prototype-based inheritance.</p>
+                        <ul>
+                            <li>Defining a Class</li>
+                            <pre>
+class Student {
+    constructor(surname,email) {
+        this.surName = surname;
+        this.emialId = email
+    }
+    printDetail() {
+        console.log(this.surName + " "+ this.emialId)
+    }
+}
+                            </pre>
+                            <li>Creating Objects from a Class</li>
+                            <pre>  const ramesh = new Subject("Tendular","sachin@gmial.com"); //output Tendular sachin@gmial.com</pre>
+                            <li>Key Features of JavaScript Classes
+                                <ul>
+                                    <li>Constructor Method: A special method that initializes object properties when an object is created.</li>
+                                    <li>Methods: Functions inside a class that define behaviors (e.g., greet())..</li>
+                                    <li>Encapsulation: Keeping properties and methods inside a class, allowing controlled access.</li>
+                                    <li>Inheritance: One class can inherit properties and methods from another using extends.</li>
+                                </ul>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Inheritance in JavaScript Class
+                    </div>
+                    <script>
+                        class person {
+                            constructor(surname,email) {
+                                this.surName = surname;
+                                this.emialId = email
+                            }
+                            printDetail() {
+                                console.log(this.surName + " "+ this.emialId)
+                            }
+                        }
+
+                        class Employee extends Student {
+                            constructor(surname,email,subName){
+                                super(surname,email);
+                                this.subjectName =subName; 
+                            }
+                            printSubName() {
+                                console.log("Subject is ", this.subjectName)
+                            }
+                        }
+
+                        const sachin = new Subject("Tendular","sachin@gmial.com","English");
+                        sachin.printDetail()
+                        sachin.printSubName()
+                    </script>
+                    <div class="card-body">
+                        <p>Inheritance allows a class to extend another class, inheriting its properties and methods. This is achieved using the extends keyword</p>
+                        <ul>
+                            <li>Defining a Class</li>
+                            <pre>
+class person {
+    constructor(surname,email) {
+        this.surName = surname;
+        this.emialId = email
+    }
+    printDetail() {
+        console.log(this.surName + " "+ this.emialId)
+    }
+}
+
+class Employee extends Student {
+    constructor(surname,email,subName){
+        super(surname,email);
+        this.subjectName =subName; 
+    }
+    printSubName() {
+        console.log("Subject is ", this.subjectName)
+    }
+}
+
+const sachin = new Subject("Tendular","sachin@gmial.com","English");
+sachin.printDetail()
+sachin.printSubName()
+                            </pre>
+                            
+                        </ul>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Private & Public Fields 
+                    </div>
+                    <script>
+                        class product {
+                            #sku
+                            constructor(sku,name) {
+                                this.#sku  = sku;
+                                this.productName = name;
+                            }
+
+                            printProductInfo () {
+                                console.log(`Product SKU is ${this.#sku} and Name is ${this.productName}`)
+                            }
+                            getProductSku() {
+                                return this.#sku;
+                            }
+                        }
+
+                        const mobile =  new product('mob-11',"A2");
+                        mobile.printProductInfo()
+                       console.log(mobile.getProductSku());
+                    //    console.log(mobile.#sku)
+                    </script>
+                    <div class="card-body">
+                         
+                            <pre>
+ class product {
+     #sku
+     constructor(sku,name) {
+         this.#sku  = sku;
+         this.productName = name;
+     }
+
+     printProductInfo () {
+         console.log(`Product SKU is ${this.#sku} and Name is ${this.productName}`)
+     }
+     getProductSku() {
+         return this.#sku;
+     }
+ }
+
+ const mobile =  new product('mob-11',"A2");
+ mobile.printProductInfo()
+ console.log(mobile.getProductSku());
+ //console.log(mobile.#sku)
+                            </pre>
+                             
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Static methods 
+                    </div>
+                    <script>
+                       class MathOperation {
+                        static add(num1, num2) {
+                            return num1+ num2;
+                        }
+                       } 
+                       console.log(MathOperation.add(3,7)) 
+                       const math =  new MathOperation();
+                      //console.log(math.add(22,33)) //math.add is not a function
+                    </script>
+                    <div class="card-body">
+                         <p>Static methods are defined on the class itself, not on instances of the class. They are called on the class, not on objects created from the class.</p>
+                            <pre>
+class MathOperation {
+ static add(num1, num2) {
+     return num1+ num2;
+ }
+} 
+console.log(MathOperation.add(3,7)) 
+const math =  new MathOperation();
+//console.log(math.add(22,33)) //math.add is not a function
+                            </pre>
+                             
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What are getters and setters in JavaScript classes?
+                    </div>
+                    <script>
+              class Person {
+  constructor(name) {
+    this._name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(newName) {
+    this._name = newName;
+  }
+}
+
+const person = new Person('Alice');
+console.log(person.name); // Output: Alice
+person.name = 'Bob';
+console.log(person.name); // Output: Bob
+
+                    </script>
+                    <div class="card-body">
+                         <p>Getters and setters allow you to define object accessors (computed properties). A getter method is used to get the value of a property, and a setter method is used to set the value of a property..</p>
+                            <pre>
+class Person {
+    constructor(name) {
+      this._name = name;
+    }
+    get name() {
+      return this._name;
+    }
+    set name(newName) {
+      this._name = newName;
+    }
+  }
+  
+const person = new Person('Alice');
+console.log(person.name); // Output: Alice
+person.name = 'Bob';
+console.log(person.name); // Output: Bob
+                            </pre>
+                             
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./main.js"></script>
+  
+
+</body>
+
+</html>

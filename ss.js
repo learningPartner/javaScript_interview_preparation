@@ -1,23 +1,5 @@
-var a = 10;
-console.log(a);
-function fn() {
-  console.log(a);
-  var a = 20;
-  a++;
-  console.log(a);
-  if (a) {
-    var a = 30;
-    a++;
-    console.log(a);
-  }
-  console.log(a);
+function greet(role) {
+  console.log(`Hello, my name is ${this.name}, and I am a ${role}`);
 }
-fn();
-console.log(a);
-
-
-10
-undefined21
-31
-31
-10
+const user = { name: "Alice" };
+greet.call(user, "developer");

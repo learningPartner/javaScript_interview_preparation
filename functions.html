@@ -115,7 +115,8 @@ sayHello(); //
                                 <pre>
 const factorial = function fact(n) {
     if (n <= 1) return 1;
-    return n * fact(n - 1); // Using the function name inside itself (recursion)
+    return n * fact(n - 1); 
+    // Using the function name inside itself (recursion)
 };
 
 console.log(factorial(5)); // Output: 120
@@ -181,7 +182,7 @@ console.log(squaredNumbers); // [1, 4, 9, 16]
                     </div>
                     <div class="card-body">
                         <p>
-                            functions whioch can do following things
+                            functions which can do following things
                             <ul>
                                 <li> Assigned to variables (fun can be stored into another variable).</li>
                                 <li> Passed as arguments to other functions (we can pass a fun as a args while executing another fun).</li>
@@ -219,7 +220,8 @@ function multiplier(factor) {
     };
 }
 const double = multiplier(2);
-console.log(double(5)); // Output: 10  
+console.log(double(5)); 
+// Output: 10  
     </pre>
                                 </div>
                                 <div class="col-4">
@@ -445,6 +447,79 @@ console.log("End");
                         <li>✔ Uses .map(), .filter(), .reduce() for clean and declarative code.</li>
                         <li>✔ Avoids side effects and global state changes.</li>
                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <script>
+                    function welcomeUser(role,city) {
+                        console.log(`Name is ${this.name}, and I am a ${role} & city is ${city}`);
+                    }
+                    const user = { name: "Shyam" };
+                    welcomeUser.call(user, "developer","Pune");
+                </script>
+                 <script>
+                    function welcomeUser2(role,city) {
+                        console.log(`Name is ${this.name}, and I am a ${role} & city is ${city}`);
+                    }
+                    const user2 = { name: "Shyam" };
+                    welcomeUser2.apply(user2, ["QA","Mumbai"]);
+                </script>
+                <script>
+                    function welcomeUser3(role, city) {
+                        console.log(`Name is ${this.name}, and I am a ${role} & city is ${city}`);
+                    }
+                    const user3 = { name: "Shyam" };
+                    const newData = welcomeUser3.bind(user2);
+                    newData('Developer', 'Thane') 
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        call()
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            In JavaScript, functions are objects, and they have built-in methods like call(), apply(), and bind() 
+                            that help control how a function is executed and what value this refers to.
+                        </p>
+                        <div class="row">
+                            <div class="col-4">
+                               <p> call() invokes a function immediately and allows passing arguments one by one.</p>
+                                <pre>
+function welcomeUser(role,city) {
+    console.log(`Name is ${this.name}, 
+    and I am a ${role} & city is ${city}`);
+}
+const user = { name: "Shyam" };
+welcomeUser.call(user, "developer","Pune");
+                                </pre>
+                            </div>
+                            <div class="col-4">
+                                <p> apply() also invokes the function immediately, but arguments are passed as an array instead of individual values.</p>
+                                <pre>
+function welcomeUser2(role,city) {
+    console.log(`Name is ${this.name}, 
+    and I am a ${role} & city is ${city}`);
+}
+const user2 = { name: "Shyam" };
+welcomeUser2.apply(user2, ["QA","Mumbai"]);
+                                </pre>
+                            </div>
+                            <div class="col-4">
+                                <p> bind() does not call the function immediately. Instead, it returns a new function with this permanently set.But we can pass argument only not array and we can execute it in future</p>
+                                <pre>
+function welcomeUser3(role, city) {
+    console.log(`Name is ${this.name}, 
+    and I am a ${role} & city is ${city}`);
+}
+const user3 = { name: "Shyam" };
+const newData = welcomeUser3.bind(user2);
+newData('Developer', 'Thane')
+                                </pre>
+                                
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

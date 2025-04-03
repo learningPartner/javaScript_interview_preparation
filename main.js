@@ -28,17 +28,18 @@ const menu = [
   {
     name: "JavaScript",
     children: [
-      { name: "Introduction", link: "javaScriptBackground.html" },
-      { name: "How Js Works", link: "howJsWorks.html" },
-      { name: "Hoisting & Closure", link: "hoistingClosure.html" },
-      { name: "Functions n more...", link: "functions.html" },
-      { name: "Prototype...", link: "prototype.html" },
+      { name: "Introduction", link: "/javaScriptBackground.html" },
+      { name: "How Js Works", link: "/howJsWorks.html" },
+      { name: "Hoisting & Closure", link: "/hoistingClosure.html" },
+      { name: "Functions n more...", link: "/functions.html" },
+      { name: "Prototype...", link: "/prototype.html" },
+      { name: "Class in Js", link: "/classinjs.html" },
     ],
   },
   {
     name: "Angular",
     children: [
-      { name: "Coming Soon", link: "comingsoon.html" },
+      { name: "NGRX (Basic)", link: "/angular/ngrx.html" },
       { name: "Coming Soon", link: "comingsoon.html" },
     ],
   },
