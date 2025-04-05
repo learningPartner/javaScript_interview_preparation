@@ -89,7 +89,7 @@ class Student {
 }
                             </pre>
                             <li>Creating Objects from a Class</li>
-                            <pre>  const ramesh = new Subject("Tendular","sachin@gmial.com"); //output Tendular sachin@gmial.com</pre>
+                            <pre>  const ramesh = new Student("Tendular","sachin@gmial.com"); //output Tendular sachin@gmial.com</pre>
                             <li>Key Features of JavaScript Classes
                                 <ul>
                                     <li>Constructor Method: A special method that initializes object properties when an object is created.</li>
@@ -118,7 +118,8 @@ class Student {
                             }
                         }
 
-                        class Employee extends Student {
+                        class Employee extends person {
+
                             constructor(surname,email,subName){
                                 super(surname,email);
                                 this.subjectName =subName; 
@@ -128,7 +129,7 @@ class Student {
                             }
                         }
 
-                        const sachin = new Subject("Tendular","sachin@gmial.com","English");
+                        const sachin = new Employee("Tendular","sachin@gmial.com","English");
                         sachin.printDetail()
                         sachin.printSubName()
                     </script>
@@ -294,6 +295,53 @@ console.log(person.name); // Output: Alice
 person.name = 'Bob';
 console.log(person.name); // Output: Bob
                             </pre>
+                             
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        static properties in classes
+                    </div>
+                    <script>
+                        class Magic {
+                            static count = 0;
+
+                            constructor() {
+                                Magic.count++;
+                            }
+                        }
+
+                        const m1 = new Magic();
+                        const m2 = new Magic();
+
+                        console.log(m1.count);
+                        console.log(Magic.count);
+
+
+                    </script>
+                    <div class="card-body">
+                         <p>static means the property belongs to the class, not its instances.</p>
+                            <pre>
+ class Magic {
+     static count = 0;
+
+     constructor() {
+         Magic.count++;
+     }
+ }
+
+ const m1 = new Magic();
+ const m2 = new Magic();
+
+ console.log(m1.count);
+ console.log(Magic.count);
+                            </pre>
+                        <ul>
+                            <li>console.log(m1.count); => undefined as mentioned count wont be accessible on instance</li>
+                            <li> console.log(Magic.count); 2  because we created two instances and each one increased the static count.</li>
+                        </ul>
                              
                     </div>
                 </div>

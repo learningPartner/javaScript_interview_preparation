@@ -90,6 +90,37 @@
                             <li>prototype: A property of constructor functions used to define methods for objects.</li>
                             <li>__proto__: A reference to the prototype of an instance.</li>
                          </ul>
+                        <table class="table table-sm table-bordered">
+                            <thead data-start="230" data-end="331">
+                                <tr data-start="230" data-end="331">
+                                    <th data-start="230" data-end="247">Concept</th>
+                                    <th data-start="247" data-end="287"><code data-start="249" data-end="261">.prototype</code></th>
+                                    <th data-start="287" data-end="331"><code data-start="289" data-end="300">__proto__</code></th>
+                                </tr>
+                            </thead>
+                            <tbody data-start="436" data-end="854">
+                                <tr data-start="436" data-end="539">
+                                    <td><strong data-start="438" data-end="452">Belongs To</strong></td>
+                                    <td>A <strong data-start="457" data-end="483">function (constructor)</strong></td>
+                                    <td>An <strong data-start="499" data-end="525">object (any JS object)</strong></td>
+                                </tr>
+                                <tr data-start="540" data-end="646">
+                                    <td><strong data-start="542" data-end="554">Used For</strong></td>
+                                    <td>Defining properties/methods for instances</td>
+                                    <td>Points to the prototype (used for lookup)</td>
+                                </tr>
+                                <tr data-start="647" data-end="750">
+                                    <td><strong data-start="649" data-end="657">Type</strong></td>
+                                    <td>Property of a <strong data-start="680" data-end="692">function</strong></td>
+                                    <td>Property of an <strong data-start="722" data-end="732">object</strong></td>
+                                </tr>
+                                <tr data-start="751" data-end="854">
+                                    <td><strong data-start="753" data-end="764">Purpose</strong></td>
+                                    <td>Blueprint for creating new objects</td>
+                                    <td>Links an object to its prototype chain</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <pre>
 function myCar (car) {
     this.myCarName =  car;
@@ -280,6 +311,33 @@ console.log(sahil instanceof teacher); // true
 console.log(sahil instanceof person); // true (Inherited)
 console.log(person.prototype.isPrototypeOf(sahil)); // true
                             
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
+                <script>
+                Array.prototype.getLastElement=  function(){
+                    return this[this.length-1];
+                }
+                var cityList  = ["Pune", "Nagpur","Mumbai","Thane"];
+                console.log(cityList.getLastElement())
+                </script>
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       How to add Own method in Exiting protoType / modify built-in prototypes
+                      
+                    </div>
+                    <div class="card-body"> 
+                        <p>
+                            Create a new method which will work on array to get Last item
+                           </p>
+                        <pre>
+Array.prototype.getLastElement=  function(){
+    return this[this.length-1];
+}
+var cityList  = ["Pune", "Nagpur","Mumbai","Thane"];
+console.log(cityList.getLastElement())//Thane
                         </pre>
                     </div>
                 </div>

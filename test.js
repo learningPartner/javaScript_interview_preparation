@@ -385,82 +385,460 @@ console.log(a);`,
     },
     
     {
-        id: 3,
-        category: 'Closure',
-        code: ``,
-        expectedOutput: ``,
+        id: 23,
+        category: 'Promise',
+        code: `Promise.resolve(1)
+  .then((val) => {
+    console.log(val);
+    return val + 1;
+  })
+  .then(console.log);`,
+        expectedOutput: `1
+        2`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 24,
+        category: 'Promise',
+        code: `console.log("Start");
+Promise.resolve().then(() => console.log("Promise"));
+console.log("End");`,
+        expectedOutput: `Start
+        End
+        Promise`,
+        explanation: `<ul>
+            <li>Synchronous code runs first (the console.log("Start") and console.log("End")).</li>
+            <li>Promise.resolve() creates a resolved Promise, but it is asynchronous. The .then() handler associated with it will not be executed immediately. Instead, it will be queued in the microtask queue.</li>
+            <li> The Promise.then() callback runs after all synchronous code finishes, so "Promise" is logged after "Start" and "End".</li>
+        </ul>`
+    },
+    {
+        id: 25,
+        category: 'Promise',
+        code: `const p = new Promise((resolve, reject) => {
+  let success = true;
+  success ? resolve("Success") : reject("Failed");
+});
+
+p.then(console.log).catch(console.error);
+`,
+        expectedOutput: `Success`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 26,
+        category: 'Promise',
+        code: `Promise.resolve(10)
+  .then((num) => num * 2)
+  .then((num) => num + 5)
+  .then(console.log);`,
+        expectedOutput: `25`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 27,
+        category: 'Promise',
+        code: `function doubleAfter2Sec(x) {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(x * 2), 2000);
+  });
+} 
+Promise.resolve(10)
+  .then(doubleAfter2Sec)
+  .then(console.log); // 20 after 2 seconds
+`,
+        expectedOutput: `20`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 28,
+        category: 'Promise',
+        code: `console.log("1");
+setTimeout(() => console.log("2"), 0);
+Promise.resolve().then(() => console.log("3"));
+console.log("4");
+`,
+        expectedOutput: `1
+        4
+        3
+        2`,
+        explanation: `Promise.then is a microtask, executed before setTimeout (a macrotask).`
+    },
+    {
+        id: 29,
+        category: 'Promise',
+        code: `const p1 = Promise.resolve(1);
+const p2 = Promise.resolve(2);
+const p3 = Promise.resolve(3);
+
+Promise.all([p1, p2, p3]).then((results) => {
+  console.log(results);
+});
+`,
+        expectedOutput: `[1, 2, 3]`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 30,
+        category: 'Promise',
+        code: `function fetchWithTimeout(url, timeout = 3000) {
+  const delay = new Promise((_, reject) =>
+    setTimeout(() => reject("Timeout!"), timeout)
+  ); 
+  return Promise.race([fetch(url), delay]);
+}
+fetchWithTimeout("https://jsonplaceholder.typicode.com/users",10).then(res=>{
+ console.log(res)
+}).catch(error=>{
+ console.log(error)
+})`,
+        expectedOutput: `Timeout!`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 31,
+        category: 'Prototype',
+        code: `function Person(name) {
+  this.name = name;
+}
+Person.prototype.sayHello = function () {
+  console.log('Hi, I am ${this.name}');
+};
+const p = new Person("Chetan");
+p.sayHello();
+`,
+        expectedOutput: `Hi, I am Chetan`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 32,
+        category: 'Prototype',
+        code: `function Animal() {}
+Animal.prototype.sound = "Roar";
+
+const tiger = new Animal();
+console.log(tiger.sound);
+`,
+        expectedOutput: `Roar`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 33,
+        category: 'Prototype',
+        code: `function Animal(name) {
+  this.name = name;
+}
+Animal.prototype.eat = function () {
+  console.log('${this.name} is eating');
+};
+function Dog(name) {
+  Animal.call(this, name); // Call super constructor
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+Dog.prototype.bark = function () {
+  console.log('${this.name} says woof');
+};
+const dog = new Dog("Bruno");
+dog.eat();
+dog.bark();
+`,
+        expectedOutput: `Bruno is eating
+        Bruno says woof`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 34,
+        category: 'Prototype',
+        code: `Array.prototype.last = function () {
+  return this[this.length - 1];
+};
+const arr = [1, 2, 3];
+console.log(arr.last());
+`,
+        expectedOutput: `3`,
         explanation: ``
     },
     {
-        id: 3,
-        category: 'Hoisting',
-        code: ``,
-        expectedOutput: ``,
+        id: 35,
+        category: 'Prototype',
+        code: `function Gadget() {}
+Gadget.prototype.version = "1.0";
+
+const g = new Gadget();
+g.version = "2.0";
+
+console.log(g.version);
+console.log(g.__proto__.version);
+`,
+        expectedOutput: `2.0
+        1.0`,
         explanation: ``
     },
+    {
+        id: 36,
+        category: 'Class',
+        code: `class Test {
+  constructor() {
+    this.value = 42;
+  }
+  static getValue() {
+    return this.value;
+  }
+}
+Test.value = 100;
+console.log(Test.getValue());
+`,
+        expectedOutput: `100`,
+        explanation: `Because this inside a static method refers to the class itself, and Test.value is 100.`
+    },
+    {
+        id: 37,
+        category: 'Class',
+        code: `class Parent {
+  constructor() {
+    this.name = "Parent";
+  } 
+  sayHi() {
+    console.log('Hi from  ${this.name}');
+  }
+}
+
+class Child extends Parent {
+  constructor() {
+    super();
+    this.name = "Child";
+  } 
+  sayHi() {
+    super.sayHi();
+  }
+}
+
+const c = new Child();
+c.sayHi();
+`,
+        expectedOutput: `Hi from Child`,
+        explanation: ``
+    },
+    {
+        id: 38,
+        category: 'Class',
+        code: `class Parent {
+  constructor(name) {
+    this.parentName = name;
+  }
+  sayHi() {
+    console.log('Hi from ${this.parentName}');
+  }
+}
+
+class Child extends Parent {
+  constructor(parenName,childName) {
+    super();
+    this.name = childName;
+  }
+  sayHi() {
+    super.sayHi();
+  }
+}
+
+const c = new Child("aaa",'bbb');
+c.sayHi();
+`,
+        expectedOutput: `Hi from undefined`,
+        explanation: ``
+    },
+    {
+        id: 39,
+        category: 'Class',
+        code: `class Foo {
+  constructor() {
+    this.count++;
+  }
+}
+const a = new Foo();
+const b = new Foo();
+console.log(a.count);
+console.log(b.count);
+`,
+        expectedOutput: `undefined 
+        undefined `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: 'Class',
+        code: `class Logger {
+  log = () => {
+    console.log(this.message);
+  }; 
+  constructor(msg) {
+    this.message = msg;
+  }
+}
+const l = new Logger("Hello");
+const logFn = l.log;
+logFn();
+`,
+        expectedOutput: `Hello`,
+        explanation: ``
+    }, 
+    {
+        id: 41,
+        category: 'Class',
+        code: `class Secret {
+  #data = "hidden";
+
+  reveal() {
+    return this.#data;
+  }
+} 
+const s = new Secret();
+console.log(s.reveal());      
+console.log(s.#data);         
+`,
+        expectedOutput: `hidden
+        throws SyntaxError`,
+        explanation: ``
+    },
+    {
+        id: 42,
+        category: 'Class',
+        code: ` class Magic {
+     static count = 0; 
+     constructor() {
+         Magic.count++;
+     }
+ } 
+ const m1 = new Magic();
+ const m2 = new Magic();
+
+ console.log(m1.count);
+ console.log(Magic.count);`,
+        expectedOutput: `undefined
+        2`,
+        explanation: `undefined as static property on the class itself, not on the instances.2, because we created two instances and each one increased the static count.`
+    },
+    {
+        id: 43,
+        category: 'Class',
+        code: `const obj = new Test(); // ❓
+
+class Test {
+  constructor() {
+    console.log("Created!");
+  }
+}
+`,
+        expectedOutput: `Cannot access 'Test' before initialization"`,
+        explanation: `Classes are not hoisted, unlike function declarations.`
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+    {
+        id: 40,
+        category: '',
+        code: ``,
+        expectedOutput: ` `,
+        explanation: ``
+    },
+
 ];
 
 let currentCategory = 'all';

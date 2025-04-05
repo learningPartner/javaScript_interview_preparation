@@ -34,6 +34,7 @@ const menu = [
       { name: "Functions n more...", link: "/functions.html" },
       { name: "Prototype...", link: "/prototype.html" },
       { name: "Class in Js", link: "/classinjs.html" },
+      { name: "Promise Async Await", link: "/promiceAsycAwait.html" },
     ],
   },
   {
