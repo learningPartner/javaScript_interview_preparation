@@ -118,7 +118,9 @@ h6 {
 .myCol {
     margin-bottom: 1.5rem;
 }
-
+.logo {
+    height: 100px;
+}
 ul, ol {
     color: var(--text-secondary);
     padding-left: 1.25rem;
@@ -150,6 +152,83 @@ pre {
 p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+}
+/* ====================
+   Table Styles
+==================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    box-shadow: var(--card-shadow);
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+table th {
+    background-color: var(--card-header-bg);
+    color: var(--card-header-color);
+    font-weight: 600;
+}
+
+/* Dark theme table fix */
+.dark-theme .table {
+    --bs-table-bg: #1e293b;       /* Dark background for the whole table */
+    --bs-table-color: #e2e8f0;    /* Light text */
+    --bs-table-border-color: #475569; /* Optional: subtle border in dark */
+}
+
+/* Optional: zebra striping for Bootstrap table rows in dark mode */
+.dark-theme .table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #273449;
+}
+
+/* Optional: hover effect */
+.dark-theme .table-hover > tbody > tr:hover {
+    --bs-table-hover-bg: #334155;
+}
+
+/* Zebra striping for dark rows */
+.dark-theme table tr:nth-child(even) {
+    background-color: #273449;
+}
+
+.dark-theme table tr:nth-child(odd) {
+    background-color: #1e293b;
+}
+
+
+/* Optional: Zebra striping */
+table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.dark-theme table tr:nth-child(even) {
+    background-color: #1f2937;
+}
+
+/* ====================
+   Paragraph Refinement
+==================== */
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.dark-theme p {
+    color: #94a3b8;
 }
 
 b {
@@ -352,7 +431,7 @@ footer {
 }
 
 .dropdown-item {
-    padding: 0.75rem 1rem;
+    padding:0.20rem 0.1rem;
     border-radius: 8px;
     transition: all 0.3s ease;
 }

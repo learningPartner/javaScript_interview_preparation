@@ -27,18 +27,23 @@ columns.forEach((col) => {
 const menu = [
   {
     name: "JavaScript",
+    icon:'bi-filetype-js',
+    image:'/logo/javascript.png',
+   
     children: [
-      { name: "Introduction", link: "javaScriptBackground.html" },
-      { name: "How Js Works", link: "howJsWorks.html" },
-      { name: "Hoisting & Closure", link: "hoistingClosure.html" },
-      { name: "Functions n more...", link: "functions.html" },
-      { name: "Prototype...", link: "prototype.html" },
-      { name: "Class in Js", link: "classinjs.html" },
-      { name: "Promise Async Await", link: "promiceAsycAwait.html" },
+      { name: "Introduction", link: "/javaScript/javaScriptBackground.html" },
+      { name: "How Js Works", link: "/javaScript/howJsWorks.html" },
+      { name: "Hoisting & Closure", link: "/javaScript/hoistingClosure.html" },
+      { name: "Functions n more...", link: "/javaScript/functions.html" },
+      { name: "Prototype...", link: "/javaScript/prototype.html" },
+      { name: "Class in Js", link: "/javaScript/classinjs.html" },
+      { name: "Promise Async Await", link: "/javaScript/promiceAsycAwait.html" },
+      { name: "ES6 Features", link: "/javaScript/es6.html" },
     ],
   },
   {
     name: "Angular",
+    image:'/logo/angular.png',
     children: [
       { name: "NGRX (Basic)", link: "/angular/ngrx.html" },
       { name: "Coming Soon", link: "comingsoon.html" },
@@ -127,7 +132,7 @@ function generateNavMenu() {
   const testli = document.createElement("li");
   testli.className = "nav-item ";
   testli.innerHTML = ` 
-                        <a class="nav-link" href="test.html">
+                        <a class="nav-link" href="/test.html">
                             <i class="bi bi-arrow-right-short"></i>Test Snipets
                         </a>
                     `;
@@ -148,25 +153,24 @@ function generateTopicCards() {
 
       col.innerHTML = `
                 <div class="card topic-card h-100">
-                    <div class="card-body text-center">
+                    <div class="card-body">
                         <div class="topic-icon">
-                            <i class="bi ${topic.icon}"></i>
+                            <img class="logo" src="${topic.image}" />
                         </div>
                         <h3 class="card-title">${topic.name}</h3>
-                        <ul class="subtopic-list">
-                            ${topic.children
-                              .map(
-                                (child) => `
-                                <li>
-                                    <a href="${child.link}">
+                        <div class="row">
+                          ${topic.children.map((childTopic,index)=>
+                            `<div class="col-6 ${index %2== 0?'text-left':'text-end'}" >
+                              <a href="${childTopic.link}">
                                         <i class="bi bi-arrow-right-short"></i>
-                                        ${child.name}
+                                        ${childTopic.name}
                                     </a>
-                                </li>
-                            `
-                              )
-                              .join("")}
-                        </ul>
+                            </div>
+                            `).join("")}
+                          
+                        
+                        </div>
+                        
                     </div>
                 </div>
             `;

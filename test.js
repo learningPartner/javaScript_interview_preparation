@@ -734,116 +734,314 @@ class Test {
         explanation: `Classes are not hoisted, unlike function declarations.`
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
+        id: 44,
+        category: 'var-let-const',
+        code: `console.log(a); // undefined (hoisted)
+var a = 10;
+console.log(b); // ReferenceError: Cannot access 'b' before initialization
+let b = 20;
+`,
+        expectedOutput: `undefined
+        Cannot access 'b' before initialization`,
         explanation: ``
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
+        id: 45,
+        category: 'var-let-const',
+        code: `if (true) {
+    var x = "I am var";
+    let y = "I am let";
+    const z = "I am const";
+}
+console.log(x);
+console.log(y);
+console.log(z);
+`,
+        expectedOutput: `I am var
+        y is not defined`,
+        explanation: `as let and const are block scope so not accessibal after  { }`
+    },
+    {
+        id: 46,
+        category: 'var-let-const',
+        code: `for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log("var loop:", i), 1000);
+} 
+for (let j = 0; j < 3; j++) {
+    setTimeout(() => console.log("let loop:", j), 1000);
+}
+`,
+        expectedOutput: `var loop: 3
+        var loop: 3
+        var loop: 3
+        let loop: 1
+        let loop: 2
+        let loop: 3`,
+        explanation: `as var has function or gloabal scope so after there is only single memory assign to var one so it prints last value and in case of let for ecah  {} it will maintain different value`
+    },
+    {
+        id: 47,
+        category: 'var-let-const',
+        code: `for(var i=0;i<3;i++){
+                                            (function() {
+                                                console.log(i)
+                                            })()
+                                        }`,
+        expectedOutput: `0
+        1
+        2 `,
+        explanation: `as var is fun or global scope for inside intertaion we have fun so for each iteration we have seperate bscope with diff value`
+    },
+    {
+        id: 48,
+        category: 'var-let-const',
+        code: `  for(var i=0;i<3;i++){
+                                            (function() {
+                                               setTimeout(() => {
+                                                console.log(i)
+                                               }, 10000); 
+                                            })()
+                                        }`,
+        expectedOutput: `3
+        3
+        3
+         `,
+        explanation: `as i is in outter scope and we are just accesing it so latest value only`
+    },
+    {
+        id: 49,
+        category: 'var-let-const',
+        code: `function printFor() {
+                                        for (var i = 0; i < 3; i++) {
+                                            setTimeout(() => {
+                                                printNo(i)
+                                            }, 1000)
+                                        }
+                                    } 
+                                    function printNo(num) {
+                                        console.log(num)
+                                    } 
+                                    printFor()`,
+        expectedOutput: `3
+        3
+        3 `,
         explanation: ``
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
+        id: 50,
+        category: 'var-let-const',
+        code: `function printFor() {
+                                        for (var i = 0; i < 3; i++) {
+                                            function printNo(num) {
+                                                setTimeout(() => {
+                                                     console.log(num)
+                                                }, 1000)
+                                            }
+                                            printNo(i)
+                                        }
+                                    }
+                                    printFor()`,
+        expectedOutput: `0
+        1
+        2`,
+        explanation: `here becaz of closure every param we pass will be lock with that instance of fun so diff value`
+    },
+    {
+        id: 51,
+        category: 'Arrow_Function',
+        code: `const obj = {
+  count: 0,
+  increment: () => {
+    this.count++;
+  }
+};
+obj.increment();
+`,
+        expectedOutput: `NaN`,
+        explanation: `as we are calling obj.increment() from outside and there is not variabkle declared with count name so no access of this inarrow fun so undefined++ nan`
+    },
+    {
+        id: 52,
+        category: 'Arrow_Function',
+        code: `const count = 2;
+const obj = {
+  count: 0,
+  increment: () => {
+   this.count++;
+   console.log(this.count)
+  }
+};
+obj.increment();`,
+        expectedOutput: `NaN`,
+        explanation: `now in global scope we have a variable count but that decclared with const so its not in global scope`
+    },
+    {
+        id: 53,
+        category: 'Arrow_Function',
+        code: `var count = 2;
+const obj = {
+  count: 0,
+  increment: () => {
+   this.count++;
+   console.log(this.count)
+  }
+};
+obj.increment();`,
+        expectedOutput: `3`,
+        explanation: `npw in global scope we have count variable so 2++ => 3`
+    },
+    {
+        id: 54,
+        category: 'Arrow_Function',
+        code: `var name = "Angular"
+var person = {
+  name: "React",
+  age: 30,
+  getDetail: function () {
+    console.log("getDetail " + this.name)
+  },
+  getName: () => {
+    console.log("getName " + this.name)
+  },
+}
+person.getDetail();
+person.getName();`,
+        expectedOutput: `getDetail React
+        getName Angular`,
+        explanation: `now getDetail is normal fun so this refers to the person object. and arrow functions do not bind their own this it wil use its sorrunding scope and we are invoking getName poutside scope in scope we have Angular with same variable name `
+    },
+    {
+        id: 54,
+        category: 'Arrow_Function',
+        code: `const person = {
+  name: "Chetan",
+  greet: () => {
+    console.log('Hello, ${this.name}');
+  }
+};
+person.greet()`,
+        expectedOutput: `Hello, undefined`,
         explanation: ``
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
+        id: 55,
+        category: 'Arrow_Function',
+        code: `const fn = () => ({ name: "JS" });
+console.log(fn());`,
+        expectedOutput: `{ name: "JS" }`,
+        explanation: `Wrapping the object in () allows it to be returned directly. Without (), JavaScript thinks it's a block.`
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
+        id: 56,
+        category: 'Arrow_Function',
+        code: `const fn = () => { name: "JS" };
+console.log(fn());`,
+        expectedOutput: `undefined`,
+        explanation: `{} are usually interpreted as the function body in an arrow function <br/> JavaScript sees { name: "JS" } and thinks it's a block of code (not an object). So, it doesn't return anything — meaning the function fn() returns undefined`
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
+        id: 57,
+        category: 'Arrow_Function',
+        code: `const outer = {
+  count: 0,
+  inc: function () {
+    setTimeout(() => {
+      this.count++;
+      console.log(this.count);
+    }, 100);
+  }
+};
+outer.inc();
+`,
+        expectedOutput: `1`,
+        explanation: `Arrow function inherits this from inc method, which correctly refers to outer`
     },
     {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
-    {
-        id: 40,
-        category: '',
-        code: ``,
-        expectedOutput: ` `,
-        explanation: ``
-    },
+      id: 58,
+      category: 'Arrow_Function',
+      code: `let name = "Outer";
+const obj = {
+  name: "Inner",
+  say: () => console.log(this.name)
+};
+obj.say();
+`,
+      expectedOutput: `undefined`,
+      explanation: `we are calling say fun from outside which is arrow one in in global scope we dont have name with var so undeinfed if global name was with var we would have got outer`
+  },
+  {
+    id: 57,
+    category: '',
+    code: ``,
+    expectedOutput: ``,
+    explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
+{
+  id: 57,
+  category: '',
+  code: ``,
+  expectedOutput: ``,
+  explanation: ``
+},
 
 ];
 
 let currentCategory = 'all';
 
 function createQuestionCard(snippet) {
+  const path = window.location.pathname;
+  const page = path.substr( path.lastIndexOf("/") + 1 );
+  console.log( page ); 
+  debugger;
     const card = document.createElement('div');
     card.className = 'card mb-4';
     card.innerHTML = `
@@ -852,13 +1050,16 @@ function createQuestionCard(snippet) {
         </div>
         <div class="card-body">
             <pre class="mb-4">${snippet.code}</pre>
-            <div class="mb-3">
+            
+            ${
+              page == "test.html" ? `<div class="mb-3">
                 <label class="form-label">What will be the output?</label>
                 <textarea class="form-control" rows="3" id="answer-${snippet.id}"></textarea>
-            </div>
-            <button class="btn btn-primary check-answer" data-id="${snippet.id}">
-                Check Answer
-            </button>
+            </div> <button class="btn btn-primary check-answer" data-id="${snippet.id}">
+              Check Answer :
+          </button>`:''
+            }
+          
         </div>
     `;
     return card;
@@ -911,7 +1112,7 @@ function getSimilarityScore(str1, str2) {
 function loadQuestions() {
     const container = document.getElementById('questionContainer');
     container.innerHTML = '';
-    
+    currentCategory = document.getElementById('categorySelect').value
     const filteredSnippets = currentCategory === 'all' 
         ? codeSnippets 
         : codeSnippets.filter(s => s.category.toLowerCase() === currentCategory);

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es6-features</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 75.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-9">
+
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                               Var - Let - Const
+                            </div>
+                            <div class="card-body">
+                                <script>
+                                    function printVal() {
+                                        console.log(x);//undefined
+                                        var x = 10;
+                                        if (true) {
+                                            var x = 20;
+                                        }
+                                        console.log(x)//20
+                                    }
+                                    //printVal()
+                                    function printVal2() {
+                                        let x = 10;
+                                        console.log(x);
+                                        if (true) {
+                                            let x = 20;
+                                            console.log(x)//20
+                                        }
+
+                                    }
+                                    printVal2()
+                                </script>
+                                <ul>
+                                    <li>Variables declared with let and const are stored in the Temporal Dead Zone and not added to window.</li>
+                                    <li>var declared variables are properties of the global object in global scope.</li>
+                                </ul>
+                                <table class="table table-bordered table-sm" data-start="494" data-end="1346" node="[object Object]">
+                                    <thead data-start="494" data-end="614">
+                                        <tr data-start="494" data-end="614">
+                                            <th data-start="494" data-end="517">Feature</th>
+                                            <th data-start="517" data-end="545"><code data-start="519" data-end="524">var</code></th>
+                                            <th data-start="545" data-end="579"><code data-start="547" data-end="552">let</code></th>
+                                            <th data-start="579" data-end="614"><code data-start="581" data-end="588">const</code></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-start="739" data-end="1346">
+                                        <tr data-start="739" data-end="857">
+                                            <td>Scope</td>
+                                            <td>Function-scoped</td>
+                                            <td>Block-scoped</td>
+                                            <td>Block-scoped</td>
+                                        </tr>
+                                        <tr data-start="858" data-end="979">
+                                            <td>Hoisting</td>
+                                            <td>Yes (initialized as <code data-start="903" data-end="914">undefined</code>)</td>
+                                            <td>Yes (but in <strong data-start="930" data-end="937">TDZ</strong>)</td>
+                                            <td>Yes (but in <strong data-start="961" data-end="968">TDZ</strong>)</td>
+                                        </tr>
+                                        <tr data-start="980" data-end="1094">
+                                            <td>Re-declaration</td>
+                                            <td>✅ Allowed (in same scope)</td>
+                                            <td>❌ SyntaxError</td>
+                                            <td>❌ SyntaxError</td>
+                                        </tr>
+                                        <tr data-start="1095" data-end="1228">
+                                            <td>Re-assignment</td>
+                                            <td>✅ Allowed</td>
+                                            <td>✅ Allowed</td>
+                                            <td>❌ Not Allowed (but object props can be mutated)</td>
+                                        </tr>
+                                        <tr data-start="1229" data-end="1346">
+                                            <td>Temporal Dead Zone</td>
+                                            <td>❌ Not applicable</td>
+                                            <td>✅ Exists</td>
+                                            <td>✅ Exists</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <pre>
+function printVal() {
+    console.log(x);//ReferenceError
+    let x = 10;
+    if(true) {
+        let x= 20;
+        console.log(x)//20
+    }
+    
+}
+printVal()
+                                        </pre>
+                                    </div>
+                                    <div class="col-4">
+<pre>
+function printVal2() {
+    console.log(x);//ReferenceError: 
+       Cannot access 'x' before initialization
+    let x = 10;
+    if (true) {
+        let x = 20;
+        console.log(x)//20
+    }
+}
+printVal2()
+</pre>
+                                    </div>
+                                    <div class="col-4">
+                                        <pre>
+function printVal2() {
+    let x = 10;
+    console.log(x);//10
+    if (true) {
+        let x = 20;
+        console.log(x)//20
+    }
+
+}
+printVal2()
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                const – Immutable Bindings, not immutable values
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li> Means when we declare variable with const It Cannot be reassigned</li>
+                                    <li>But if its Array or Object we can change its Valye but still can't reassigned</li>
+                                    <li>Basically you can't use = operator again.</li>
+                                </ul>
+                                
+                                <div class="row">
+                                    <div class="col-4">
+                                        <pre>
+const productName = "Mobile";
+productName =  "asas";
+console.log(productName) 
+//Assignment to constant variable.
+                                        </pre>
+                                    </div>
+                                    <div class="col-4">
+                                        <pre>
+const product = {
+    productName: 'Mobile'
+}
+product.productName = "Camera"; //Allowed
+product = {
+    productName: "Camera"
+} 
+//Assignment to constant variable.
+                                        </pre>
+                                    </div>
+                                    <div class="col-4">
+                                        <pre>
+const cityList = ["Pune","Nagpur"];
+cityList.push("Mumbai")//allowed
+cityList = ["Jaipur","Jabalpur"] 
+//Assignment to constant variable.
+                                        </pre>
+                                    </div>
+                                </div>
+                                <script>
+                                    const productName = "Mobile";
+                                    productName = "asas";
+                                    console.log(productName) //Assignment to constant variable.
+
+
+                                    const productDetails = {
+                                        productName: 'Mobile'
+                                    }
+                                    productDetails.productName = "Camera";
+                                    productDetails = {
+                                        productName: "Camera"
+                                    }
+
+                                    const cityList = ["Pune", "Nagpur"];
+                                    cityList.push("Mumbai")
+                                    cityList = ["Jaipur", "Jabalpur"]
+
+                                    function printFor() {
+                                        for (var i = 0; i < 3; i++) {
+                                            function printNo(num) {
+                                                setTimeout(() => {
+                                                     console.log(num)
+                                                }, 1000)
+                                            }
+                                            printNo(i)
+                                        }
+                                    }
+                                    printFor()
+
+                                </script>
+                              
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Arrow Functions
+                            </div>
+                            <div class="card-body">
+                                 <ul>
+                                    <li>yes it's short to write but not just that so many difference are there</li>
+                                    <li>if single statement return is there no Need of return keyword</li> 
+                                    <li>Does't support Hoisting</li>
+                                 </ul>
+                                <h6>How this differes in Both Function </h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <pre>
+var age = 20;
+function Person() {
+    this.age = 0;
+    setTimeout(function(){
+        console.log(this.age);//20
+    });
+}
+new Person() 
+                                        </pre>
+                                        <p>normal function "this" refers to global object</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <pre>
+var age = 20;
+function Person2() {
+    this.age = 0;
+    setTimeout(()=>{
+        console.log(this.age);//20
+    });
+}
+new Person2() 
+                                        </pre>
+                                        <p> in arrow func this refers to surrounding scope where it is created/ or executed</p>
+                                    </div>
+                                </div>
+                                <h6>argusments </h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <pre>
+function test() {
+    console.log(arguments);
+  }
+test(1, 2, 3); //Works
+
+function addNumbers(...args) {
+    let sum = 0
+    for (let i = 0; i < args.length; i++) {
+      sum = sum + args[i]
+    }
+    return sum
+}
+const result = addNumbers(2,3,4,5);
+console.log(result)
+const result2 = addNumbers(3,3,5,5);
+console.log(result2)
+                                        </pre>
+                                        
+                                    </div>
+                                    <div class="col-6">
+                                        <pre>
+const arrowTest = () => {
+  console.log(arguments);//arguments is not defined
+};
+arrowTest(1, 2, 3); 
+as arrow func doesn't have arguments can't use rest operator
+                                        </pre>
+                                        
+                                    </div>
+                                </div>
+                                <h6>Can't Use new Operator </h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <pre>
+function Product(name) {
+    this.productName = name;
+    console.log(this.productName)
+}
+new Product("Mobile")
+                                        </pre>
+                                        <p>Normal func can be invoked by new operator</p>
+                                        
+                                    </div>
+                                    <div class="col-6">
+                                        <pre>
+const Print = () => {};
+const text = new Print(); //Print is not a constructor
+                                        </pre>
+                                        <p>Arrow fun can't be invoked with new </p>
+                                        
+                                    </div>
+                                </div>
+                                <script>
+                                    function Product(name) {
+                                        this.productName = name;
+                                        console.log(this.productName)
+                                    }
+                                    new Product("Mobile")
+                                </script>
+                              
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <input type="hidden" id="categorySelect" value="hoisting">
+                <div id="questionContainer"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+
+    <script src="./test.js"></script>
+    <style>
+        #questionContainer pre {
+            display: block;
+            font-size: 72.5%;
+        }
+    </style>
+</body>
+
+</html>
