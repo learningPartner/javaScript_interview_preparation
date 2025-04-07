@@ -44,8 +44,8 @@ const menu = [
     name: "Angular",
     image:'/logo/angular.png',
     children: [
-      { name: "NGRX (Basic)", link: "/angular/ngrx.html" },
-      { name: "Coming Soon", link: "comingsoon.html" },
+      { name: "NGRX (Basic)", link: `${BASE_PATH}angular/ngrx.html` },
+      { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
     ],
   },
   {
@@ -131,7 +131,7 @@ function generateNavMenu() {
   const testli = document.createElement("li");
   testli.className = "nav-item ";
   testli.innerHTML = ` 
-                        <a class="nav-link" href="/test.html">
+                        <a class="nav-link" href="${BASE_PATH}/test.html">
                             <i class="bi bi-arrow-right-short"></i>Test Snipets
                         </a>
                     `;
