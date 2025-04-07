@@ -38,6 +38,7 @@ const menu = [
       { name: "Class in Js", link: `${BASE_PATH}javaScript/classinjs.html` },
       { name: "Promise Async Await", link: `${BASE_PATH}javaScript/promiceAsycAwait.html` },
       { name: "ES6 Features", link: `${BASE_PATH}javaScript/es6.html` },
+      { name: "Object N Array", link: `${BASE_PATH}javaScript/ObjectnArray.html` },
     ],
   },
   {
