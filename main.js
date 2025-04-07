@@ -23,21 +23,21 @@ columns.forEach((col) => {
   const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Pick a random color
   col.style.backgroundColor = randomColor;
 });
-const BASE_PATH = "";
+const BASE_PATH = "javaScript_interview_preparation/";
 const menu = [
   {
     name: "JavaScript",
     image:'/logo/javascript.png',
    
     children: [
-      { name: "Introduction", link: `${BASE_PATH}/javaScript/javaScriptBackground.html` },
-      { name: "How Js Works", link: `${BASE_PATH}/javaScript/howJsWorks.html` },
-      { name: "Hoisting & Closure", link: `${BASE_PATH}/javaScript/hoistingClosure.html` },
-      { name: "Functions n more...", link: `${BASE_PATH}/javaScript/functions.html` },
-      { name: "Prototype...", link: `${BASE_PATH}/javaScript/prototype.html` },
-      { name: "Class in Js", link: `${BASE_PATH}/javaScript/classinjs.html` },
-      { name: "Promise Async Await", link: `${BASE_PATH}/javaScript/promiceAsycAwait.html` },
-      { name: "ES6 Features", link: `${BASE_PATH}/javaScript/es6.html` },
+      { name: "Introduction", link: `${BASE_PATH}javaScript/javaScriptBackground.html` },
+      { name: "How Js Works", link: `${BASE_PATH}javaScript/howJsWorks.html` },
+      { name: "Hoisting & Closure", link: `${BASE_PATH}javaScript/hoistingClosure.html` },
+      { name: "Functions n more...", link: `${BASE_PATH}javaScript/functions.html` },
+      { name: "Prototype...", link: `${BASE_PATH}javaScript/prototype.html` },
+      { name: "Class in Js", link: `${BASE_PATH}javaScript/classinjs.html` },
+      { name: "Promise Async Await", link: `${BASE_PATH}javaScript/promiceAsycAwait.html` },
+      { name: "ES6 Features", link: `${BASE_PATH}javaScript/es6.html` },
     ],
   },
   {
