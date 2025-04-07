@@ -523,6 +523,84 @@ newData('Developer', 'Thane')
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Currying
+                    </div>
+                    <div class="card-body">
+                     <p>Currying means changing a function that takes multiple arguments into a series of smaller functions that each take one argument at a time.</p>
+                        <div class="row">
+                            <div class="col-6">
+                                Normal Function
+                                <pre>
+function addNum(num1) {
+    return function (num2) {
+        return num1 + num2;
+    }
+}
+console.log(addNum(4)(7))//11
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                arrow Function
+                                <pre>
+var addTwoNo = num1 => num2 => num1 + num2;
+console.log(addTwoNo(4)(7))//11
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+function printLog(type) {
+    return function (message) {
+       console.log(`${type} - ${message}`)
+    }
+} 
+const infoLog = printLog("Info");
+infoLog("User Logged");//Info - User Logged
+infoLog("Profile Fetched")//Info - Profile Fetched
+const errorLog  = printLog("Error");
+errorLog("API Error")//Error - API Error
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+const log = type => message => console.log(`${type} - ${message}`);
+const infoLog = log("info");
+const errorLog = log("error");
+infoLog("User logged in");   // INFO - User logged in
+errorLog("Server crashed");  // ERROR - Server crashed
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function addNum(num1) {
+                            return function (num2) {
+                                return num1 + num2;
+                            }
+                        }
+                        console.log(addNum(4)(7))//11
+                        
+                        var addTwoNo = num1 => num2 => num1 + num2;
+                        console.log(addTwoNo(4)(7))//11
+
+                        function printLog(type) {
+                            return function (message) {
+                               console.log(`${type} - ${message}`)
+                            }
+                        } 
+                        const infoLog = printLog("Info");
+                        infoLog("User Logged");//Info - User Logged
+                        infoLog("Profile Fetched")//Info - Profile Fetched
+                        const errorLog  = printLog("Error");
+                        errorLog("API Error")//Error - API Error
+
+                        
+
+                    </script>
+                </div>
+            </div>
         </div>
 
     </div> 

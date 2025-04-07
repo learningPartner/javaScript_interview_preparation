@@ -970,31 +970,58 @@ obj.say();
       explanation: `we are calling say fun from outside which is arrow one in in global scope we dont have name with var so undeinfed if global name was with var we would have got outer`
   },
   {
-    id: 57,
-    category: '',
-    code: ``,
-    expectedOutput: ``,
+    id: 59,
+    category: 'Closure',
+    code: `for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}`,
+    expectedOutput: `3
+    3
+    3`,
     explanation: ``
 },
 {
-  id: 57,
-  category: '',
-  code: ``,
-  expectedOutput: ``,
+  id: 60,
+  category: 'Closure',
+  code: `for (var i = 0; i < 3; i++) {
+  ((j) => {
+    setTimeout(() => console.log(j), 1000);
+  })(i);
+}`,
+  expectedOutput: `0
+  1
+  2`,
   explanation: ``
 },
 {
-  id: 57,
-  category: '',
-  code: ``,
-  expectedOutput: ``,
+  id: 61,
+  category: 'Closure',
+  code: `function outer() {
+  let secret = "I know JS";
+  return function inner() {
+    return secret;
+  };
+}
+const getSecret = outer();
+console.log(getSecret());
+`,
+  expectedOutput: `I know JS`,
   explanation: ``
 },
 {
-  id: 57,
-  category: '',
-  code: ``,
-  expectedOutput: ``,
+  id: 62,
+  category: 'Closure',
+  code: `let funcs = [];
+
+for (var i = 0; i < 3; i++) {
+  funcs.push(() => console.log(i));
+}
+
+funcs[0]();
+funcs[1]();
+`,
+  expectedOutput: `3
+  3`,
   explanation: ``
 },
 {

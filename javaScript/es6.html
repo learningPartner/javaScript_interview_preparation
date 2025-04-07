@@ -487,7 +487,7 @@ const studAddress= {
     state:"MAHA"
 }
 const copyStud = {...student};
-debugger;
+
 const studDetails = {...student,...studAddress}
 const studFullDetauks = {...student,studId:232,...studAddress};
                                         </pre>
@@ -528,7 +528,7 @@ console.log(strObj2)
                                     state:"MAHA"
                                 }
                                 const copyStud = {...student};
-                                debugger;
+                                
                                 const studDetails = {...student,...studAddress}
                                 const studFullDetauks = {...student,studId:232,...studAddress};
                                 
@@ -538,7 +538,7 @@ console.log(strObj2)
                                 console.log(strArray)//['C', 'h', 'e', 't', 'a', 'n']
                                 var strObj2 = {...myStr};
                                 console.log(strObj2)//{0: 'C', 1: 'h', 2: 'e', 3: 't', 4: 'a', 5: 'n'}
-                                debugger;
+                                
                             </script>
                         </div>
                     </div>
@@ -561,6 +561,7 @@ function addAnyNo(...nums) {
 }
 console.log(addAnyNo(2,4,5))
 console.log(addAnyNo(1,3,6,7,8,9))
+
                                         </pre>
                                     </div>
                                     <div class="col-6">
@@ -608,7 +609,7 @@ console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
                                 printDetails('AAA','BBB','CCC','DDD')
 
                                 const [firstState,...restState] = ['MAHA','Goa','Punjab','Gujrat']
-                                debugger;
+                                
                                 console.log(firstState);//MAHA
                                 console.log(restState)//['Goa', 'Punjab', 'Gujrat']
 
@@ -616,6 +617,159 @@ console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
                                 console.log(empId);//ER-223
                                 console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
                             </script>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Object Destructuring
+                            </div>
+                            <div class="card-body">
+                             <p>Object destructuring is a shorthand syntax in JavaScript to extract properties from objects into variables.</p>
+                             <div class="row">
+                                <div class="col-6">
+                                    <p>variable name should be same as key name then only you will be able to extract value</p>
+                                    <pre>
+var product = {pName: 'Laptop', price:55000};
+var {pName,price} =  product;
+console.log(pName)//Laptop
+console.log(price)//55000
+                                    </pre>
+                                </div>
+                                <div class="col-6">
+                                    <p>If you need some differenet variable name insted of key name we do like below ie: a</p>
+                                    <pre>
+var product = {pName: 'Laptop', price:55000};
+var {pName:prodNAme} = product;
+console.log(prodNAme)//Laptop
+                                    </pre>
+                                    
+                                </div>
+                                <div class="col-6">
+                                    <p>Array Destructuring</p>
+                                    <pre>
+var studentList = ['Chetan','Rahul']
+var [stud1,stud2] = studentList;
+console.log(stud1)//Chetan
+console.log(stud2)//Rahul
+                                    </pre>
+                                </div>
+                                <div class="col-6">
+                                    <pre>
+const empList = [
+    {empId:121,name:'QQQQ'},
+    {empId:122,name:'WWWW'}
+];
+const[{empId: employee_id}]= empList;
+console.log(employee_id)//121
+                                    </pre>
+                                </div>
+                             </div>
+                            </div>
+                            <script>
+                                var product = {pName: 'Laptop', price:55000};
+                                var {pName,price} =  product;
+                                console.log(pName)//Laptop
+                                console.log(price)//55000
+                                var {pName:prodNAme} = product;
+                                console.log(prodNAme)//Laptop
+                                var studentList = ['Chetan','Rahul']
+                                var [stud1,stud2] = studentList;
+                                console.log(stud1)//Chetan
+                                console.log(stud2)//Rahul
+
+                                const empList = [
+                                    {empId:121,name:'QQQQ'},
+                                    {empId:122,name:'WWWW'}
+                                ];
+                                const[{empId: employee_id}]= empList;
+                                console.log(employee_id)//121
+                                debugger;
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Generator function
+                            </div>
+                            <div class="card-body">
+                                <p>A generator is a special type of function that can be paused and resumed.</p>
+                                <ul>
+                                    <li>Declared using function* syntax</li>
+                                    <li>use yeild keyword to pause execution</li>
+                                    <li> Returns a special object —with .next() method</li>
+                                    <li>return finishes the generator</li>
+                                </ul>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <pre>
+function* printNum() {
+    console.log(1)
+    yield 1;
+    console.log(2)
+    yield 2;
+    console.log(3)
+} 
+const genFun =  printNum();
+console.log(genFun.next())//{value: 1, done: false}
+console.log(genFun.next())//{value: 2, done: false}
+console.log(genFun.next())//{value: undefined, done: true}
+                                        </pre>
+                                    </div>
+                                    <div class="col-6">
+                                        <pre>
+function* getUniqueId(start=1) {
+    let id = start;
+    while(true){
+        yield  `id-${id++}`
+    }
+}
+const generateUnqId =  getUniqueId(33); 
+
+console.log(generateUnqId.next().value)//id-33
+console.log(generateUnqId.next().value)//id-34
+console.log(generateUnqId.next().value)//id-35
+</pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function* printNum() {
+                                    console.log(1)
+                                    yield 1;
+                                    console.log(2)
+                                    yield 2;
+                                    console.log(3)
+                                }
+                                
+                                const generateFun =  printNum();
+                                console.log(generateFun.next());//{value: 1, done: false}
+                                console.log(generateFun.next());//{value: 2, done: false}
+                                console.log(generateFun.next());//{value: undefined, done: true}
+
+                                function* getUniqueId(start=1) {
+                                    let id = start;
+                                    while(true){
+                                        yield  `id-${id++}`
+                                    }
+                                }
+                                const generateUnqId =  getUniqueId(33); 
+
+                                console.log(generateUnqId.next().value)//id-33
+                                console.log(generateUnqId.next().value)//id-34
+                                console.log(generateUnqId.next().value)//id-35
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Phases of Execution Context
+                            </div>
+                            <div class="card-body">
+                             
+                            </div>
                         </div>
                     </div>
                 </div>
