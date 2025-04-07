@@ -23,7 +23,7 @@ columns.forEach((col) => {
   const randomColor = colors[Math.floor(Math.random() * colors.length)]; // Pick a random color
   col.style.backgroundColor = randomColor;
 });
-const BASE_PATH = "javaScript_interview_preparation";
+const BASE_PATH = "";
 const menu = [
   {
     name: "JavaScript",
