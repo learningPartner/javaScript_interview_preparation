@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Topics</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .results {
+      list-style-type: none;
+      padding: 0;
+    }
+    .results li {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .results li:hover {
+      background-color: #e0e0e0;
+    }
+    .results a {
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search JavaScript / Angular topics..." />
+    <ul class="results" id="resultsList"></ul>
+  </div>
+
+  <script src="ss.js"></script>
+</body>
+</html>

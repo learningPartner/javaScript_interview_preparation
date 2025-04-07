@@ -210,7 +210,7 @@ cityList = ["Jaipur","Jabalpur"]
                                 </div>
                                 <script>
                                     const productName = "Mobile";
-                                    productName = "asas";
+                                    //productName = "asas";
                                     console.log(productName) //Assignment to constant variable.
 
 
@@ -218,13 +218,13 @@ cityList = ["Jaipur","Jabalpur"]
                                         productName: 'Mobile'
                                     }
                                     productDetails.productName = "Camera";
-                                    productDetails = {
-                                        productName: "Camera"
-                                    }
+                                    // productDetails = {
+                                    //     productName: "Camera"
+                                    // }
 
                                     const cityList = ["Pune", "Nagpur"];
                                     cityList.push("Mumbai")
-                                    cityList = ["Jaipur", "Jabalpur"]
+                                   // cityList = ["Jaipur", "Jabalpur"]
 
                                     function printFor() {
                                         for (var i = 0; i < 3; i++) {
@@ -350,6 +350,272 @@ const text = new Print(); //Print is not a constructor
                               
                                 
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Template Literals
+                            </div>
+                            <div class="card-body"> 
+                                 <ul>
+                                    <li>are string literals that allow embedded expressions, multi-line strings, string interpolation, and even function-based tag processing.</li>
+                                    <li>They are enclosed by backticks (`) instead of single ' or double " quotes.</li>  
+                                 </ul>
+                                 <div class="row">
+                                    <div class="col-4">
+                                        concatination
+                                        <pre>
+ var firstName = "Chetan";
+ var lastName = "Jogi";
+
+ var fullName=  firstName + " " + lastName;
+ var fullName2 =  `${firstName} ${lastName}`;  
+                                        </pre>
+                                    </div>
+                                    <div class="col-4">
+                                        string interpolation
+                                        <pre>
+var num1 = 12;
+var num2 = 23;
+var result = `Sum is ${num1+ num2}`;
+                                        </pre>
+                                    </div>
+                                    <div class="col-4">
+                                        multi-line
+                                        <pre>
+var productDetaild= `Mobile is a product
+It has 2 Varients and 
+a discounted price`;
+                                        </pre>
+                                    </div>
+                                    <div class="col-6">
+                                        Function Calls Inside Interpolation
+                                        <pre>
+function printSquare(num) {
+    return num * num;
+}
+var squareStr  = `Square of 3 is ${printSquare(3)}`
+                                        </pre>
+                                    </div>
+                                    <div class="col-6">
+                                        Tagged Template Literals
+                                        <pre>
+function printStr(strings,...values) {
+    return strings[0] + values[0] +  strings[1];
+}
+var studName = "Chetan";
+var text = printStr`Hello ${studName}, Welcome`;
+console.log(text)
+                                        </pre>
+                                    </div>
+                                 </div>
+                             
+                                <script>
+                                 var firstName = "Chetan";
+                                 var lastName = "Jogi";
+
+                                 var fullName=  firstName + " " + lastName;
+                                 var fullName2 =  `${firstName} ${lastName}`;
+
+                                 var num1 = 12;
+                                 var num2 = 23;
+
+                                 var result = `Sum is ${num1+ num2}`;
+                                 console.log(result)
+                                 var productDetaild= `Mobile is a product
+                                 It has 2 Varients and 
+                                 a discounted price`;
+                                 function printSquare(num) {
+                                    return num * num;
+                                 }
+                                 var squareStr  = `Square of 3 is ${printSquare(3)}`
+                                 console.log(squareStr)
+
+                                 function printStr(strings,...values) {
+                                    return strings[0] + values[0] +  strings[1];
+                                 }
+                                 var studName = "Chetan";
+                                 var text = printStr`Hello ${studName}, Welcome`;
+                                 console.log(text)
+                                </script>
+                              
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Spread Operator
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    Spread Operator lets you Expands an iterable (like array, string, object) into individual elements.
+                                </p>
+                                <div class="row">
+                                    <div class="col-6">
+                                       Clone / Combine Array
+                                        <pre>
+var state1City = ["Pune","Nagpur"];
+var state2City = ["Mumbai","Thane"];
+var state1Copy = [state1City]
+var stateList = [...state1City,...state2City];
+var stateList2 = [...state1City, "Jabalpur", ...state2City];
+var stateList3 = [...state2City,"Panji","Bhopal"]
+                                        </pre>
+                                    </div>
+                                    <div class="col-6">
+                                        Function Arguments
+                                        <pre>
+function addThreeNo(n1,n2,n3) {
+    return n1+ n2+ n3;
+}
+const noList = [2,2,3];
+console.log(addThreeNo(...noList))
+                                        </pre>
+                                    </div>
+                                    <div class="col-7">
+                                        Object Cloning & Merging
+                                        <pre>
+const student = {
+    name:"Chetan",
+    github:"voidChetan"
+}
+const studAddress= {
+    city: "Nagpur",
+    state:"MAHA"
+}
+const copyStud = {...student};
+debugger;
+const studDetails = {...student,...studAddress}
+const studFullDetauks = {...student,studId:232,...studAddress};
+                                        </pre>
+                                    </div>
+                                    <div class="col-5">
+                                        Spreading in Strings
+                                        <pre>
+var strArray = [...myStr];
+console.log(strArray)
+//['C', 'h', 'e', 't', 'a', 'n']
+var strObj2 = {...myStr};
+console.log(strObj2)
+//{0: 'C', 1: 'h', 2: 'e', 3: 't', 4: 'a', 5: 'n'}
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                var state1City = ["Pune","Nagpur"];
+                                var state2City = ["Mumbai","Thane"];
+                                var stateList = [...state1City,...state2City];
+
+                                var stateList2 = [...state1City, "Jabalpur", ...state2City];
+                                var stateList3 = [...state2City,"Panji","Bhopal"]
+
+                                function addThreeNo(n1,n2,n3) {
+                                    return n1+ n2+ n3;
+                                }
+                                const noList = [2,2,3];
+                                console.log(addThreeNo(...noList));
+
+                                const student = {
+                                    name:"Chetan",
+                                    github:"voidChetan"
+                                }
+                                const studAddress= {
+                                    city: "Nagpur",
+                                    state:"MAHA"
+                                }
+                                const copyStud = {...student};
+                                debugger;
+                                const studDetails = {...student,...studAddress}
+                                const studFullDetauks = {...student,studId:232,...studAddress};
+                                
+                                var myStr = "Chetan";
+
+                                var strArray = [...myStr];
+                                console.log(strArray)//['C', 'h', 'e', 't', 'a', 'n']
+                                var strObj2 = {...myStr};
+                                console.log(strObj2)//{0: 'C', 1: 'h', 2: 'e', 3: 't', 4: 'a', 5: 'n'}
+                                debugger;
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                Rest Operator
+                            </div>
+                            <div class="card-body">
+                                <p>Collects multiple elements into a single array or object.</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <pre>
+function addAnyNo(...nums) {
+    let sum  = 0;
+    for (let index = 0; index < nums.length; index++) {
+        sum = sum + nums[index]; 
+    }
+    return sum;
+}
+console.log(addAnyNo(2,4,5))
+console.log(addAnyNo(1,3,6,7,8,9))
+                                        </pre>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>rest should be last only</p>
+                                        <pre>
+function printDetails(firstParam,...restParam) {
+    console.log(firstParam)//AAA'
+    console.log(restParam)//['BBB','CCC','DDD']
+}
+printDetails('AAA','BBB','CCC','DDD')
+                                        </pre>
+                                    </div>
+                                    <div class="col-12">
+                                        <pre>
+const [firstState,...restState] = ['MAHA','Goa','Punjab','Gujrat']
+
+console.log(firstState);//MAHA
+console.log(restState)//['Goa', 'Punjab', 'Gujrat']
+                                        </pre>
+                                    </div>
+                                    <div class="col-12">
+                                        <pre>
+const {empId,...restObj} = {name:'chetan',empId:'ER-223',tech:'React',email:'che23@gmail.com'};
+console.log(empId);//ER-223
+console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function addAnyNo(...nums) {
+                                    let sum  = 0;
+                                    for (let index = 0; index < nums.length; index++) {
+                                        sum = sum + nums[index]; 
+                                    }
+                                    return sum;
+                                }
+                                console.log(addAnyNo(2,4,5))
+                                console.log(addAnyNo(1,3,6,7,8,9))
+
+                                function printDetails(firstParam,...restParam) {
+                                    console.log(firstParam)//AAA'
+                                    console.log(restParam)//['BBB','CCC','DDD']
+                                }
+                                printDetails('AAA','BBB','CCC','DDD')
+
+                                const [firstState,...restState] = ['MAHA','Goa','Punjab','Gujrat']
+                                debugger;
+                                console.log(firstState);//MAHA
+                                console.log(restState)//['Goa', 'Punjab', 'Gujrat']
+
+                                const {empId,...restObj} = {name:'chetan',empId:'ER-223',tech:'React',email:'che23@gmail.com'};
+                                console.log(empId);//ER-223
+                                console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
+                            </script>
                         </div>
                     </div>
                 </div>
