@@ -30,8 +30,8 @@ const menu = [
     image:'/logo/javascript.png',
    
     children: [
-      { name: "Introduction", link: "/javaScript/javaScriptBackground.html" },
-      { name: "How Js Works", link: "/javaScript/howJsWorks.html" },
+      { name: "Introduction", link: "./javaScript/javaScriptBackground.html" },
+      { name: "How Js Works", link: "./javaScript/howJsWorks.html" },
       { name: "Hoisting & Closure", link: "/javaScript/hoistingClosure.html" },
       { name: "Functions n more...", link: "/javaScript/functions.html" },
       { name: "Prototype...", link: "/javaScript/prototype.html" },
