@@ -27,7 +27,6 @@ columns.forEach((col) => {
 const menu = [
   {
     name: "JavaScript",
-    icon:'bi-filetype-js',
     image:'/logo/javascript.png',
    
     children: [
