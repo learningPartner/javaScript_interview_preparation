@@ -32,8 +32,8 @@ const menu = [
     children: [
       { name: "Introduction", link: "./javaScript/javaScriptBackground.html" },
       { name: "How Js Works", link: "./javaScript/howJsWorks.html" },
-      { name: "Hoisting & Closure", link: "/javaScript/hoistingClosure.html" },
-      { name: "Functions n more...", link: "/javaScript/functions.html" },
+      { name: "Hoisting & Closure", link: "javaScript/hoistingClosure.html" },
+      { name: "Functions n more...", link: "javaScript/functions.html" },
       { name: "Prototype...", link: "/javaScript/prototype.html" },
       { name: "Class in Js", link: "/javaScript/classinjs.html" },
       { name: "Promise Async Await", link: "/javaScript/promiceAsycAwait.html" },
