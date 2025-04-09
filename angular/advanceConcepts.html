@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">  
+             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Change Detection
+                    </div>
+                    <div class="card-body">
+                        <p>Change Detection is the mechanism Angular uses to update the DOM when the application state changes.</p>
+                        <p>Because with Default Change Detection, Angular runs change detection from the root component down the entire tree, regardless of whether a component's @Input()s changed or not.
+
+                            So even if the @Input() values passed to the child remain the same (or don’t exist at all), the child will still go through change detection, and Angular will re-evaluate its template expressions to see if anything needs updating.
+                            
+                            It doesn’t care why something may have changed. Angular just assumes something might have changed — so it runs CD on everything.</p>
+                            <ul>
+                                <li>Angular executes an event (e.g., click, setTimeout).</li>
+                                <li>Zone.js detects it.</li>
+                                <li>Angular runs Change Detection starting from the root component and traverses the component tree.</li>
+                                <li>It compares the current and previous values of bindings and updates the DOM if needed.</li>
+                            </ul>
+                            <div class="row">
+                                <div class="col-4">
+                                    detectChanges => Manually triggers change detection for the current component and its children.
+                                    <pre>
+constructor(private changeDetectionRef:ChangeDetectorRef) { }
+
+this.changeDetectionRef.detectChanges();
+                                    </pre>
+                                </div>
+                                <div class="col-4">
+                                    Detaches =>  Detaches this component from the Angular change detection tree.
+                                    <pre>
+                                        constructor(private changeDetectionRef:ChangeDetectorRef) { }
+                                        
+                                        this.changeDetectionRef.detectChanges();
+                                                                            </pre>
+                                </div>
+                                <div class="col-4">
+                                    markForCheck => Marks the component and its ancestors as needing change detection during the next cycle. This is particularly relevant for components using the OnPush change detection strategy.
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>  
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        NgZone
+                    </div>
+                    <div class="card-body">
+                        <p>NgZone is Angular's service that provides a controlled execution context for running code inside or outside Angular's zone. </p>
+                              <ul>
+                                <li>
+                                    Purpose: Executes the given function inside the Angular zone, ensuring that Angular's change detection is triggered after the function's execution.
+                                </li>
+                                <li>
+                                    Use Case: When you've executed some code outside Angular's zone (e.g., for performance reasons) and need to re-enter the Angular zone to ensure the UI updates correctly.
+                                </li>
+                              </ul>
+
+                              <div class="row">
+                                <div class="col-4">
+                                    <pre>
+this.ngZone.run(() => {
+    // Code that needs to run inside Angular's zone
+});
+                                    </pre>
+                                </div>
+                                <div class="col-4">
+                                    <pre>
+this.ngZone.runOutsideAngular(() => {
+    // Code that runs outside Angular's zone
+});
+                                          
+                                    </pre>
+                                </div>
+                                <div class="col-4">
+                                    <pre>
+ this.ngZone.runOutsideAngular(() => {
+     // Perform some background task
+     this.ngZone.run(() => {
+       // Update UI components here
+     });
+});
+                                    </pre>
+                                </div>
+                              </div>
+                        
+                     
+                           
+                        </div>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

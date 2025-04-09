@@ -6,3 +6,19 @@ in arrown fun this diff we can expain with prototype
                   but if we use arrown fun it won;t work
 
                   polyfill 
+
+                  Event Loop, Microtasks, Macrotasks
+SetTimeout vs Promises vs Async/Await order
+******
+Execution Context
+
+Call Stack + Web APIs + Callback Queue
+******
+Map, Set, WeakMap, WeakSet
+Differences from objects/arrays
+
+When to use what
+
+taekUntil
+
+cors => pxoy 
