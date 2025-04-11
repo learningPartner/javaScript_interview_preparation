@@ -601,6 +601,80 @@ errorLog("Server crashed");  // ERROR - Server crashed
                     </script>
                 </div>
             </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Generator function
+                    </div>
+                    <div class="card-body">
+                        <p>A generator is a special type of function that can be paused and resumed.</p>
+                        <ul>
+                            <li>Declared using function* syntax</li>
+                            <li>use yeild keyword to pause execution</li>
+                            <li> Returns a special object —with .next() method</li>
+                            <li>return finishes the generator</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+function* printNum() {
+console.log(1)
+yield 1;
+console.log(2)
+yield 2;
+console.log(3)
+} 
+const genFun =  printNum();
+console.log(genFun.next())//{value: 1, done: false}
+console.log(genFun.next())//{value: 2, done: false}
+console.log(genFun.next())//{value: undefined, done: true}
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+function* getUniqueId(start=1) {
+let id = start;
+while(true){
+yield  `id-${id++}`
+}
+}
+const generateUnqId =  getUniqueId(33); 
+
+console.log(generateUnqId.next().value)//id-33
+console.log(generateUnqId.next().value)//id-34
+console.log(generateUnqId.next().value)//id-35
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function* printNum() {
+                            console.log(1)
+                            yield 1;
+                            console.log(2)
+                            yield 2;
+                            console.log(3)
+                        }
+                        
+                        const generateFun =  printNum();
+                        console.log(generateFun.next());//{value: 1, done: false}
+                        console.log(generateFun.next());//{value: 2, done: false}
+                        console.log(generateFun.next());//{value: undefined, done: true}
+
+                        function* getUniqueId(start=1) {
+                            let id = start;
+                            while(true){
+                                yield  `id-${id++}`
+                            }
+                        }
+                        const generateUnqId =  getUniqueId(33); 
+
+                        console.log(generateUnqId.next().value)//id-33
+                        console.log(generateUnqId.next().value)//id-34
+                        console.log(generateUnqId.next().value)//id-35
+                    </script>
+                </div>
+            </div>
         </div>
 
     </div> 

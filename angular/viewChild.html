@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row"> 
+           <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        @ViewChild
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Accesses elements, directives, or components within the view DOM of the current component.</li>
+                            <li>When you need to interact with or manipulate child components or elements that are part of the component's own template</li>
+                            <li>we can create instance of Html Element or Component instance</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                in template
+                                <pre>
+input type="text"  #txt 
+                                </pre>
+                                in component.ts
+                                <pre>
+@ViewChild("txt") txtInput!: ElementRef;
+readValue( ){
+    const value=  this.txtInput.nativeElement.value;
+}
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                in template
+
+                                <pre>
+app-rxjs-operator-app-rxjs-operator
+                                </pre>
+                                in .ts
+                                <pre>
+@ViewChild(RxjsOperatorComponent) rxjsComp! : RxjsOperatorComponent;
+readValue( ){
+   const nameFromChildPage =  this.rxjsComp.firstName
+}
+                                </pre>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        @ContentChild
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Accesses elements or components that are projected into the component using ng-content directive</li>
+                            <li>When you need to interact with or manipulate content projected from a parent component into the child component</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                child component Templae
+                                <pre>
+  @Component({
+      selector: 'app-my-button',
+      imports: [],
+      template: 'button class="btn btn-success"> 
+          ng-content-ng-content>
+      button',
+      styleUrl: './my-button.component.css'
+    })
+    export class MyButtonComponent {
+    
+      @ContentChild('icon') iconEle! : ElementRef; 
+      constructor() {
+        setTimeout(() => {
+          debugger;
+          const ss = this.iconEle.nativeElement.innerText;
+        }, 6000);
+      } 
+    }
+                                </pre> 
+                            </div>
+                            <div class="col-6">
+                                in app-component template
+                                <pre>
+ 
+ app-my-button 
+   span #icon class="fa fa-user" span  span Save User span
+ app-my-button 
+                                </pre>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        ViewContainerRef
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Represents a container where one or more views can be dynamically added or removed</li>
+                            <li>means instead of usi9ng selector to render component we create instance of component in.ts and inject that into ng-container</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                Template
+                                <pre id="codeBlock"></pre>
+
+<script>
+    function escapeHtml(html) {
+        return html
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    const htmlCode = `
+<div class="row">
+    <div class="col-4">
+        <ng-container #dyanamicTem></ng-container>
+    </div>
+</div>
+  `;
+
+    document.getElementById("codeBlock").innerHTML = escapeHtml(htmlCode);
+</script>
+                             
+                            </div>
+                            <div class="col-6">
+                                .ts code
+                                <pre>
+ 
+@ViewChild('dyanamicTem', { read: ViewContainerRef }) container!: ViewContainerRef;
+ngAfterViewInit(): void {
+    this.container.createComponent(MyButtonComponent)
+}
+                                </pre>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

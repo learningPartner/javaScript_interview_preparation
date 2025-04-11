@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Phases of Execution Context
+                    </div>
+                    <div class="card-body">
+                        <h5>If we dont add serice in any component provider array we have single instance of that service accorss all component,
+                            so If I am storing some data from component that data i can read in another component
+                        </h5>
+                        <div class="row">
+                            <div class="col-4">
+                                service file
+                                <pre>
+ export class ProductService { 
+     data: any = {} 
+ }
+                                </pre>
+                            </div>
+                            <div class="col-4">
+                                <pre>
+ @Component({
+     selector: 'app-ng-ChnageDetectionComponent',
+     imports: []
+   })
+ export class ChnageDetectionComponent implements OnInit{
+     constructor(private prod: ProductService) {}
+   
+     addVale() {
+       this.prod.data.name = "Angular";
+     }
+ }
+                                </pre> 
+                            </div>
+                            <div class="col-4">
+                                <pre>
+@Component({
+    selector: 'app-ng-contanier-temp',
+    imports: []
+  })
+export class NgContanierTempComponent { 
+     
+    read() {
+      const serviceData = this.produSeervice.data;
+    }
+  }
+                                </pre>
+                               
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-4">
+                                service file
+                                <pre>
+export class ProductService { 
+    data: any = {} 
+}
+                                </pre>
+                            </div>
+                            <div class="col-4">
+                                <pre>
+@Component({
+    selector: 'app-ng-ChnageDetectionComponent',
+    imports: []
+  })
+export class ChnageDetectionComponent implements OnInit{
+    constructor(private prod: ProductService) {}
+  
+    addVale() {
+      this.prod.data.name = "Angular";
+    }
+}
+                                </pre> 
+                            </div>
+                            <div class="col-4">
+                                 <p>now for  NgContanierTempComponent, we have seperate instance of ProductService service so data store from ChnageDetectionComponent component won't be
+                                 present in serice object as we have different objcet available  for this component</p>
+                                 <p>if qwe have another child component rendered in this component it will share same instance of service we have over here not global one </p>
+                                <pre>
+  @Component({
+      selector: 'app-ng-contanier-temp',
+      imports: [],
+      providers:[ProductService],
+    })
+  export class NgContanierTempComponent { 
+       
+      read() {
+        const serviceData = this.produSeervice.data;
+      }
+    }
+                                </pre>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        multiple ways to configure providers
+                    </div>
+                    <div class="card-body">
+                     
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+providers: [{ provide: LoggerService, useClass: ConsoleLoggerService }]
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+providers: [{ provide: NewService, useExisting: ExistingService }]
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+providers: [{ provide: API_ENDPOINT, useValue: 'https://api.example.com' }]
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+providers: [{
+    provide: ConfigService,
+    useFactory: (env: EnvironmentService) => new ConfigService(env.isProd),
+    deps: [EnvironmentService]
+}]
+                                </pre>
+                            </div>
+                        </div> 
+                        <hr>
+                        <div class="row">
+                            <div class="col-4"> 
+                                <pre>
+ @Injectable()
+ export class DataService {
+   fetchData() {
+     // Fetch data from API
+   }
+ } 
+                                </pre> 
+                            </div>
+                            <div class="col-4">
+                                <pre>
+@Injectable()
+export class MockDataService {
+  fetchData() {
+    // Return mock data
+  }
+}
+                                    
+                                </pre>
+                            </div>
+                            <div class="col-4">
+                                <pre>
+TestBed.configureTestingModule({
+    providers: [
+      { provide: DataService, useClass: MockDataService }
+    ]
+});
+                                </pre>
+                            </div>
+                        </div>
+                    
+                      
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        multiple ways to configure providers
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>providedIn: 'root' (Default)</h6>
+                                <ul>
+                                    <li>Scope: Application-wide singleton.</li>
+                                    <li> A single instance is shared across the entire application.</li>
+                                    <li>No need to add the service to any module's providers array</li>
+                                    <li>Supports tree-shaking; unused services are excluded from the final bundle.</li>
+                                </ul>
+                                <pre>
+@Injectable({ providedIn: 'root' })
+export class GlobalService {}
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <h6>providedIn: 'any'</h6>
+                                <ul>
+                                    <li>Each lazy-loaded module receives its own instance; eagerly loaded modules share a singleton.</li>
+                                    <li>Eagerly loaded modules share a single instance.​</li>
+                                    <li>Each lazy-loaded module gets a new instance.​</li>
+                                    <li>Useful when you want to isolate service instances between lazy-loaded modules to prevent shared state.​</li>
+                                    <pre>
+@Injectable({ providedIn: 'any' })
+export class ModuleScopedService {}
+                                    </pre>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <h6>providedIn: 'platform'</h6>
+                                <ul>
+                                    <li>Singleton shared across all Angular applications on the same page.​</li>
+                                    <li>he service is provided in the platform injector, making it available to multiple Angular apps running simultaneously</li>
+                                    <li>Beneficial in micro-frontend architectures or when using Angular Elements, where multiple Angular applications coexist.</li>
+                                    <pre>
+@Injectable({ providedIn: 'platform' })
+export class SharedPlatformService {}
+                                    </pre>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <h6>providedIn: SomeModule</h6>
+                                 <ul>
+                                    <li>Specific to the module where it's provided.</li>
+                                    <li>The service is available only within the specified module</li>
+                                    <li>When you want to restrict a service's availability to a particular feature module.</li>
+                                 </ul>
+                            </div>
+                        </div>
+                      
+                        <hr>
+                   
+                    
+                      
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        service Decorators
+                    </div>
+                    <div class="card-body">
+                        <ul data-start="2874" data-end="3296">
+                            <li data-start="2874" data-end="2976" class="" style="">
+                            <p data-start="2876" data-end="2976" class=""><strong data-start="2876" data-end="2889"><code data-start="2878" data-end="2887">@Self()</code></strong>: <span class="relative -mx-px my-[-0.2rem] rounded-sm px-px py-[0.2rem]">Only look for the dependency in the current injector.</span>&ZeroWidthSpace;</p>
+                            </li>
+                            <li data-start="2978" data-end="3084" class="" style="">
+                            <p data-start="2980" data-end="3084" class=""><strong data-start="2980" data-end="2997"><code data-start="2982" data-end="2995">@SkipSelf()</code></strong>: <span class="relative -mx-px my-[-0.2rem] rounded-sm px-px py-[0.2rem]">Look for the dependency in parent injectors.</span>&ZeroWidthSpace;</p>
+                            </li>
+                            <li data-start="3086" data-end="3192" class="" style="">
+                            <p data-start="3088" data-end="3192" class=""><strong data-start="3088" data-end="3105"><code data-start="3090" data-end="3103">@Optional()</code></strong>: <span class="relative -mx-px my-[-0.2rem] rounded-sm px-px py-[0.2rem]">If the dependency isn't found, inject <code data-start="38" data-end="44">null</code> instead of throwing an error.</span>&ZeroWidthSpace;</p>
+                            </li>
+                            <li data-start="3194" data-end="3296" class="" style="">
+                            <p data-start="3196" data-end="3296" class=""><strong data-start="3196" data-end="3209"><code data-start="3198" data-end="3207">@Host()</code></strong>: <span class="relative -mx-px my-[-0.2rem] rounded-sm px-px py-[0.2rem]">Look for the dependency in the current component's injector or its host.</span>&ZeroWidthSpace;</p>
+                            </li>
+                            </ul>
+                      
+                        <hr>
+                   
+                    
+                      
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

@@ -27,25 +27,55 @@ const BASE_PATH = "https://learningpartner.github.io/javaScript_interview_prepar
 const menu = [
   {
     name: "JavaScript",
-    image:'/logo/javascript.png',
-   
+    image: "/logo/javascript.png",
+
     children: [
-      { name: "Introduction", link: `${BASE_PATH}javaScript/javaScriptBackground.html` },
+      {
+        name: "Introduction",
+        link: `${BASE_PATH}javaScript/javaScriptBackground.html`,
+      },
+      {
+        name: "Hoisting & Closure",
+        link: "#", // This will be just a dropdown trigger now
+        children: [
+          { name: "Hoisting", link: `${BASE_PATH}javaScript/howJsWorks.html` },
+          { name: "Closure", link: `${BASE_PATH}javaScript/functions.html` },
+        ],
+      },
       { name: "How Js Works", link: `${BASE_PATH}javaScript/howJsWorks.html` },
-      { name: "Hoisting & Closure", link: `${BASE_PATH}javaScript/hoistingClosure.html` },
-      { name: "Functions n more...", link: `${BASE_PATH}javaScript/functions.html` },
+      {
+        name: "Hoisting & Closure",
+        link: `${BASE_PATH}javaScript/hoistingClosure.html`,
+      },
+      {
+        name: "Functions n more...",
+        link: `${BASE_PATH}javaScript/functions.html`,
+      },
       { name: "Prototype...", link: `${BASE_PATH}javaScript/prototype.html` },
       { name: "Class in Js", link: `${BASE_PATH}javaScript/classinjs.html` },
-      { name: "Promise Async Await", link: `${BASE_PATH}javaScript/promiceAsycAwait.html` },
+      {
+        name: "Promise Async Await",
+        link: `${BASE_PATH}javaScript/promiceAsycAwait.html`,
+      },
       { name: "ES6 Features", link: `${BASE_PATH}javaScript/es6.html` },
-      { name: "Object N Array", link: `${BASE_PATH}javaScript/ObjectnArray.html` },
+      {
+        name: "Object N Array",
+        link: `${BASE_PATH}javaScript/ObjectnArray.html`,
+      },
     ],
   },
   {
     name: "Angular",
-    image:'/logo/angular.png',
+    image: "/logo/angular.png",
     children: [
-      { name: "NGRX (Basic)", link: `${BASE_PATH}angular/ngrx.html` },
+      {
+        name: "NGRX (Basic)",
+        link: `#`,
+        children: [
+          { name: "Hoisting", link: `${BASE_PATH}angular/rxjs.html` },
+          { name: "Closure", link: `${BASE_PATH}javaScript/functions.html` },
+        ],
+      },
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
     ],
   },
@@ -97,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 function generateNavMenu() {
   const navbarNav = document.getElementById("navbarNav");
   const ul = document.createElement("ul");
@@ -108,39 +137,104 @@ function generateNavMenu() {
     li.className = "nav-item dropdown";
 
     li.innerHTML = `
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="bi ${item.icon} me-1"></i>${item.name}
-            </a>
-            <ul class="dropdown-menu">
-                ${item.children
-                  .map(
-                    (child) => `
-                    <li>
-                        <a class="dropdown-item" href="${child.link}">
-                            <i class="bi bi-arrow-right-short"></i>${child.name}
-                        </a>
-                    </li>
-                `
-                  )
-                  .join("")}
-            </ul>
-        `;
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        ${item.image ? `<img src="${item.image}" width="20" class="me-1" />` : ""}
+        ${item.name}
+      </a>
+      ${generateMenuItems(item.children)}
+    `;
 
     ul.appendChild(li);
   });
 
   const testli = document.createElement("li");
-  testli.className = "nav-item ";
-  testli.innerHTML = ` 
-                        <a class="nav-link" href="${BASE_PATH}/test.html">
-                            <i class="bi bi-arrow-right-short"></i>Test Snipets
-                        </a>
-                    `;
+  testli.className = "nav-item";
+  testli.innerHTML = `
+    <a class="nav-link" href="${BASE_PATH}/test.html">
+      <i class="bi bi-arrow-right-short"></i>Test Snippets
+    </a>
+  `;
   ul.appendChild(testli);
-  // Insert the menu before the theme toggle button
+
   const themeToggle = document.getElementById("themeToggle");
   navbarNav.insertBefore(ul, themeToggle);
 }
+
+function generateMenuItems(children) {
+  if (!children || children.length === 0) return "";
+
+  const ul = document.createElement("ul");
+  ul.className = "dropdown-menu";
+
+  children.forEach((child) => {
+    const li = document.createElement("li");
+
+    if (child.children && child.children.length > 0) {
+      li.className = "dropdown-submenu";
+      li.innerHTML = `
+  <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" onclick="event.stopPropagation();">
+    ${child.name}
+  </a>
+  ${generateMenuItems(child.children)}
+`;
+    } else {
+      li.innerHTML = `
+        <a class="dropdown-item" href="${child.link}">
+          <i class="bi bi-arrow-right-short"></i>${child.name}
+        </a>
+      `;
+    }
+
+    ul.appendChild(li);
+  });
+
+  return ul.outerHTML;
+}
+
+
+// function generateNavMenu() {
+//   const navbarNav = document.getElementById("navbarNav");
+//   const ul = document.createElement("ul");
+//   ul.className = "navbar-nav me-auto";
+
+//   menu.forEach((item) => {
+//     const li = document.createElement("li");
+//     li.className = "nav-item dropdown";
+
+//     li.innerHTML = `
+//             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+//                 <i class="bi ${item.icon} me-1"></i>${item.name}
+//             </a>
+//             <ul class="dropdown-menu">
+//                 ${item.children
+//                   .map(
+//                     (child) => `
+//                     <li>
+//                         <a class="dropdown-item" href="${child.link}">
+//                             <i class="bi bi-arrow-right-short"></i>${child.name}
+//                         </a>
+//                     </li>
+//                 `
+//                   )
+//                   .join("")}
+//             </ul>
+//         `;
+
+//     ul.appendChild(li);
+//   });
+
+//   const testli = document.createElement("li");
+//   testli.className = "nav-item ";
+//   testli.innerHTML = ` 
+//                         <a class="nav-link" href="${BASE_PATH}/test.html">
+//                             <i class="bi bi-arrow-right-short"></i>Test Snipets
+//                         </a>
+//                     `;
+//   ul.appendChild(testli);
+//   // Insert the menu before the theme toggle button
+//   const themeToggle = document.getElementById("themeToggle");
+//   navbarNav.insertBefore(ul, themeToggle);
+// }
 
 function generateTopicCards() {
   const topicCards = document.getElementById("topic-cards");

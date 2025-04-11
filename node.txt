@@ -22,3 +22,5 @@ When to use what
 taekUntil
 
 cors => pxoy 
+
+terrShacking in angular
