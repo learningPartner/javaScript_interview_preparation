@@ -618,11 +618,11 @@ errorLog("Server crashed");  // ERROR - Server crashed
                             <div class="col-6">
                                 <pre>
 function* printNum() {
-console.log(1)
-yield 1;
-console.log(2)
-yield 2;
-console.log(3)
+    console.log(1)
+    yield 1;
+    console.log(2)
+    yield 2;
+    console.log(3)
 } 
 const genFun =  printNum();
 console.log(genFun.next())//{value: 1, done: false}
@@ -633,10 +633,10 @@ console.log(genFun.next())//{value: undefined, done: true}
                             <div class="col-6">
                                 <pre>
 function* getUniqueId(start=1) {
-let id = start;
-while(true){
-yield  `id-${id++}`
-}
+    let id = start;
+    while(true){
+    yield  `id-${id++}`
+    }
 }
 const generateUnqId =  getUniqueId(33); 
 
