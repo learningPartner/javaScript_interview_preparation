@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">  
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is a Web Worker
+                    </div>
+                    <div class="card-body">
+                     <p>A Web Worker runs JavaScript in a background thread, separate from the main UI thread.</p>
+                     <p>So if something is CPU-intensive (like parsing, encrypting, image processing, etc.), you can offload it to a worker and keep the UI fast and responsive.</p>
+                    <h6>Real time Exmplae of web worker</h6>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                You're building a finance dashboard (think high-frequency trading platform) in Angular, and you're fetching gigantic JSON datasets every 5 seconds.
+
+Parsing them in the main thread causes frame drops and freezes the UI
+                            </p>
+                            <pre>
+ng generate web-worker dataParser 
+                            </pre>
+                            dataParser.worker
+                            <pre>
+addEventListener('message', ({ data }) => {
+    const parsedData = JSON.parse(data);
+    const processed = parsedData.map((entry: any) => ({
+      ...entry,
+      amountUSD: entry.amount * 80
+    }));
+    postMessage(processed);
+});
+                                  
+                            </pre>
+                            component.ts
+                            <pre>
+const worker = new Worker(new URL('./data-parser.worker', import.meta.url), {
+    type: 'module'
+}); 
+worker.onmessage = ({ data }) => {
+  this.processedData = data;
+}; 
+this.http.get('url', { responseType: 'text' })
+  .subscribe(rawJson => {
+    worker.postMessage(rawJson);
+});
+                                  
+                            </pre>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                You're building an Angular reporting tool where users can download detailed reports (with tables, charts, and summaries) as PDFs.
+But generating a PDF (especially with large data and canvas charts) takes 3–5 seconds and blocks the UI — your app freezes.
+                            </p>
+                            pdf-generator.worker.ts
+                            <pre>
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+
+addEventListener('message', ({ data }) => {
+  const { tableData, title } = data;
+
+  const docDef = {
+    content: [
+      { text: title, style: 'header' },
+      {
+        table: {
+          body: [
+            ['Name', 'Amount', 'Date'],
+            ...tableData.map((row: any) => [row.name, row.amount, row.date])
+          ]
+        }
+      }
+    ]
+  };
+
+  const pdfDocGenerator = pdfMake.createPdf(docDef);
+  pdfDocGenerator.getBlob((blob: Blob) => {
+    postMessage(blob);
+  });
+});
+                                
+                            </pre>
+                            componen.ts
+                            <pre>
+downloadReport() {
+  const worker = new Worker(new URL('./pdf-generator.worker', import.meta.url), {
+    type: 'module'
+  });
+
+  worker.onmessage = ({ data }) => {
+    const blob = data as Blob;
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Report.pdf';
+    a.click();
+    URL.revokeObjectURL(url);
+    worker.terminate();
+  };
+
+  const payload = {
+    title: 'Monthly Finance Report',
+    tableData: this.tableData
+  };
+
+  worker.postMessage(payload);
+}
+                                  
+                            </pre>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

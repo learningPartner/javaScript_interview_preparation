@@ -72,6 +72,188 @@
                     </div>
                 </div>
             </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        ngTemplateOutlet
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <pre id="codeBlock2"></pre>
+                            </div>
+                            <div class="col-6">
+                                <pre id="codeBlock3"></pre>
+                            </div>
+                        </div>
+                      
+
+                        <script>
+                            function escapeHtml(html) {
+                                return html
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/"/g, '&quot;')
+                                    .replace(/'/g, '&#39;');
+                            }
+                        
+                            const htmlCode2 = `  <div class="col-3">
+        <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+
+        <ng-template #templateRef>
+            <p>Product is Deactive</p>
+        </ng-template>
+
+    </div>
+                          `;
+                          const htmlCode3 = `   <div class="col-3">
+        <p *ngIf="isProductActive else templateRef">Product Acive</p>
+        <ng-template #templateRef>
+            <p>Product is Deactive</p>
+        </ng-template>
+    </div>
+                          `;
+                        
+                            document.getElementById("codeBlock2").innerHTML = escapeHtml(htmlCode2);
+                            document.getElementById("codeBlock3").innerHTML = escapeHtml(htmlCode3);
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        with ngIf 
+                    </div>
+                    <div class="card-body">
+                        <pre id="codeBlock4"></pre>
+
+                        <script>
+                            function escapeHtml(html) {
+                                return html
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/"/g, '&quot;')
+                                    .replace(/'/g, '&#39;');
+                            }
+                        
+                            const htmlCode4 = `
+<div class="col-3">
+        <ng-container *ngIf="studentList.length > 0; else noItems">
+            <ul>
+              <li *ngFor="let item of studentList">
+                {{ item }}
+              </li>
+            </ul>
+          </ng-container> 
+          <ng-template #noItems>
+            <p>No items found.</p>
+          </ng-template>
+    </div>
+                          `;
+                        
+                            document.getElementById("codeBlock4").innerHTML = escapeHtml(htmlCode4);
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        with ngIf 
+                    </div>
+                    <div class="card-body">
+                        <pre id="codeBlock5"></pre>
+
+                        <script>
+                            function escapeHtml(html) {
+                                return html
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/"/g, '&quot;')
+                                    .replace(/'/g, '&#39;');
+                            }
+                        
+                            const htmlCode5 = `
+<ng-template #ulTem let-list>
+     <ul>
+        @for (item of list; track $index) {
+            <li>{{item}}</li>
+        } 
+     </ul>
+</ng-template>
+<div class="row">
+    <div class="col-4"> 
+       <ng-container *ngTemplateOutlet="ulTem; context: { $implicit: cityList }"></ng-container>
+    </div>
+    <div class="col-4">
+        <ng-container *ngTemplateOutlet="ulTem; context: { $implicit: stateList }"></ng-container>
+    </div>
+</div>
+                          `;
+                        
+                            document.getElementById("codeBlock5").innerHTML = escapeHtml(htmlCode5);
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Dynamic component into ng-container
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <pre id="codeBlock6"></pre>
+                            </div>
+                            <div class="col-7">
+                                <pre>
+@Component({
+    selector: 'app-view-child-content',
+    imports: [RxjsOperatorComponent],
+    templateUrl: './view-child-content.component.html',
+    styleUrl: './view-child-content.component.css'
+  })
+  export class ViewChildContentComponent implements AfterViewInit { 
+    
+    @ViewChild('dTem', { read: ViewContainerRef }) container!: ViewContainerRef;  
+    constructor(private viewContainerRef:ViewContainerRef) {  }
+    ngAfterViewInit(): void {
+      this.container.createComponent(MyButtonComponent)
+    }
+}
+                                </pre>
+                            </div>
+                        </div>
+                       
+
+                        <script>
+                            function escapeHtml(html) {
+                                return html
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/"/g, '&quot;')
+                                    .replace(/'/g, '&#39;');
+                            }
+                        
+                            const htmlCode6 = `
+<div class="row">
+    <div class="col-4">
+        <ng-container #dTem></ng-container>
+    </div>
+</div>
+                          `;
+                        
+                            document.getElementById("codeBlock6").innerHTML = escapeHtml(htmlCode6);
+                        </script>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

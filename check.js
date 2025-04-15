@@ -1029,32 +1029,33 @@ funcs[1]();
 let currentCategory = 'all';
 
 function createQuestionCard(snippet) {
-  const path = window.location.pathname;
-  const page = path.substr( path.lastIndexOf("/") + 1 );
-  console.log( page ); 
-  debugger;
+    const path = window.location.pathname;
+    const page = path.substr(path.lastIndexOf("/") + 1);
+  
     const card = document.createElement('div');
     card.className = 'card mb-4';
     card.innerHTML = `
-        <div class="card-header bg-secondary">
-            Question #${snippet.id} - ${snippet.category.charAt(0).toUpperCase() + snippet.category.slice(1)}
-        </div>
-        <div class="card-body">
-            <pre class="mb-4">${snippet.code}</pre>
-            
-            ${
-              page == "test.html" ? `<div class="mb-3">
-                <label class="form-label">What will be the output?</label>
-                <textarea class="form-control" rows="3" id="answer-${snippet.id}"></textarea>
-            </div> <button class="btn btn-primary "check-answer data-id="${snippet.id}">
-              Check Answer :
-          </button>`:''
-            }
+      <div class="card-header bg-secondary">
+          Question #${snippet.id} - ${snippet.category.charAt(0).toUpperCase() + snippet.category.slice(1)}
+      </div>
+      <div class="card-body">
+          <pre class="mb-4">${snippet.code}</pre>
           
-        </div>
+          ${
+            page == "checkKnowledge.html" ? `
+            <div class="mb-3">
+              <label class="form-label">What will be the output?</label>
+              <textarea class="form-control" rows="3" id="answer-${snippet.id}"></textarea>
+            </div> 
+            <button class="btn btn-primary check-answer" data-id="${snippet.id}">
+              Check Answer
+            </button>` : ''
+          }
+      </div>
     `;
     return card;
-}
+  }
+  
 
 function showResult(isCorrect, snippet) {
     const modalContent = document.getElementById('modalContent');
@@ -1208,19 +1209,80 @@ function loadRandomTestQuestions() {
 
   document.getElementById('submitTest').addEventListener('click', () => {
     let correctCount = 0;
-
+    let unanswered = false;
+  
     selectedSnippets.forEach(snippet => {
-      const userAnswer = normalizeText(document.getElementById(`answer-${snippet.id}`).value);
+      const answerBox = document.getElementById(`answer-${snippet.id}`);
+      const userInput = answerBox.value.trim();
+  
+      if (!userInput) {
+        unanswered = true;
+        answerBox.classList.add('border-danger');
+        return;
+      } else {
+        answerBox.classList.remove('border-danger');
+      }
+  
+      const userAnswer = normalizeText(userInput);
       const expectedAnswer = normalizeText(snippet.expectedOutput);
-      const expectedWords = extractKeyParts(expectedAnswer);
-      const userWords = extractKeyParts(userAnswer);
-      const isCorrect = expectedWords.every(word => userWords.includes(word));
-      if (isCorrect) correctCount++;
+  
+      const similarity = getSimilarityScore(expectedAnswer, userAnswer);
+      const isCorrect = similarity >= 70;
+  
+      const cardBody = answerBox.closest('.card-body');
+  
+      // Remove previous feedback if any
+      const oldResult = cardBody.querySelector('.answer-feedback');
+      if (oldResult) oldResult.remove();
+  
+      const resultDiv = document.createElement('div');
+      resultDiv.className = 'mt-3 answer-feedback';
+  
+      if (isCorrect) {
+        correctCount++;
+        resultDiv.innerHTML = `<div class="text-success fw-bold">✅ Correct Answer!</div>`;
+      } else {
+        resultDiv.innerHTML = `
+          <div class="text-danger fw-bold">❌ Wrong Answer</div>
+          <div><strong>Expected Output:</strong><pre class="mt-2">${snippet.expectedOutput}</pre></div>
+          <div><strong>Explanation:</strong><div class="mt-2">${snippet.explanation}</div></div>
+        `;
+      }
+  
+      cardBody.appendChild(resultDiv);
     });
-
+  
+    if (unanswered) {
+      alert("Please provide answers to all questions before submitting.");
+      return;
+    }
+  
+    // Show final score
     const modalContent = document.getElementById('modalContent');
     modalContent.innerHTML = `<h5 class="text-center">Your Score: ${correctCount} / ${selectedSnippets.length}</h5>`;
     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     resultModal.show();
   });
+  
+  
+
+//   document.getElementById('submitTest').addEventListener('click', () => {
+//     let correctCount = 0;
+  
+//     selectedSnippets.forEach(snippet => {
+//       const userAnswer = normalizeText(document.getElementById(`answer-${snippet.id}`).value);
+//       const expectedAnswer = normalizeText(snippet.expectedOutput);
+  
+//       const similarity = getSimilarityScore(expectedAnswer, userAnswer);
+//       const isCorrect = similarity >= 70;
+  
+//       if (isCorrect) correctCount++;
+//     });
+  
+//     const modalContent = document.getElementById('modalContent');
+//     modalContent.innerHTML = `<h5 class="text-center">Your Score: ${correctCount} / ${selectedSnippets.length}</h5>`;
+//     const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+//     resultModal.show();
+//   });
+  
 }

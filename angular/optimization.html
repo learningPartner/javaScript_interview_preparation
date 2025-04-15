@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">  
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Code-Level Optimizations
+                    </div>
+                    <div class="card-body">
+                        <h5>Lazy Loading Modules or Components</h5>
+                        <p>Split large modules into lazy-loaded chunks using routes:</p>
+                        <pre>
+{
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+}
+                              
+                        </pre>
+                        <hr>
+                        <h5>Tree Shaking & Dead Code Elimination</h5>
+                        <p>Angular and Webpack remove unused code ( but only if it's structured well)</p>
+                        <ul>
+                            <li>Avoid large barrel exports</li>
+                            <li>Don’t bundle everything in a single shared module</li>
+                            <li>Mark classes with providedIn: 'root' for optimal tree-shaking</li>
+                        </ul>
+
+                        <hr>
+                        <h5>Use Standalone Components</h5>
+                        <p>Helps reduce boilerplate, improves tree-shakability and bundling.</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Build-Time Optimizations
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6> Ahead-of-Time (AOT) Compilation</h6>
+                                <ul>
+                                    <li>Faster rendering</li>
+                                    <li>Smaller bundles</li>
+                                    <li>Detects template errors at build time</li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>ESBuild Integration (Angular 16+)</h6>
+                                <ul>
+                                    <li>The Angular CLI now supports ESBuild — much faster than Webpack for transpiling.</li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Differential Loading</h6>
+                                <ul>
+                                    <li>create separate bundles for modern and legacy browsers.</li>
+                                    <li>Angular CLI handles this automatically 
+
+                                        <ul>
+                                            <li>es2015 for modern browsers</li>
+                                            <li>es5 fallback for older ones</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                <h6>Disable Source Maps in Prod</h6>
+                                <p>
+                                    When you write Angular code using TypeScript, SCSS, etc., it's not what the browser actually runs. The browser
+                                    gets compiled JavaScript, CSS, and HTML.
+                                </p>
+                                <p>
+                                    But when you're debugging, you want to see your original TypeScript code, not the ugly minified JS.
+                                </p>
+                                <p>
+                                    That’s where source maps come in—they’re like a translator between your original source code and the compiled
+                                    output.
+                                </p>
+                                <pre>
+"configurations": {
+    "production": {
+      ...
+      "sourceMap": false
+    }
+}
+                                      
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Runtime Optimization Techniques
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6> OnPush Change Detection</h6>
+                                <p>Use ChangeDetectionStrategy.OnPush to avoid unnecessary checks:</p>
+                            </div>
+                            <div class="col-8">
+                                <h6>Use trackBy in ngFor</h6>
+                                <pre id="codeBlock6"></pre>
+                                <pre>
+trackById(index: number, item: Item) {
+    return item.id;
+}
+                                      
+                                </pre>
+                                <script> 
+                               
+                                function escapeHtml(html) {
+                                    return html
+                                        .replace(/&/g, '&amp;')
+                                        .replace(/</g, '&lt;')
+                                        .replace(/>/g, '&gt;')
+                                        .replace(/"/g, '&quot;')
+                                        .replace(/'/g, '&#39;');
+                                }
+                            
+                                const htmlCode6 = `
+<li *ngFor="let item of items; trackBy: trackById">...</li>
+
+                              `;
+                            
+                                document.getElementById("codeBlock6").innerHTML = escapeHtml(htmlCode6);
+                            </script>
+                            </div>
+                            <div class="col-4">
+                                <h6>Memoization & Pure Pipes</h6>
+                                <p>Memoization is an optimization technique where you cache the result of expensive function calls and return the cached result when the same inputs occur again.</p>
+                            </div>
+                            <div class="col-4">
+                                <h6>Image & Asset Optimization</h6>
+                                <ul>
+                                    <li>Use WebP or AVIF</li>
+                                    <li>Lazy load heavy images</li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is Webpack
+                    </div>
+                    <div class="card-body">
+                         <p>
+                            Webpack is a module bundler. Think of it as a super-efficient packer: it takes all your project files (JavaScript, CSS, images, HTML, etc.), analyzes their dependencies, and bundles them into optimized files that can be shipped to the browser.
+                         </p> 
+                         <div class="row">
+                            <div class="col-4">
+                                <h6>Module Bundling</h6>
+                                <ul>
+                                    <li>Webpack takes your Angular components, services, pipes, directives, and other modules and builds a dependency graph.</li>
+                                    <li>Then it bundles these modules into efficient JavaScript files (like main.js, polyfills.js, etc.).</li>
+                                   
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Asset Processing</h6>
+                                <ul>
+                                    <li>Webpack loads and processes your styles (CSS/SCSS), HTML templates, and images using loaders</li> 
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Tree Shaking</h6>
+                                <ul>
+                                    <li>Removes unused code (dead code elimination).</li>
+                                    <li>This significantly reduces bundle size in production builds </li> 
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Code Splitting</h6>
+                                <ul>
+                                    <li>Webpack enables lazy loading and dynamic imports to split your app into smaller chunks.</li>
+                                    <li>This means only the necessary code is loaded initially, improving performance.</li> 
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Environment-Specific Builds</h6>
+                                <ul>
+                                    <li>Angular uses Webpack to replace environment files (environment.ts vs environment.prod.ts) during build time.</li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Minification and Optimization</h6>
+                                <ul>
+                                    <li>Removes white spaces, comments, shortens variable names, etc.</li>
+                                    <li>Also optimizes images, CSS, and other static files</li> 
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h6>Source Mapping</h6>
+                                <ul>
+                                    <li>Generates .map files so that even after code minification, you can debug using original source code in the browser.</li>
+                                     
+                                </ul>
+                            </div>
+                            <p>Webpack is the engine behind Angular CLI's build system. It bundles your code, optimizes it, splits it for lazy loading, processes your assets, and prepares everything for efficient browser delivery.</p>
+
+                         </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        XSS (Cross-Site Scripting)
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>XSS is when an attacker injects malicious JavaScript into your application — often via input fields, query params, or URLs.</p>
+                                <pre>
+ p  {{ userInput }} p 
+ userInput ="<span><</span>script<span>></span>alert('x')<span></</span>script<span>></span>"
+                                    
+                                                                    </pre>
+                                                                    Angular renders it as plain text – not executable.
+                                                                    
+                            </div>
+                            <div class="col-6">
+                                <pre>
+ [innerHTML]="userInput"
+                                </pre>
+                                If you're binding unsafe HTML, Angular won’t sanitize it unless you let it.
+                                <pre>
+this.sanitizer.bypassSecurityTrustHtml(userInput);
+
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+          
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        AOT vs JIT
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>JIT (Just-In-Time) Compilation</h6>
+                                <p>Angular compiles your HTML templates + TypeScript code in the browser, as the app loads.</p>
+                                <ul>
+                                    <li>You write TS and templates.</li>
+                                    <li>Angular sends them raw-ish to the browser.</li>
+                                    <li>Angular compiler runs in the browser and compiles templates into JS on the fly.</li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <h6>AOT (Ahead-of-Time) Compilation</h6>
+                                <p>Angular pre-compiles your templates and code before shipping to the browser.</p>
+                                <ul>
+                                    <li>Angular CLI compiles HTML & TS into pure JavaScript during ng build.</li>
+                                    <li>Removes Angular compiler from final bundle.</li>
+                                    <li>Faster rendering in the browser ,Smaller bundle size,Early error detection </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

@@ -34,14 +34,7 @@ const menu = [
         name: "Introduction",
         link: `${BASE_PATH}javaScript/javaScriptBackground.html`,
       },
-      {
-        name: "Hoisting & Closure",
-        link: "#", // This will be just a dropdown trigger now
-        children: [
-          { name: "Hoisting", link: `${BASE_PATH}javaScript/howJsWorks.html` },
-          { name: "Closure", link: `${BASE_PATH}javaScript/functions.html` },
-        ],
-      },
+      
       { name: "How Js Works", link: `${BASE_PATH}javaScript/howJsWorks.html` },
       {
         name: "Hoisting & Closure",
@@ -74,6 +67,19 @@ const menu = [
         children: [
           { name: "Hoisting", link: `${BASE_PATH}angular/rxjs.html` },
           { name: "Closure", link: `${BASE_PATH}javaScript/functions.html` },
+        ],
+      },
+      {
+        name: "Advance",
+        link: `#`,
+        children: [
+          { name: "Advance Concepts", link: `${BASE_PATH}angular/advanceConcepts.html` },
+          { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
+          { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
+          { name: "Optimization", link: `${BASE_PATH}angular/optimization.html` }, 
+          { name: "View Child", link: `${BASE_PATH}angular/viewChild.html` }, 
+          { name: "Web Worker", link: `${BASE_PATH}angular/webworker.html` },
+          
         ],
       },
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
@@ -155,6 +161,15 @@ function generateNavMenu() {
     </a>
   `;
   ul.appendChild(testli);
+
+  const testli2 = document.createElement("li");
+  testli2.className = "nav-item";
+  testli2.innerHTML = `
+    <a class="nav-link" href="${BASE_PATH}/checkKnowledge.html">
+      <i class="bi bi-arrow-right-short"></i>checkKnowledge
+    </a>
+  `;
+  ul.appendChild(testli2);
 
   const themeToggle = document.getElementById("themeToggle");
   navbarNav.insertBefore(ul, themeToggle);
