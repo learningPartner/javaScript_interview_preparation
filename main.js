@@ -55,6 +55,7 @@ const menu = [
         name: "Object N Array",
         link: `${BASE_PATH}javaScript/ObjectnArray.html`,
       },
+      { name: "Famous Short Porgrams", link: `${BASE_PATH}javaScript/shortPrograms.html` },
     ],
   },
   {

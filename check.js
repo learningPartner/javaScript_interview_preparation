@@ -1047,9 +1047,7 @@ function createQuestionCard(snippet) {
               <label class="form-label">What will be the output?</label>
               <textarea class="form-control" rows="3" id="answer-${snippet.id}"></textarea>
             </div> 
-            <button class="btn btn-primary check-answer" data-id="${snippet.id}">
-              Check Answer
-            </button>` : ''
+             ` : ''
           }
       </div>
     `;
@@ -1102,7 +1100,7 @@ function getSimilarityScore(str1, str2) {
     return (commonWords.length / Math.max(words1.length, words2.length)) * 100; // Percentage similarity
 }
 function loadQuestions() {
-    const container = document.getElementById('questionContainer');
+    const container = document.getElementById('questionContainer2');
     container.innerHTML = '';
     currentCategory = document.getElementById('categorySelect').value
     const filteredSnippets = currentCategory === 'all' 
@@ -1185,7 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 function loadRandomTestQuestions() {
-  const container = document.getElementById('questionContainer');
+  const container = document.getElementById('questionContainer2');
   container.innerHTML = '';
 
   const categoryMap = {};

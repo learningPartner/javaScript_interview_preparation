@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Fibonacci Series
+                    </div>
+                    <div class="card-body">
+                        <pre>
+let n1 =0, n2 =1; 
+for(let index= 0 ;index <10;index++) {
+    let temp  =0;
+    console.log(n1); 
+    temp  = n1+ n2;
+    n1 = n2;
+    n2 = temp
+} 
+                        </pre>
+                        <script>
+                            let n1 =0, n2 =1; 
+                            for(let index= 0 ;index <10;index++) {
+                                let temp  =0;
+                                console.log(n1); 
+                                temp  = n1+ n2;
+                                n1 = n2;
+                                n2 = temp
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Remove Duplicates From Array
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                using filter
+                                <pre>
+const arr = [1, 2, 3, 2, 4, 1];
+const newArr = arr.filter((item,index) => arr.indexOf(item) === index);
+console.log(newArr)
+                                </pre>
+                                
+                            </div>
+                            <div class="col-4">
+                            using Set
+                            <pre>
+const arr = [1, 2, 3, 2, 4, 1];
+const unique = [...new Set(arr)];
+console.log(unique);
+                            </pre>
+                            </div>
+                        </div> 
+                        <script>
+                            const arr = [1, 2, 3, 2, 4, 1];
+                            const newArr = arr.filter((item,index) => arr.indexOf(item) === index);
+                            console.log(newArr)
+
+                           const newUniq = [...new Set(arr)]
+                           console.log(newUniq)
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Get count of duplicate elements with their count
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+const arr1 = [1, 2, 3, 2, 4, 1]; 
+const obj = {}; 
+for (let index = 0; index < arr1.length; index++) { 
+    obj[arr1[index]] =   ((obj[arr1[index]])||0) + 1; 
+}
+console.log(obj) 
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+const arr1 = [1, 2, 3, 2, 4, 1]; 
+const obj = {};  
+arr1.forEach(element=>{
+    obj[element] =  (obj[element] ||0) +1
+})
+console.log(obj) 
+                                </pre>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            const arr1 = [1, 2, 3, 2, 4, 1]; 
+                            const obj = {}; 
+                            for (let index = 0; index < arr1.length; index++) { 
+                                obj[arr1[index]] =   ((obj[arr1[index]])||0) + 1; 
+                            }
+                            arr1.forEach(element=>{
+                                obj[element] =  (obj[element] ||0) +1
+                            })
+                            console.log(obj)
+
+                        </script>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        check if string is palindrone
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6"> 
+                                <pre> 
+ const originalStr = "naman";
+ const strArra =  originalStr.split("");
+ const revArr =  strArra.reverse();
+ const reveStr = revArr.join("")
+ console.log(reveStr)
+                                </pre>
+                                
+                            </div>
+                            <div class="col-6"> 
+                            <pre> 
+const newStr = originalStr.split("").reverse().join("");
+console.log(newStr)
+                            </pre>
+                            </div>
+                        </div> 
+                        <script>
+                            const originalStr = "naman";
+                            const strArra =  originalStr.split("");
+                            const revArr =  strArra.reverse();
+                            const reveStr = revArr.join("")
+                            console.log(reveStr)
+                            const newStr = originalStr.split("").reverse().join("");
+                            console.log(newStr)
+                           
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Fibonacci Series
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+const str = "aabccdb";
+const dupliCountObj = {}; 
+str.split("").forEach(element => {
+    dupliCountObj[element] = (dupliCountObj[element] || 0) + 1
+})
+let firstEle = "";
+Object.keys(dupliCountObj).forEach(ele => {
+    if (dupliCountObj[ele] == 1 && firstEle == '') {
+        firstEle = ele
+    }
+})
+console.log(firstEle)
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <pre>
+const str = "aabccdb";
+const dupliCountObj = {}; 
+str.split("").forEach(element => {
+    dupliCountObj[element] = (dupliCountObj[element] || 0) + 1
+})
+let firstEle = "";
+
+for(let char of str) {
+    debugger;
+    if(dupliCountObj[char] == 1) {
+        firstEle = char;
+        break;
+    } 
+}
+console.log(firstEle)
+                                </pre>
+                            </div>
+                        </div>
+                        <script>
+                            const str = "aabccdb";
+                            const dupliCountObj = {}; 
+                            str.split("").forEach(element => {
+                                dupliCountObj[element] = (dupliCountObj[element] || 0) + 1
+                            })
+                            let firstEle = "";
+                            // Object.keys(dupliCountObj).forEach(ele => {
+                            //     if (dupliCountObj[ele] == 1 && firstEle == '') {
+                            //         firstEle = ele
+                            //     }
+                            // })
+                            for(let char of str) {
+                                debugger;
+                                if(dupliCountObj[char] == 1) {
+                                    firstEle = char;
+                                    break;
+                                } 
+                            }
+                            console.log(firstEle)
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        check if two strings are permutations means contains same no of charactors
+                    </div>
+                    <div class="card-body">
+                        <pre>
+var firstWord = "listen";
+var secondWord =  "silent";
+var firststrArr =  firstWord.split("").sort().join();
+var secodnStrArru =  secondWord.split("").sort().join();
+console.log(firststrArr === secodnStrArru)
+                        </pre>
+                        <script>
+                            var firstWord = "listen";
+                            var secondWord =  "silent";
+
+                            var firststrArr =  firstWord.split("").sort().join();
+                            var secodnStrArru =  secondWord.split("").sort().join();
+
+                            console.log(firststrArr === secodnStrArru)
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Factorial of a Number
+                    </div>
+                    <div class="card-body">
+                        <pre>
+function getFact(num) {
+    let result =1;
+    debugger
+    for(var index=2;index<=num;index++) {
+        result = result * index
+    }
+    return result
+}
+console.log(getFact(5))
+                        </pre>
+                        <script>
+                            function getFact(num) {
+                                let result =1;
+                                debugger
+                                for(var index=2;index<=num;index++) {
+                                    result = result * index
+                                }
+                                return result
+                            }
+
+                            console.log(getFact(5))
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Longest Word in a String
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                to get single large word
+                                <pre>
+var originalString = "The quick brown fox jumped";
+var strArr = originalString.split(" ");
+var longestWord = "";
+
+for(let word of strArr) {
+   if(word.length > longestWord.length ) {
+       longestWord = word
+   }
+} 
+console.log(longestWord)
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                to get multple large word
+                                <pre> 
+let originalString = "The quick brown fox jumped and jumped";
+let strArr = originalString.split(" ");
+let longestWordLength = 0;
+let longedsWordArray = [];
+ for(let word of strArr) {
+    if(word.length > longestWordLength) {
+        longestWord = word.length;
+        longedsWordArray =[word]
+    } else if (word.length == longestWordLength) {
+        longedsWordArray.push(word)
+    }
+ } 
+ console.log(longedsWordArray)
+                                </pre>
+                            </div>
+                        </div>
+                        <pre> 
+                        </pre>
+                        <script>
+                            // var originalString = "The quick brown fox jumped over the lazy dog and jumped";
+
+                            //  var strArr = originalString.split(" ");
+                            //  var longestWord = "";
+
+                            //  for(let word of strArr) {
+                            //     if(word.length > longestWord.length ) {
+                            //         longestWord = word
+                            //     }
+                            //  } 
+                            // console.log(longestWord)
+                        </script>
+                         <script>
+                            let originalString = "The quick brown fox jumped over the lazy dog and jumped";
+
+                            let strArr = originalString.split(" ");
+                            let longestWordLength = 0;
+                            let longedsWordArray = [];
+
+                             for(let word of strArr) {
+                                if(word.length > longestWordLength) {
+                                    longestWord = word.length;
+                                    longedsWordArray =[word]
+                                } else if (word.length == longestWordLength) {
+                                    longedsWordArray.push(word)
+                                }
+                             } 
+                            console.log(longedsWordArray)
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>
