@@ -192,7 +192,7 @@ console.log(newStr)
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
-                        Fibonacci Series
+                        Find the First Non-Repeating Character
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -385,6 +385,46 @@ let longedsWordArray = [];
                                 }
                              } 
                             console.log(longedsWordArray)
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        find Missing Number from array
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12"> 
+                                <pre> 
+function findMissingNumber(arr) {
+    const n = arr.length + 1;
+    let missingElements = []; 
+    for (let i = 1; i <= n; i++) {
+        if (!arr.includes(i)) {
+            missingElements.push(i)
+        };
+    }
+    return missingElements;
+}
+console.log(findMissingNumber([1, 2, 4, 5, 7]))
+                                </pre>
+                            </div> 
+                        </div>
+                      
+                        <script>
+                            function findMissingNumber(arr) {
+                                const n = arr.length + 1;
+                                let missingElements = []; 
+                                for (let i = 1; i <= n; i++) {
+                                    if (!arr.includes(i)) {
+                                        missingElements.push(i)
+                                    };
+                                }
+                                return missingElements;
+                            }
+                            console.log(findMissingNumber([1, 2, 4, 5, 7]))
                         </script>
                     </div>
                 </div>
