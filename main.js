@@ -298,22 +298,50 @@ function generateTopicCards() {
   }
 }
 
+// function initializeTheme() {
+//   const themeToggle = document.getElementById("themeToggle");
+//   const themeIcon = themeToggle.querySelector("i");
+
+//   // Check for saved theme preference or default to light
+//   const savedTheme = localStorage.getItem("theme") || "light";
+//   document.body.classList.toggle("dark-theme", savedTheme === "dark");
+//   updateThemeIcon(themeIcon, savedTheme);
+
+//   // Theme toggle click handler
+//   themeToggle.addEventListener("click", () => {
+//     const isDark = document.body.classList.toggle("dark-theme");
+//     const theme = isDark ? "dark" : "light";
+//     localStorage.setItem("theme", theme);
+//     updateThemeIcon(themeIcon, theme);
+//   });
+// }
+
 function initializeTheme() {
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = themeToggle.querySelector("i");
 
-  // Check for saved theme preference or default to light
+  // Get saved theme or default to light
   const savedTheme = localStorage.getItem("theme") || "light";
   document.body.classList.toggle("dark-theme", savedTheme === "dark");
   updateThemeIcon(themeIcon, savedTheme);
+  sendThemeToIframe(savedTheme); // Send theme to iframe on load
 
-  // Theme toggle click handler
+  // Handle toggle
   themeToggle.addEventListener("click", () => {
     const isDark = document.body.classList.toggle("dark-theme");
     const theme = isDark ? "dark" : "light";
     localStorage.setItem("theme", theme);
     updateThemeIcon(themeIcon, theme);
+    sendThemeToIframe(theme); // Send theme update
   });
+}
+
+// Function to send message to iframe
+function sendThemeToIframe(theme) {
+  const iframe = document.getElementById("contentFrame");
+  if (iframe && iframe.contentWindow) {
+    iframe.contentWindow.postMessage({ type: "THEME_CHANGE", theme }, "*");
+  }
 }
 
 function updateThemeIcon(icon, theme) {
