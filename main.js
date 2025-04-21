@@ -83,6 +83,14 @@ const menu = [
           
         ],
       },
+      {
+        name: "Component",
+        link: `#`,
+        children: [
+          { name: "Life Cycle", link: `https://learningpartner.github.io/interviewPreparation/life-cycle` }, 
+          
+        ],
+      },
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
     ],
   },
