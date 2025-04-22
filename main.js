@@ -95,17 +95,17 @@ const menu = [
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
     ],
   },
-  {
-    name: "React",
-    children: [
-      { name: "Coming Soon", link: "comingsoon.html" },
-      { name: "Coming Soon", link: "comingsoon.html" },
-    ],
-  },
-  {
-    name: "Dot Net",
-    children: [{ name: "Coming Soon", link: "comingsoon.html" }],
-  },
+  // {
+  //   name: "React",
+  //   children: [
+  //     { name: "Coming Soon", link: "comingsoon.html" },
+  //     { name: "Coming Soon", link: "comingsoon.html" },
+  //   ],
+  // },
+  // {
+  //   name: "Dot Net",
+  //   children: [{ name: "Coming Soon", link: "comingsoon.html" }],
+  // },
 ];
 
 // Initialize AOS and theme
