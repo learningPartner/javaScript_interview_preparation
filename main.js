@@ -80,7 +80,7 @@ const menu = [
           { name: "Optimization", link: `${BASE_PATH}angular/optimization.html` }, 
           { name: "View Child", link: `${BASE_PATH}angular/viewChild.html` }, 
           { name: "Web Worker", link: `${BASE_PATH}angular/webworker.html` },
-          
+          { name: "Proxy & Polyfill", link: `${BASE_PATH}angular/dynamicPage.html?page='proxy'` },
         ],
       },
       {
