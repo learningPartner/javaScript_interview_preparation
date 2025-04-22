@@ -88,7 +88,7 @@ const menu = [
         link: `#`,
         children: [
           { name: "Life Cycle", link: `${BASE_PATH}angular/dynamicPage.html?page='life-cycle'` }, 
-          { name: "ViewEncapsulation", link: `${BASE_PATH}angular/dynamicPage.html?page='view-enca'` }, 
+          { name: "ViewEncapsulation", link: `${BASE_PATH}angular/dynamicPage.html?page='view-encap'` }, 
           
         ],
       },
