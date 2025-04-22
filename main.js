@@ -66,8 +66,7 @@ const menu = [
         name: "NGRX (Basic)",
         link: `#`,
         children: [
-          { name: "Hoisting", link: `${BASE_PATH}angular/rxjs.html` },
-          { name: "Closure", link: `${BASE_PATH}javaScript/functions.html` },
+          { name: "Hoisting", link: `${BASE_PATH}angular/ngrx.html` } 
         ],
       },
       {
