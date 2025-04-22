@@ -70,6 +70,13 @@ const menu = [
         ],
       },
       {
+        name: "RXJS",
+        link: `#`,
+        children: [
+          { name: "Operators", link: `${BASE_PATH}angular/dynamicPage.html?page='rxjs-operator'` },
+        ],
+      },
+      {
         name: "Advance",
         link: `#`,
         children: [
