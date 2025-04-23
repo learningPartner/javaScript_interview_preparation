@@ -74,6 +74,7 @@ const menu = [
         link: `#`,
         children: [
           { name: "Operators", link: `${BASE_PATH}angular/dynamicPage.html?page='rxjs-operator'` },
+          { name: "Subject-Beh-subject Map & Filter", link: `${BASE_PATH}angular/dynamicPage.html?page='rxjs-sub-beh-map'` },
         ],
       },
       {
