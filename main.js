@@ -26,6 +26,22 @@ columns.forEach((col) => {
 const BASE_PATH = "https://learningpartner.github.io/javaScript_interview_preparation/";
 const menu = [
   {
+    
+    name: "Overall Adv Questions",
+    image: "/logo/angular.png",
+    children: [ 
+      {
+        name: "Architecture",
+        link: `#`,
+        children: [
+          { name: "Solid", link: `${BASE_PATH}angular/dynamicPage.html?page='solid-principles'` },
+          { name: "Design Pattern", link: `${BASE_PATH}angular/dynamicPage.html?page='design-pattern'` } 
+        ],
+      },
+      
+    ],
+  },
+  {
     name: "JavaScript",
     image: "/logo/javascript.png",
 
@@ -102,22 +118,7 @@ const menu = [
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
     ],
   },
-  {
-    
-    name: "Overall Adv Questions",
-    image: "/logo/angular.png",
-    children: [ 
-      {
-        name: "Architecture",
-        link: `#`,
-        children: [
-          { name: "Solid", link: `${BASE_PATH}angular/dynamicPage.html?page='solid-principles'` },
-          { name: "Design Pattern", link: `${BASE_PATH}angular/dynamicPage.html?page='design-pattern'` } 
-        ],
-      },
-      
-    ],
-  },
+  
   // {
   //   name: "React",
   //   children: [
