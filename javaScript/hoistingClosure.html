@@ -179,6 +179,38 @@ counter2.increment(); //1
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                lexical scop
+                            </div>
+                            <div class="card-body">
+                                <p>Lexical scope means that a function's scope is determined by its physical placement in the source code — not where it’s called from.</p>                              
+                            <div class="row">
+                                <div class="col-6">
+                                    <pre>
+function outer() {
+  let name = "Chetan";
+  function inner() {
+    console.log(name); // Accessing variable from outer scope
+  }
+  return inner;
+}
+const fn = outer();
+fn(); // Output: "Chetan"       
+                                                                        </pre>
+                                </div>
+                                <div class="col-6">
+                                    <ul>
+                                        <li>inner() is defined inside outer(), so it lexically gets access to name, even when it's called later from outside.</li>
+                                        <li>Think of lexical scope like the function carrying its own backpack — wherever it goes, it still has access to the stuff (variables) that were available at the place it was born.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-3">
