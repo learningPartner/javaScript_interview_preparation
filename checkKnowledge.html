@@ -11,6 +11,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <style>
+
+        .card-header {
+            padding: 3px;
+        }
+        .card-body {
+            padding: 5px;
+        }
+        pre {
+    font-family: 'Monaco', 'Consolas', monospace;
+    border-radius: 8px; 
+    font-size: 85%;
+    width: 100% !important;
+    width: max-content;
+    padding: 5px;
+    overflow-x: auto;
+    color: #ffff !important;
+    background-color: #000 !important;
+}
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -28,15 +48,35 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10">
+    
+            </div>
+            <div class="col-2">
+                <select id="categorySelect" class="form-select my-3">
+                    <option value="all">All</option>
+                  </select>
+            </div>
+        </div>
+    
+    </div>
+   
+ 
+      
+      <div  class="container-fluid">
+        <div class="row" id="questionContainer2">
 
-    <select id="categorySelect" class="form-select my-3">
-        <option value="all">All</option>
-      </select>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="btn btn-success mt-4 mb-4" id="submitTest">Submit Test</button>
       
-      <div id="questionContainer2" class="container"></div>
-      
-      <button class="btn btn-success mt-4" id="submitTest">Submit Test</button>
-      
+            </div>
+        </div>
+      </div>
+     
+     
       <!-- Modal for result feedback -->
       <div class="modal fade" id="resultModal" tabindex="-1">
         <div class="modal-dialog">

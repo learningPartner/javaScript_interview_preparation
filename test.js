@@ -1023,7 +1023,38 @@ funcs[1]();
   expectedOutput: `3
   3`,
   explanation: ``
-} 
+},
+{
+  id: 63,
+  category: 'Promise',
+  code: `console.log("Start")
+    Promise.resolve(()=>{
+      console.log("Promise")
+    })
+    setTimeout(() => {
+      console.log("1 sec")
+    }, 1000);
+    setTimeout(() => {
+      console.log("o sec")
+    }, 0);
+    setTimeout(() => {
+      console.log("no time")
+    });
+    setTimeout(() => {
+      console.log("o.5 sec")
+    }, 500);
+    console.log("End")`,
+  expectedOutput: `Start
+  End
+  Promise
+  o sec
+  no time
+  o.5 sec
+  1 sec
+  `,
+  explanation: ``
+}
+
 ];
 
 let currentCategory = 'all';

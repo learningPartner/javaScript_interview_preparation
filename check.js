@@ -1023,36 +1023,83 @@ funcs[1]();
   expectedOutput: `3
   3`,
   explanation: ``
-} 
+},
+{
+  id: 63,
+  category: 'Promise',
+  code: `console.log("Start")
+    Promise.resolve(()=>{
+      console.log("Promise")
+    })
+    setTimeout(() => {
+      console.log("1 sec")
+    }, 1000);
+    setTimeout(() => {
+      console.log("o sec")
+    }, 0);
+    setTimeout(() => {
+      console.log("no time")
+    });
+    setTimeout(() => {
+      console.log("o.5 sec")
+    }, 500);
+    console.log("End")`,
+  expectedOutput: `Start
+  End
+  Promise
+  o sec
+  no time
+  o.5 sec
+  1 sec
+  `,
+  explanation: ``
+}
+
 ];
 
 let currentCategory = 'all';
 
 function createQuestionCard(snippet) {
-    const path = window.location.pathname;
-    const page = path.substr(path.lastIndexOf("/") + 1);
-  
-    const card = document.createElement('div');
-    card.className = 'card mb-4';
-    card.innerHTML = `
-      <div class="card-header bg-secondary">
-          Question #${snippet.id} - ${snippet.category.charAt(0).toUpperCase() + snippet.category.slice(1)}
+  const path = window.location.pathname;
+  const page = path.substr(path.lastIndexOf("/") + 1);
+
+  const col = document.createElement('div');
+  col.className = 'col-md-6'; // Half width for medium+ screens
+
+  col.innerHTML = `
+    <div class="card mb-4">
+      <div class="card-header bg-secondary text-white">
+         <div class='row'>
+           <div class='col-10'>
+                <pre class="mb-0">${snippet.code}</pre>
+           </div>
+           <div class='col-2 text-end fw-bold'>
+                  ${snippet.category.charAt(0).toUpperCase() + snippet.category.slice(1)}
+           </div>
+         </div> 
       </div>
-      <div class="card-body">
-          <pre class="mb-4">${snippet.code}</pre>
-          
-          ${
-            page == "checkKnowledge.html" ? `
-            <div class="mb-3">
+      <div class="card-body"> 
+         <div class='row'>
+           <div class='col-8'>
+                ${
+                  page == "checkKnowledge.html" ? `
+                  <div class="mb-1"> 
+                    <textarea class="form-control" placeholder='Enter output ...' rows="2" id="answer-${snippet.id}"></textarea>
+                  </div> 
+                   ` : ''
+                }
+           </div>
+           <div class='col-4'>
               <label class="form-label">What will be the output?</label>
-              <textarea class="form-control" rows="3" id="answer-${snippet.id}"></textarea>
-            </div> 
-             ` : ''
-          }
+           </div>
+         </div> 
       </div>
-    `;
-    return card;
-  }
+    </div>
+  `;
+
+  return col;
+}
+
   
 
 function showResult(isCorrect, snippet) {
@@ -1193,12 +1240,40 @@ function loadRandomTestQuestions() {
     }
     categoryMap[snippet.category].push(snippet);
   });
-
+  const category = "search";
+  // const selectedSnippets = [];
+  
+  // if (categoryMap[category]) {
+  //   const questions = [...categoryMap[category]]; // clone the array to avoid modifying original
+  
+  //   // Shuffle the array
+  //   for (let i = questions.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [questions[i], questions[j]] = [questions[j], questions[i]];
+  //   }
+  
+  //   // Pick the first 5 or less if not enough questions
+  //   const count = Math.min(5, questions.length);
+  //   for (let i = 0; i < count; i++) {
+  //     selectedSnippets.push(questions[i]);
+  //   }
+  // } else {
+  //   console.warn(`Category "${category}" not found in categoryMap.`);
+  // }
   const selectedSnippets = [];
   Object.keys(categoryMap).forEach(category => {
     const questions = categoryMap[category];
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    selectedSnippets.push(questions[randomIndex]);
+      // Shuffle the array
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+    const count = Math.min(5, questions.length);
+    for (let i = 0; i < count; i++) {
+      selectedSnippets.push(questions[i]);
+    }
+   // const randomIndex = Math.floor(Math.random() * questions.length);
+    //selectedSnippets.push(questions[randomIndex]);
   });
 
   selectedSnippets.forEach(snippet => {

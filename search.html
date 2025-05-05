@@ -46,6 +46,25 @@
     <input type="text" id="searchInput" placeholder="Search JavaScript / Angular topics..." />
     <ul class="results" id="resultsList"></ul>
   </div>
+  <script>
+    console.log("Start")
+    Promise.resolve().then(()=>{
+      console.log("Promise")
+    })
+    setTimeout(() => {
+      console.log("1 sec")
+    }, 1000);
+    setTimeout(() => {
+      console.log("o sec")
+    }, 0);
+    setTimeout(() => {
+      console.log("no time")
+    });
+    setTimeout(() => {
+      console.log("o.5 sec")
+    }, 500);
+    console.log("End")
+  </script>
 
   <script src="ss.js"></script>
 </body>
