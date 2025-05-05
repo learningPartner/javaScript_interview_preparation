@@ -464,6 +464,48 @@ console.log(productData)//{name: 'Camera'}
                             <li>When you want prototype-based inheritance without class.</li>
                             <li>For creating lightweight objects that share behavior.</li>
                          </ul>
+                         <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                      <th>Feature</th>
+                                      <th>Object.freeze()</th>
+                                      <th>Object.seal()</th>
+                                      <th>Object.preventExtensions()</th>
+                                    </tr>
+                                    <tr>
+                                      <td>Add New Properties</td>
+                                      <td class="no">No</td>
+                                      <td class="no">No</td>
+                                      <td class="no">No</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Delete Existing Properties</td>
+                                      <td class="no">No</td>
+                                      <td class="no">No</td>
+                                      <td class="yes">Yes</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Modify Existing Properties</td>
+                                      <td class="no">No</td>
+                                      <td class="yes">Yes</td>
+                                      <td class="yes">Yes</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Make Properties Non-configurable</td>
+                                      <td class="yes">Yes</td>
+                                      <td class="yes">Yes</td>
+                                      <td class="no">No</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Make Properties Read-only</td>
+                                      <td class="yes">Yes</td>
+                                      <td class="no">No</td>
+                                      <td class="no">No</td>
+                                    </tr>
+                                  </table>
+                            </div>
+                         </div>
                         
                         <script>
                             const courseData = {
