@@ -191,37 +191,7 @@ console.log(myCar.prototype.constructor === myCar)//true
                   }
                   rahul.teach('React.js')//Rahul sir teaches React.js
                 </script>
-                <div class="card">
-                    <div class="card-header bg-secondary">
-                        Adding Methods to Prototypes
-                    </div>
-                    <div class="card-body">
-                          
-                        <pre>
-                            function person (name) {
-                                this.personName = name;
-                              }
-                              person.prototype.getPersonName = function () {
-                                console.log(`Teacher Name is ${this.personName}`)
-                              }
-                              function teacher(name, subject) {
-                                person.call(this,name)
-                                this.subjectName = subject;
-                              }
-            
-                              teacher.prototype = Object.create(person.prototype);
-                              teacher.prototype.constructor = teacher;
-            
-                              teacher.prototype.teaches =  function() {
-                                console.log(`${this.personName} teaches ${this.subjectName}`)
-                              }
-            
-                              const sahil = new teacher('Sahil','Angular')
-                              sahil.getPersonName();//Teacher Name is Sahil
-                              sahil.teaches();//Sahil teaches Angular
-                        </pre>
-                    </div>
-                </div>
+                 
             </div>
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2"> 
                 <script>
