@@ -198,19 +198,27 @@ console.log(myCar.prototype.constructor === myCar)//true
                     <div class="card-body">
                           
                         <pre>
- function animal(name) {
-     this.animalName =  name;
- } 
- animal.prototype.speak = function( ){
-     console.log(`${this.animalName} makes a sound`)
- }
- animal.prototype.eat = function(item) {
-     console.log(`${this.animalName} eats ${item}`)
- }
- 
- const dog = new animal('Dog');
- dog.eat('Chips')
- dog.speak()
+                            function person (name) {
+                                this.personName = name;
+                              }
+                              person.prototype.getPersonName = function () {
+                                console.log(`Teacher Name is ${this.personName}`)
+                              }
+                              function teacher(name, subject) {
+                                person.call(this,name)
+                                this.subjectName = subject;
+                              }
+            
+                              teacher.prototype = Object.create(person.prototype);
+                              teacher.prototype.constructor = teacher;
+            
+                              teacher.prototype.teaches =  function() {
+                                console.log(`${this.personName} teaches ${this.subjectName}`)
+                              }
+            
+                              const sahil = new teacher('Sahil','Angular')
+                              sahil.getPersonName();//Teacher Name is Sahil
+                              sahil.teaches();//Sahil teaches Angular
                         </pre>
                     </div>
                 </div>
