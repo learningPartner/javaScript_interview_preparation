@@ -27,7 +27,7 @@ const BASE_PATH = "https://learningpartner.github.io/javaScript_interview_prepar
 const menu = [
   {
     
-    name: "Overall Adv Questions",
+    name: "Soft Architecture",
     image: "/logo/angular.png",
     children: [ 
       {
