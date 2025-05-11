@@ -97,6 +97,7 @@ const menu = [
         name: "Advance",
         link: `#`,
         children: [
+          { name: "17-18-19 new Features", link: `${BASE_PATH}angular/dynamicPage.html?page='17-18-19-new-features'` },
           { name: "Advance Concepts", link: `${BASE_PATH}angular/advanceConcepts.html` },
           { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
           { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
