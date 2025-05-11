@@ -99,8 +99,7 @@ const menu = [
         children: [
           { name: "17-18-19 new Features", link: `${BASE_PATH}angular/dynamicPage.html?page='17-18-19-new-features'` },
           { name: "Advance Concepts", link: `${BASE_PATH}angular/advanceConcepts.html` },
-          { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
-          { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` },
+          { name: "Depedency Injection", link: `${BASE_PATH}angular/depedencyInjection.html` }, 
           { name: "Optimization", link: `${BASE_PATH}angular/optimization.html` }, 
           { name: "View Child", link: `${BASE_PATH}angular/viewChild.html` }, 
           { name: "Web Worker", link: `${BASE_PATH}angular/webworker.html` },
