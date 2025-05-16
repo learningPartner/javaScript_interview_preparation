@@ -212,7 +212,7 @@ process(function() {
 </pre>
                             </div>
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-12 col-md-3 col-lg-3 col-sm-6">
                                     <pre>
 function multiplier(factor) {
     return function(num) {
@@ -224,7 +224,7 @@ console.log(double(5));
 // Output: 10  
     </pre>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 col-md-3 col-lg-4 col-sm-6">
                                     <pre>
 const operations = [
     function(a, b) { return a + b; },
@@ -235,7 +235,7 @@ console.log(operations[0](4, 2)); //: 6
 console.log(operations[1](4, 2)); //: 2         
     </pre>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-12 col-md-5 col-lg-5 col-sm-6">
                                     <pre>
  const mathOperations = {
      add: function(a, b) {
@@ -371,7 +371,7 @@ console.log("End");
                         </p>
  
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-4">
                                 <pre>
  
 (function() {
@@ -380,14 +380,14 @@ console.log("End");
                                
 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-4">
                                 <pre>
 (function(name) {
     console.log("Hello, " + name + "!");
 })("Alice");                                    
 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-4">
                                 <pre>
 (() => {
     console.log("IIFE using an arrow function!");
@@ -483,7 +483,7 @@ console.log("End");
                             that help control how a function is executed and what value this refers to.
                         </p>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-12">
                                <p> call() invokes a function immediately and allows passing arguments one by one.</p>
                                 <pre>
 function welcomeUser(role,city) {
@@ -494,7 +494,7 @@ const user = { name: "Shyam" };
 welcomeUser.call(user, "developer","Pune");
                                 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-12">
                                 <p> apply() also invokes the function immediately, but arguments are passed as an array instead of individual values.</p>
                                 <pre>
 function welcomeUser2(role,city) {
@@ -505,7 +505,7 @@ const user2 = { name: "Shyam" };
 welcomeUser2.apply(user2, ["QA","Mumbai"]);
                                 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-12">
                                 <p> bind() does not call the function immediately. Instead, it returns a new function with this permanently set.But we can pass argument only not array and we can execute it in future</p>
                                 <pre>
 function welcomeUser3(role, city) {
