@@ -48,14 +48,14 @@
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 let greet = function() {
     console.log("Hello, World!");
 };
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 setTimeout(function() {
     console.log("Executed after 2 seconds");
@@ -64,7 +64,7 @@ setTimeout(function() {
 
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 document.getElementById("btn").addEventListener("click", function() {
     console.log("Button Clicked!");
@@ -73,7 +73,7 @@ document.getElementById("btn").addEventListener("click", function() {
 
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 (function() {
     console.log("This runs immediately!");
@@ -98,7 +98,7 @@ document.getElementById("btn").addEventListener("click", function() {
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const greet = function sayHello() {
     console.log("Hello!");
@@ -111,7 +111,7 @@ sayHello(); //
 
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const factorial = function fact(n) {
     if (n <= 1) return 1;
@@ -148,7 +148,7 @@ console.log(factorial(5)); // Output: 120
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
  function add(a, b) {
      return a + b;
@@ -159,7 +159,7 @@ console.log(factorial(5)); // Output: 120
                                     
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const numbers = [1, 2, 3, 4];
 const squaredNumbers = numbers.map(num => num * num); 
@@ -192,7 +192,7 @@ console.log(squaredNumbers); // [1, 4, 9, 16]
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const greet = function(name) {
     return `Hello, ${name}!`;
@@ -200,7 +200,7 @@ const greet = function(name) {
 console.log(greet("Alice"));    
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function process(callback) {
     console.log("Processing...");
@@ -269,7 +269,7 @@ This is possible because JavaScript has first-class functions, meaning functions
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function greet(name, callback) {
     console.log("Hello, " + name);
@@ -281,7 +281,7 @@ function sayGoodbye() {
 greet("Alice", sayGoodbye);                          
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function multiplier(factor) {
     return function(num) {
@@ -330,7 +330,7 @@ console.log(double(5)); // Output: 10
                         </p>
  
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function greet(name, callback) {
     console.log("Hello, " + name);
@@ -342,7 +342,7 @@ function sayGoodbye() {
 greet("Alice", sayGoodbye);                                  
 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 console.log("Start");
 
@@ -531,7 +531,7 @@ newData('Developer', 'Thane')
                     <div class="card-body">
                      <p>Currying means changing a function that takes multiple arguments into a series of smaller functions that each take one argument at a time.</p>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 Normal Function
                                 <pre>
 function addNum(num1) {
@@ -542,14 +542,14 @@ function addNum(num1) {
 console.log(addNum(4)(7))//11
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 arrow Function
                                 <pre>
 var addTwoNo = num1 => num2 => num1 + num2;
 console.log(addTwoNo(4)(7))//11
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function printLog(type) {
     return function (message) {
@@ -563,7 +563,7 @@ const errorLog  = printLog("Error");
 errorLog("API Error")//Error - API Error
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const log = type => message => console.log(`${type} - ${message}`);
 const infoLog = log("info");
@@ -615,7 +615,7 @@ errorLog("Server crashed");  // ERROR - Server crashed
                             <li>return finishes the generator</li>
                         </ul>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function* printNum() {
     console.log(1)
@@ -630,7 +630,7 @@ console.log(genFun.next())//{value: 2, done: false}
 console.log(genFun.next())//{value: undefined, done: true}
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 function* getUniqueId(start=1) {
     let id = start;
