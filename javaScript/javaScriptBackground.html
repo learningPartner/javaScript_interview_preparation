@@ -159,6 +159,78 @@ function example() {
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
+                        Stack vs Heap
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <table data-start="192" data-end="806" class="table-sm">
+                                    <thead data-start="192" data-end="277">
+                                        <tr data-start="192" data-end="277">
+                                            <th data-start="192" data-end="209" data-col-size="sm">Feature</th>
+                                            <th data-start="209" data-end="243" data-col-size="sm">Stack</th>
+                                            <th data-start="243" data-end="277" data-col-size="sm">Heap</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-start="366" data-end="806">
+                                        <tr data-start="366" data-end="453">
+                                            <td data-start="366" data-end="383" data-col-size="sm">Structure</td>
+                                            <td data-col-size="sm" data-start="383" data-end="418">Linear (LIFO)</td>
+                                            <td data-col-size="sm" data-start="418" data-end="453">Free-form, dynamic
+                                            </td>
+                                        </tr>
+                                        <tr data-start="454" data-end="541">
+                                            <td data-start="454" data-end="471" data-col-size="sm">Speed</td>
+                                            <td data-start="471" data-end="506" data-col-size="sm">Very fast</td>
+                                            <td data-col-size="sm" data-start="506" data-end="541">Slower</td>
+                                        </tr>
+                                        <tr data-start="542" data-end="629">
+                                            <td data-start="542" data-end="559" data-col-size="sm">Lifetime</td>
+                                            <td data-col-size="sm" data-start="559" data-end="594">Short-lived (auto
+                                                managed)</td>
+                                            <td data-col-size="sm" data-start="594" data-end="629">Long-lived (needs GC)
+                                            </td>
+                                        </tr>
+                                        <tr data-start="630" data-end="717">
+                                            <td data-start="630" data-end="647" data-col-size="sm">Memory Size</td>
+                                            <td data-start="647" data-end="682" data-col-size="sm">Small</td>
+                                            <td data-col-size="sm" data-start="682" data-end="717">Large</td>
+                                        </tr>
+                                        <tr data-start="718" data-end="806">
+                                            <td data-start="718" data-end="735" data-col-size="sm">Use Case</td>
+                                            <td data-start="735" data-end="770" data-col-size="sm">Primitive data</td>
+                                            <td data-col-size="sm" data-start="770" data-end="806">Complex
+                                                objects/arrays/functions</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                Stack : string, number, boolean, undefined, null, symbol, bigint
+                                <ul>
+                                    <li>They're simple, fixed-size, and immutable</li>
+                                    <li>Can be stored and accessed quickly</li>
+                                    <li>Automatically removed when the function context ends</li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                 Heap : Objects & Arrays, functions
+                                <ul>
+                                    <li>They can have dynamic size and structure</li>
+                                    <li>Not fixed in memory</li>
+                                    <li>Passed by reference, not by value</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p>Primitive types are stored in the stack because they are small and fixed in size, allowing fast access and cleanup. Objects and arrays are stored in the heap because they can grow dynamically and need flexible memory allocation. The stack stores a reference to the object in the heap, not the object itself.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
                         Environments where JavaScript is Being Used
                     </div>
                     <div class="card-body">
@@ -195,7 +267,7 @@ function example() {
                             <li>Modules & Classes</li>
                         </ul>
                         <p>Version Till now</p>
-                        <table  class="table table-bordered">
+                        <table class="table table-bordered">
                             <thead data-start="803" data-end="848">
                                 <tr data-start="803" data-end="848">
                                     <th data-start="803" data-end="817"><strong data-start="805"
@@ -265,7 +337,8 @@ function example() {
                                     <td><strong data-start="1557" data-end="1574">ES13 (ES2022)</strong></td>
                                     <td>2022</td>
                                     <td>Top-level <code data-start="1594" data-end="1601">await</code>, Class fields,
-                                        <code data-start="1617" data-end="1629">Array.at()</code></td>
+                                        <code data-start="1617" data-end="1629">Array.at()</code>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -286,12 +359,12 @@ function example() {
         </div>
 
     </div>
- 
-  
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../main.js"></script>
-  
+
 
 </body>
 
