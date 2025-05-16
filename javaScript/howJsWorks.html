@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 console.log("start") 
 setTimeout(()=>{
@@ -172,13 +172,13 @@ console.log("end")
                                 </pre>
                                 Output
                                 <pre>
-                                    start
-                                    end
-                                    Promise
-                                    setTimeout
+start
+end
+Promise
+setTimeout
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 console.log("start")
 setTimeout(()=>{
@@ -194,11 +194,11 @@ console.log("end")
                                 </pre>
                                 output
                                 <pre>
-                                    start
-                                    end
-                                    Outside Promise
-                                    setTimeout
-                                    Inside Promise
+start
+end
+Outside Promise
+setTimeout
+Inside Promise
                                 </pre>
                             </div>
                         </div>
@@ -244,7 +244,7 @@ console.log("end")
                              </ul>
                              <h6>Example</h6>
                              <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
 <pre>
 function createCounter() {
     let count = 0; // Private variable (Lexical Scope)
@@ -270,7 +270,7 @@ console.log(counter.getCount()); // 1
 console.log(counter.count); // ❌ Undefined (count is private)
 </pre>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
 <pre>
     function setupButton() {
         let clickCount = 0; // Private variable (Lexical Scope)
