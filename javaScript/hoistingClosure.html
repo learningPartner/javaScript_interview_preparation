@@ -61,14 +61,14 @@
                                     <li>is </li>
                                 </ul>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
  console.log(name); // ✅ Undefined
  var name = "John";
  console.log(name); // John
         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 var name;  // Hoisted to the top
 console.log(name); // undefined
@@ -151,7 +151,7 @@ counter(); // Output: 3
                                 </ul>
                                 <p> Memory Allocation: The variable (count) is not garbage collected because the returned function still references it.</p>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     
                                 </div>
                             </div>
@@ -187,7 +187,7 @@ counter2.increment(); //1
                             <div class="card-body">
                                 <p>Lexical scope means that a function's scope is determined by its physical placement in the source code — not where it’s called from.</p>                              
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <pre>
 function outer() {
   let name = "Chetan";
@@ -200,7 +200,7 @@ const fn = outer();
 fn(); // Output: "Chetan"       
                                                                         </pre>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <ul>
                                         <li>inner() is defined inside outer(), so it lexically gets access to name, even when it's called later from outside.</li>
                                         <li>Think of lexical scope like the function carrying its own backpack — wherever it goes, it still has access to the stuff (variables) that were available at the place it was born.</li>
