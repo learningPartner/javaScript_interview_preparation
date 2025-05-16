@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Basic CI/CD Pipeline Steps
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>
+                                🔄 Code pushed to Git (feature/xyz)
+                            </li>
+                            <li>
+                                CI kicks in:
+                                <ul>
+                                    <li>Run npm install</li>
+                                    <li>Run ng lint, ng test, or unit tests</li>
+                                    <li>Build Angular app: ng build --configuration=prod</li>
+                                </ul>
+                            </li>
+                            <li>📦 Artifacts are generated (like dist/ folder)</li>
+                            <li>🔐 Secrets injected (API keys, environment variables)</li>
+                            <li>🚀 CD deploys build to target environment:</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is Jenkins
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>
+                                    Jenkins is an open-source automation server used to build, test, and deploy
+                                    software.
+                                    Think of it as your automation butler who runs the steps you normally do manually —
+                                    like pulling code, installing dependencies, running tests, building apps, and
+                                    deploying them — automatically whenever code changes.
+                                </p>
+                                 
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What is Docker?
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <p>
+                                    Docker is a platform that lets you package your app and everything it needs (Node,
+                                    Angular CLI, dependencies, etc.) into one lightweight, portable container.
+                                </p>
+                            </div>
+                            <div class="col-7">
+                                <h6>Basic Docker Use Case for Angular</h6>
+                                <pre>
+ng build --configuration=production
+//Create a Dockerfile
+# Use Nginx to serve the Angular build
+FROM nginx:alpine
+COPY ./dist/my-angular-app /usr/share/nginx/html
+//Build the Docker Image
+docker build -t my-angular-app .
+//Run It!
+docker run -p 8080:80 my-angular-app
+//access it on http://localhost:8080
+                                </pre>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        CI/CD Configuration
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <h6> Where Is It Configured?</h6>
+                                <ul>
+                                    <li>CI/CD is typically configured using a YAML file in your repository</li>
+                                    <li>GitHub Actions: .github/workflows/deploy.yml</li>
+                                    <li>Azure Pipelines: azure-pipelines.yml</li>
+                                    <li>Jenkins: Uses Jenkinsfile or pipeline GUI</li>
+                                    <li>Bitbucket Pipelines: bitbucket-pipelines.yml</li>
+                                </ul>
+                            </div>
+                            <div class="col-8">
+                                <h6> Example</h6>
+                                <pre>
+name: Build and Deploy Angular App
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout Code
+        uses: actions/checkout@v3
+      - name: 🔧 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: 📦 Install Dependencies
+        run: npm ci
+      - name: 🧪 Run Tests
+        run: npm run test -- --watch=false --no-progress
+      - name: 🏗️ Build Angular App
+        run: npm run build -- --configuration=production
+      - name: 🚀 Deploy to Server (via FTP, S3, etc.)
+        run: echo "Deploy step here"
+                                 </pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+
+
+</body>
+
+</html>

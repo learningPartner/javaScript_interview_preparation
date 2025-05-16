@@ -35,7 +35,9 @@ const menu = [
         link: `#`,
         children: [
           { name: "Solid", link: `${BASE_PATH}angular/dynamicPage.html?page='solid-principles'` },
-          { name: "Design Pattern", link: `${BASE_PATH}angular/dynamicPage.html?page='design-pattern'` } 
+          { name: "Design Pattern", link: `${BASE_PATH}angular/dynamicPage.html?page='design-pattern'` },
+          {  name: "Git Questions", link: `${BASE_PATH}git/gitbasic.html`},
+          {  name: "CI-CD Questions", link: `${BASE_PATH}git/cicd.html`},
         ],
       },
       

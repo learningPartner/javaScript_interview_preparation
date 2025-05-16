@@ -42,7 +42,7 @@
     </nav>
 
     <div class="container">
-        <div class="row">  
+        <div class="row">
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
@@ -52,16 +52,19 @@
                         <div class="row">
                             <div class="col-4">
                                 <h6>git fetch</h6>
-                                    <ul>
-                                        <li>Downloads changes from the remote without applying them to your local branch.</li>
-                                        <li>It updates your remote-tracking branches (like origin/main) but doesn’t touch your local code.</li>
-                                    </ul>
+                                <ul>
+                                    <li>Downloads changes from the remote without applying them to your local branch.
+                                    </li>
+                                    <li>It updates your remote-tracking branches (like origin/main) but doesn’t touch
+                                        your local code.</li>
+                                </ul>
                             </div>
                             <div class="col-4">
                                 <h6>git pull</h6>
                                 <ul>
                                     <li>Shortcut for: git fetch + git merge</li>
-                                    <li>It fetches and automatically merges changes from the remote to your current branch..</li>
+                                    <li>It fetches and automatically merges changes from the remote to your current
+                                        branch..</li>
                                 </ul>
                             </div>
                             <div class="col-4">
@@ -82,7 +85,8 @@
 git fetch origin main
 git merge origin/main
                                 </pre>
-                                <p> your feature branch gets updated by merging the latest changes from main, resulting in a merge commit. </p>
+                                <p> your feature branch gets updated by merging the latest changes from main, resulting
+                                    in a merge commit. </p>
                             </div>
                             <div class="col-6">
                                 <p>
@@ -97,15 +101,154 @@ git merge origin/main
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        What Are Git Tags?
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A Git tag is like a label you attach to a specific commit to mark it as important —
+                            typically used for version releases like v1.0.0, v2.3.1, etc.
+                        </p>
+                        <h5>
+                            Types of Git Tags
+                        </h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>Lightweight Tag</h6>
+                                <ul>
+                                    <li>Like a bookmark — just points to a commit.</li>
+                                    <li>No extra data (like message, date, author, etc.)</li>
+                                </ul>
+                                <pre>
+git tag v1.0.0
+                                    </pre>
+                            </div>
+                            <div class="col-6">
+                                <h6>Annotated Tag</h6>
+                                <ul>
+                                    <li>Full object in Git database</li>
+                                    <li>Includes: Tag message,Tagger name, email, date,</li>
+                                </ul>
+                                <pre>
+git tag -a v1.0.0 -m "Release version 1.0.0"
+                                    </pre>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        "power features" of Git
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>cherry-pick</h6>
+                                <p>
+                                    pick a specific commit from another branch and apply it to the current branch.
+                                </p>
+                                <pre>
+git cherry-pick commit-hash-id
+                                </pre>
+                            </div>
+                            <div class="col-6">
+                                <h6>git revert</h6>
+                                <p>Creates a new commit that undoes a previous commit.</p>
+                                <pre>
+git revert commit-hash-id
+                                    </pre>
+                            </div>
+                            <div class="col-6">
+                                <h6>git reset (soft, mixed, hard)</h6>
+                                <p>Clean up local changes or commits before pushing.</p>
+                                <p>You’re in the middle of something, but need to quickly switch branches.</p>
+                                <pre>
+git reset --soft HEAD~1
+git reset --hard origin/main
+                                    </pre>
+                            </div>
+                            <div class="col-6">
+                                <h6>git stash</h6>
+                                <p>Temporarily save changes without committing.</p>
+                                <pre>
+git stash
+git stash list
+git stash apply
+git stash pop
+
+                                    </pre>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Branching Strategy
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            we should follow a branching strategy that helps us manage features, releases, and hotfixes.
+                            Typically,
+                            we should maintain multiple long-running branches like main and develop, and then use
+                            short-lived feature and hotfix branches
+                            and we merge them to long running branches.
+                        </p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+Long-lived branches:
+- main       → Production-ready code
+- develop    → Staging/Integration branch
+
+Short-lived branches:
+- feature/feature-name   → New features
+- bugfix/issue-number    → Bug fixes in develop
+- hotfix/issue-number    → Urgent fixes directly on main
+- release/version        → Pre-release stabilization
+
+                        </pre>
+                            </div>
+                            <div class="col-6">
+                                <p>
+                                    “For example, if I'm working on a new login module, I’ll create a branch like
+                                    feature/login-ui. Once it’s done, we raise a PR to <strong>develop</strong>, after QA signoff, it gets merged to develop.
+                                     At the end of a sprint, we cut a release/1.2.0 
+                                    branch from <strong>develop</strong>  , do final QA, and merge into <strong>main</strong>  with a Git tag.
+                                     If there’s a production bug
+                                    later, we do a hotfix/login-crash, merge it into  <strong>main</strong> and also cherry-pick it back
+                                    into <strong>develop</strong> to keep both in sync.”
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
- 
- 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../main.js"></script>
-  
+
 
 </body>
 
