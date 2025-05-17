@@ -43,7 +43,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-md-9 col-lg-9 col-sm-12">
 
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
@@ -120,7 +120,7 @@
                                     </tbody>
                                 </table>
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         <pre>
 function printVal() {
     console.log(x);//ReferenceError
@@ -134,7 +134,7 @@ function printVal() {
 printVal()
                                         </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
 <pre>
 function printVal2() {
     console.log(x);//ReferenceError: 
@@ -148,7 +148,7 @@ function printVal2() {
 printVal2()
 </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         <pre>
 function printVal2() {
     let x = 10;
@@ -179,7 +179,7 @@ printVal2()
                                 </ul>
                                 
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         <pre>
 const productName = "Mobile";
 productName =  "asas";
@@ -187,7 +187,7 @@ console.log(productName)
 //Assignment to constant variable.
                                         </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         <pre>
 const product = {
     productName: 'Mobile'
@@ -199,7 +199,7 @@ product = {
 //Assignment to constant variable.
                                         </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         <pre>
 const cityList = ["Pune","Nagpur"];
 cityList.push("Mumbai")//allowed
@@ -257,7 +257,7 @@ cityList = ["Jaipur","Jabalpur"]
                                  </ul>
                                 <h6>How this differes in Both Function </h6>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 var age = 20;
 function Person() {
@@ -270,7 +270,7 @@ new Person()
                                         </pre>
                                         <p>normal function "this" refers to global object</p>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 var age = 20;
 function Person2() {
@@ -286,7 +286,7 @@ new Person2()
                                 </div>
                                 <h6>argusments </h6>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 function test() {
     console.log(arguments);
@@ -307,7 +307,7 @@ console.log(result2)
                                         </pre>
                                         
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 const arrowTest = () => {
   console.log(arguments);//arguments is not defined
@@ -320,7 +320,7 @@ as arrow func doesn't have arguments can't use rest operator
                                 </div>
                                 <h6>Can't Use new Operator </h6>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 function Product(name) {
     this.productName = name;
@@ -331,7 +331,7 @@ new Product("Mobile")
                                         <p>Normal func can be invoked by new operator</p>
                                         
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 const Print = () => {};
 const text = new Print(); //Print is not a constructor
@@ -363,7 +363,7 @@ const text = new Print(); //Print is not a constructor
                                     <li>They are enclosed by backticks (`) instead of single ' or double " quotes.</li>  
                                  </ul>
                                  <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         concatination
                                         <pre>
  var firstName = "Chetan";
@@ -373,7 +373,7 @@ const text = new Print(); //Print is not a constructor
  var fullName2 =  `${firstName} ${lastName}`;  
                                         </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         string interpolation
                                         <pre>
 var num1 = 12;
@@ -381,7 +381,7 @@ var num2 = 23;
 var result = `Sum is ${num1+ num2}`;
                                         </pre>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                         multi-line
                                         <pre>
 var productDetaild= `Mobile is a product
@@ -389,7 +389,7 @@ It has 2 Varients and
 a discounted price`;
                                         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         Function Calls Inside Interpolation
                                         <pre>
 function printSquare(num) {
@@ -398,7 +398,7 @@ function printSquare(num) {
 var squareStr  = `Square of 3 is ${printSquare(3)}`
                                         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         Tagged Template Literals
                                         <pre>
 function printStr(strings,...values) {
@@ -454,7 +454,7 @@ console.log(text)
                                     Spread Operator lets you Expands an iterable (like array, string, object) into individual elements.
                                 </p>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                        Clone / Combine Array
                                         <pre>
 var state1City = ["Pune","Nagpur"];
@@ -465,7 +465,7 @@ var stateList2 = [...state1City, "Jabalpur", ...state2City];
 var stateList3 = [...state2City,"Panji","Bhopal"]
                                         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         Function Arguments
                                         <pre>
 function addThreeNo(n1,n2,n3) {
@@ -475,7 +475,7 @@ const noList = [2,2,3];
 console.log(addThreeNo(...noList))
                                         </pre>
                                     </div>
-                                    <div class="col-7">
+                                    <div class="col-12 col-md-7 col-lg-7 col-sm-6">
                                         Object Cloning & Merging
                                         <pre>
 const student = {
@@ -492,7 +492,7 @@ const studDetails = {...student,...studAddress}
 const studFullDetauks = {...student,studId:232,...studAddress};
                                         </pre>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-12 col-md-5 col-lg-5 col-sm-6">
                                         Spreading in Strings
                                         <pre>
 var strArray = [...myStr];
@@ -550,7 +550,7 @@ console.log(strObj2)
                             <div class="card-body">
                                 <p>Collects multiple elements into a single array or object.</p>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 function addAnyNo(...nums) {
     let sum  = 0;
@@ -564,7 +564,7 @@ console.log(addAnyNo(1,3,6,7,8,9))
 
                                         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <p>rest should be last only</p>
                                         <pre>
 function printDetails(firstParam,...restParam) {
@@ -627,7 +627,7 @@ console.log(restObj);//{name: 'chetan', tech: 'React', email: 'che23@gmail.com'}
                             <div class="card-body">
                              <p>Object destructuring is a shorthand syntax in JavaScript to extract properties from objects into variables.</p>
                              <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <p>variable name should be same as key name then only you will be able to extract value</p>
                                     <pre>
 var product = {pName: 'Laptop', price:55000};
@@ -636,7 +636,7 @@ console.log(pName)//Laptop
 console.log(price)//55000
                                     </pre>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <p>If you need some differenet variable name insted of key name we do like below ie: a</p>
                                     <pre>
 var product = {pName: 'Laptop', price:55000};
@@ -645,7 +645,7 @@ console.log(prodNAme)//Laptop
                                     </pre>
                                     
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <p>Array Destructuring</p>
                                     <pre>
 var studentList = ['Chetan','Rahul']
@@ -654,7 +654,7 @@ console.log(stud1)//Chetan
 console.log(stud2)//Rahul
                                     </pre>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     <pre>
 const empList = [
     {empId:121,name:'QQQQ'},
@@ -702,7 +702,7 @@ console.log(employee_id)//121
                                     <li>return finishes the generator</li>
                                 </ul>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 function* printNum() {
     console.log(1)
@@ -717,7 +717,7 @@ console.log(genFun.next())//{value: 2, done: false}
 console.log(genFun.next())//{value: undefined, done: true}
                                         </pre>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
 function* getUniqueId(start=1) {
     let id = start;
@@ -775,7 +775,7 @@ console.log(generateUnqId.next().value)//id-35
                 </div>
 
             </div>
-            <div class="col-3">
+            <div class="col-12 col-md-3 col-lg-3 col-sm-12">
                 <input type="hidden" id="categorySelect" value="hoisting">
                 <div id="questionContainer"></div>
             </div>
