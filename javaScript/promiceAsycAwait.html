@@ -138,7 +138,7 @@ getUser();
                         </script>
                         <hr>
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-12 col-lg-12 col-sm-6">
                                 <h5>Basic Promise Creation</h5>
                                  
                                 <pre>
@@ -164,7 +164,7 @@ newPromiseResult.then((success)=>{
                                 .finally(finalCallback): Runs after success/failure.
                                </p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-12 col-lg-12 col-sm-6">
                                 <h5>await</h5>
                                 <ul>
                                     <li>The await keyword pauses execution of an async function until the Promise is resolved.</li>
@@ -219,7 +219,7 @@ getUser();
                         </script>
                         <hr>
                         <div class="row">
-                            <div class="col-4"> 
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6 "> 
                                 <pre>
 new Promise ((success,error)=>{
     setTimeout(()=> success(5),2000) 
@@ -236,7 +236,7 @@ new Promise ((success,error)=>{
                                </pre>
                                 
                             </div>
-                            <div class="col-8">
+                            <div class=" col-12 col-md-8 col-lg-8 col-sm-6 ">
                                 <pre>
 function login(uName,pwd) {
     return new Promise((resolve,reject)=>{
@@ -526,7 +526,7 @@ Promise.race([timer1, timer2, timer3]).then((res) => {
                             <li>rejected </li>
                         </ul>
                        <div class="row">
-                        <div class="col-4">
+                        <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                             
                             <script>
                                 function test(callback){
@@ -551,7 +551,7 @@ test(function print(){
 }) 
                             </pre>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                            
                             <script>
                                  debugger;
@@ -583,7 +583,7 @@ var printApiResult =  function (data) {
 getApi(printApiResult) 
                             </pre>
                         </div>
-                        <div class="col-4">
+                        <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                             <script>
                                 debugger;
                                 function getApi() {
