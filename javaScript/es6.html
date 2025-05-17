@@ -259,32 +259,64 @@ cityList = ["Jaipur","Jabalpur"]
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
-var age = 20;
-function Person() {
-    this.age = 0;
-    setTimeout(function(){
-        console.log(this.age);//20
-    });
-}
-new Person() 
+const person = {
+  name: "Alice",
+  sayHello: function () {
+    console.log("Hello from", this.name);
+  },
+  sayHelloArrow: () => {
+    console.log("Hello from", this.name);
+  }
+};
+person.sayHello(); //Alice
+person.sayHelloArrow(); //undefined
                                         </pre>
                                         <p>normal function "this" refers to global object</p>
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
-var age = 20;
-function Person2() {
-    this.age = 0;
-    setTimeout(()=>{
-        console.log(this.age);//20
-    });
-}
-new Person2() 
+var name = "Roy"
+const person = {
+  name: "Alice",
+  sayHello: function () {
+    console.log("Hello from", this.name);
+  },
+  sayHelloArrow: () => {
+    console.log("Hello from", this.name);
+  }
+};
+person.sayHello(); //Alice
+person.sayHelloArrow(); //Roy
                                         </pre>
                                         <p> in arrow func this refers to surrounding scope where it is created/ or executed</p>
                                     </div>
                                 </div>
-                                <h6>argusments </h6>
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
+<pre>
+const user = {
+  age: 25,
+  showAgeNormal: function () {
+    setTimeout(function () {
+      console.log("Normal:", this.age);
+    }, 1000);
+  },
+  showAgeArrow: function () {
+    setTimeout(() => {
+      console.log("Arrow:", this.age);
+    }, 1000);
+  }
+};
+
+user.showAgeNormal(); // Normal: undefined ❌ (this is window)
+user.showAgeArrow();  // Arrow: 25 ✅ (this is user)
+</pre>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-6 col-sm-6">
+✅ In setTimeout, this will point to the global object only if you use a normal function.
+                                    </div>
+                                </div>
+                                <h6>arguments </h6>
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                         <pre>
@@ -760,16 +792,6 @@ console.log(generateUnqId.next().value)//id-35
                                 console.log(generateUnqId.next().value)//id-34
                                 console.log(generateUnqId.next().value)//id-35
                             </script>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
-                        <div class="card">
-                            <div class="card-header bg-secondary">
-                               
-                            </div>
-                            <div class="card-body">
-                             
-                            </div>
                         </div>
                     </div>
                 </div>
