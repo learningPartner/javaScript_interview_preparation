@@ -64,7 +64,7 @@
                             <li>Object.entries() => get array of key value pair</li>
                         </ul>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 <h6>Object.keys()</h6>
                                 <pre>
 var student = { 
@@ -76,7 +76,7 @@ console.log(Object.keys(student))
 // ['name', 'id', 'city']
                                 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 <h6>Object.values()</h6>
                                 <pre>
 var student = { 
@@ -88,7 +88,7 @@ console.log(Object.values(student))
 // ['Chetan', 312, 'Nagpur']
                                 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 <h6>Object.entries()</h6>
                                 <pre>
 var student = { 
@@ -126,7 +126,7 @@ console.log(Object.entries(student))
                     <div class="card-body">
                         <p>You can define meta-properties like: writable,enumerable,configurable</p> 
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const empObj = {}
 Object.defineProperty(empObj, 'empId',
@@ -140,7 +140,7 @@ empObj.empId = 23;
 console.log(empObj.empId) //123
                                                             </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const empObj = {}
 Object.defineProperty(empObj, 'empId',
@@ -187,7 +187,7 @@ console.log(empObj.empId) //23
                             <li>but if you want to update you need set method too</li>
                         </ul>
                          <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const employee = {
     name : "Chetan",
@@ -206,7 +206,7 @@ employee.emp_id = "ER 432";
 console.log(employee.emp_id)//ER-432
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                <pre>
 const product = {
     basePrice: 100,
@@ -275,7 +275,7 @@ console.log(product.basePrice); // 200
                             <li>For creating lightweight objects that share behavior.</li>
                          </ul>
                          <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const player = {
     name:"sachin",
@@ -287,7 +287,7 @@ const player2 = Object.create(player);
 console.log(player2.name);//sachin
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                <pre>
 const baseForm = {
     isValid: false,
@@ -392,7 +392,7 @@ delete studentData.name;
 console.log(studentData)//{name: 'Rahul'}
                                </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const productData = {
  name: "Mobile",
