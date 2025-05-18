@@ -62,7 +62,7 @@
                                 <li>It compares the current and previous values of bindings and updates the DOM if needed.</li>
                             </ul>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     detectChanges => Manually triggers change detection for the current component and its children.
                                     <pre>
 constructor(private changeDetectionRef:ChangeDetectorRef) { }
@@ -70,15 +70,15 @@ constructor(private changeDetectionRef:ChangeDetectorRef) { }
 this.changeDetectionRef.detectChanges();
                                     </pre>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     Detaches =>  Detaches this component from the Angular change detection tree.
                                     <pre>
-                                        constructor(private changeDetectionRef:ChangeDetectorRef) { }
-                                        
-                                        this.changeDetectionRef.detectChanges();
+constructor(private changeDetectionRef:ChangeDetectorRef) { }
+
+this.changeDetectionRef.detectChanges();
                                                                             </pre>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                     markForCheck => Marks the component and its ancestors as needing change detection during the next cycle. This is particularly relevant for components using the OnPush change detection strategy.
                                 </div>
                             </div>
@@ -102,35 +102,32 @@ this.changeDetectionRef.detectChanges();
                               </ul>
 
                               <div class="row">
-                                <div class="col-4">
+                                <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                     <pre>
 this.ngZone.run(() => {
-    // Code that needs to run inside Angular's zone
+// Code that needs to run inside Angular's zone
 });
                                     </pre>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                     <pre>
 this.ngZone.runOutsideAngular(() => {
-    // Code that runs outside Angular's zone
+// Code that runs outside Angular's zone
 });
                                           
                                     </pre>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                     <pre>
- this.ngZone.runOutsideAngular(() => {
-     // Perform some background task
-     this.ngZone.run(() => {
-       // Update UI components here
-     });
+this.ngZone.runOutsideAngular(() => {
+ // Perform some background task
+ this.ngZone.run(() => {
+   // Update UI components here
+ });
 });
                                     </pre>
                                 </div>
                               </div>
-                        
-                     
-                           
                         </div>
                 </div>
             </div> 

@@ -42,7 +42,64 @@
     </nav>
 
     <div class="container">
-        <div class="row">  
+        <div class="row"> 
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        How to Optimize Angular Applications
+                    </div>
+                    <div class="card-body">
+                       <div class="row">
+                        <div class="col-3">
+                             <h6>Use Lazy Loading (Route-Level Code Splitting)</h6> 
+                             <ul>
+                                <li>Split app into modules (AdminModule, UserModule, etc.)</li>
+                                <li>Use Angular Router’s loadChildren to lazy load those modules</li>
+                             </ul>
+                        </div>
+                        <div class="col-3">
+                            <h6>Enable Change Detection Optimization</h6> 
+                            <ul>
+                                <li>Only re-renders component if @Input() changes</li>
+                                <li>Improves performance, especially in large UIs</li>
+                            </ul>
+                        </div>
+                        <div class="col-3">
+                            <h6>Use TrackBy in *ngFor</h6> 
+                            <ul>
+                                <li>With trackBy, only changed items are updated</li>
+                            </ul>
+                        </div>
+                        <div class="col-3">
+                            <h6>Avoid Memory Leaks (Especially in RxJS)</h6> 
+                            <ul>
+                                <li>Always unsubscribe from subscriptions using:</li>
+                                <li>takeUntil(), AsyncPipe </li>
+                                <li>Subscription management in ngOnDestroy</li>
+                            </ul>
+                        </div>
+                        <div class="col-3">
+                            <h6>Use Pure Pipes for Expensive Transformations</h6> 
+                            <ul>
+                                <li>Pure pipes are only re-evaluated when input changes.</li>
+                            </ul>
+                        </div>
+                        <div class="col-3">
+                           <h6>Use Web Workers for Heavy Computation</h6> 
+                           <ul>
+                            <li>move Offload CPU-heavy tasks (e.g., data parsing, image processing) to Web Workers.</li>
+                           </ul>
+                        </div>
+                        <div class="col-3">
+                           <h6>Lazy Load Images and Components</h6>
+                           <ul>
+                            <li>Use loading="lazy" on <img /></li>
+                           </ul> 
+                        </div>
+                       </div>
+                    </div>
+                </div>
+            </div>  
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
@@ -126,8 +183,7 @@
       ...
       "sourceMap": false
     }
-}
-                                      
+}      
                                 </pre>
                             </div>
                         </div>
@@ -251,6 +307,26 @@ trackById(index: number, item: Item) {
                             <p>Webpack is the engine behind Angular CLI's build system. It bundles your code, optimizes it, splits it for lazy loading, processes your assets, and prepares everything for efficient browser delivery.</p>
 
                          </div>
+                    </div>
+                </div>
+            </div> 
+               <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       What is Babel?
+                    </div>
+                    <div class="card-body">
+                         <p>
+                           Babel is a JavaScript compiler. Think of it like a translator that:
+                         </p> 
+                         <ul>
+                            <li>Converts modern JavaScript (ES6+ or TypeScript) into older versions (like ES5) that all browsers can understand.</li>
+                            <li>Allows use of cutting-edge JS features without worrying about browser support.</li>
+                            <li>Transpile ES6+ code to ES5</li>
+                            <li>Transpile JSX (React syntax) to plain JS</li>
+                            <li>Polyfill new APIs like Promise, Array.from, etc.</li>
+                            <li></li>
+                         </ul> 
                     </div>
                 </div>
             </div> 

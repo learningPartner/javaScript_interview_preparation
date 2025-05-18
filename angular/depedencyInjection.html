@@ -49,11 +49,11 @@
                         Phases of Execution Context
                     </div>
                     <div class="card-body">
-                        <h5>If we dont add serice in any component provider array we have single instance of that service accorss all component,
+                        <p>If we dont add serice in any component provider array we have single instance of that service accorss all component,
                             so If I am storing some data from component that data i can read in another component
-                        </h5>
+                        </p>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 service file
                                 <pre>
  export class ProductService { 
@@ -61,29 +61,20 @@
  }
                                 </pre>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 <pre>
- @Component({
-     selector: 'app-ng-ChnageDetectionComponent',
-     imports: []
-   })
- export class ChnageDetectionComponent implements OnInit{
+ export class ChnageDetectionComponent{
      constructor(private prod: ProductService) {}
-   
      addVale() {
        this.prod.data.name = "Angular";
      }
  }
                                 </pre> 
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4 col-lg-4 col-sm-6">
                                 <pre>
-@Component({
-    selector: 'app-ng-contanier-temp',
-    imports: []
-  })
-export class NgContanierTempComponent { 
-     
+export class NgContanierTempComponent {
+    constructor(private prod: ProductService) {}
     read() {
       const serviceData = this.produSeervice.data;
     }
@@ -94,48 +85,12 @@ export class NgContanierTempComponent {
                         </div>
                        
                         <div class="row">
-                            <div class="col-4">
-                                service file
-                                <pre>
-export class ProductService { 
-    data: any = {} 
-}
-                                </pre>
-                            </div>
-                            <div class="col-4">
-                                <pre>
-@Component({
-    selector: 'app-ng-ChnageDetectionComponent',
-    imports: []
-  })
-export class ChnageDetectionComponent implements OnInit{
-    constructor(private prod: ProductService) {}
-  
-    addVale() {
-      this.prod.data.name = "Angular";
-    }
-}
-                                </pre> 
-                            </div>
-                            <div class="col-4">
+                            <div class="col-12">
                                  <p>now for  NgContanierTempComponent, we have seperate instance of ProductService service so data store from ChnageDetectionComponent component won't be
                                  present in serice object as we have different objcet available  for this component</p>
                                  <p>if qwe have another child component rendered in this component it will share same instance of service we have over here not global one </p>
-                                <pre>
-  @Component({
-      selector: 'app-ng-contanier-temp',
-      imports: [],
-      providers:[ProductService],
-    })
-  export class NgContanierTempComponent { 
-       
-      read() {
-        const serviceData = this.produSeervice.data;
-      }
-    }
-                                </pre>
-                               
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -150,7 +105,7 @@ export class ChnageDetectionComponent implements OnInit{
                         <div class="row">
                             <div class="col-6">
                                 <pre>
-providers: [{ provide: LoggerService, useClass: ConsoleLoggerService }]
+providers: [{ provide: LoggService, useClass: ConsoleLogService }]
                                 </pre>
                             </div>
                             <div class="col-6">
@@ -160,7 +115,7 @@ providers: [{ provide: NewService, useExisting: ExistingService }]
                             </div>
                             <div class="col-6">
                                 <pre>
-providers: [{ provide: API_ENDPOINT, useValue: 'https://api.example.com' }]
+providers: [{ provide: API_ENDPOINT, useValue: 'https://api.exa.com' }]
                                 </pre>
                             </div>
                             <div class="col-6">
@@ -172,42 +127,7 @@ providers: [{
 }]
                                 </pre>
                             </div>
-                        </div> 
-                        <hr>
-                        <div class="row">
-                            <div class="col-4"> 
-                                <pre>
- @Injectable()
- export class DataService {
-   fetchData() {
-     // Fetch data from API
-   }
- } 
-                                </pre> 
-                            </div>
-                            <div class="col-4">
-                                <pre>
-@Injectable()
-export class MockDataService {
-  fetchData() {
-    // Return mock data
-  }
-}
-                                    
-                                </pre>
-                            </div>
-                            <div class="col-4">
-                                <pre>
-TestBed.configureTestingModule({
-    providers: [
-      { provide: DataService, useClass: MockDataService }
-    ]
-});
-                                </pre>
-                            </div>
-                        </div>
-                    
-                      
+                        </div>  
                     </div>
                 </div>
             </div> 
