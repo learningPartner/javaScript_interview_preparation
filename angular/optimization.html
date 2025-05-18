@@ -50,27 +50,27 @@
                     </div>
                     <div class="card-body">
                        <div class="row">
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                              <h6>Use Lazy Loading (Route-Level Code Splitting)</h6> 
                              <ul>
                                 <li>Split app into modules (AdminModule, UserModule, etc.)</li>
                                 <li>Use Angular Router’s loadChildren to lazy load those modules</li>
                              </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                             <h6>Enable Change Detection Optimization</h6> 
                             <ul>
                                 <li>Only re-renders component if @Input() changes</li>
                                 <li>Improves performance, especially in large UIs</li>
                             </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                             <h6>Use TrackBy in *ngFor</h6> 
                             <ul>
                                 <li>With trackBy, only changed items are updated</li>
                             </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                             <h6>Avoid Memory Leaks (Especially in RxJS)</h6> 
                             <ul>
                                 <li>Always unsubscribe from subscriptions using:</li>
@@ -78,24 +78,79 @@
                                 <li>Subscription management in ngOnDestroy</li>
                             </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                             <h6>Use Pure Pipes for Expensive Transformations</h6> 
                             <ul>
                                 <li>Pure pipes are only re-evaluated when input changes.</li>
                             </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                            <h6>Use Web Workers for Heavy Computation</h6> 
                            <ul>
                             <li>move Offload CPU-heavy tasks (e.g., data parsing, image processing) to Web Workers.</li>
                            </ul>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
                            <h6>Lazy Load Images and Components</h6>
                            <ul>
                             <li>Use loading="lazy" on <img /></li>
                            </ul> 
                         </div>
+                       </div>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        How do you secure an Angular app?
+                    </div>
+                    <div class="card-body">
+                       <div class="row">
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                             <h6>Route Guards</h6> 
+                             <ul>
+                                <li>We should use canActivate, canLoad, and canActivateChild to restrict unauthorized access, based on roles or auth status.</li>
+                               
+                             </ul>
+                        </div>
+                        
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                            <h6>Interceptors </h6> 
+                            <ul>
+                                <li>use HttpInterceptors to inject tokens into headers securely, and also handle unauthorized responses globally.</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                            <h6>CSRF Protection</h6> 
+                            <ul>
+                                <li>For cookie-based auth, I work with backend teams to enable CSRF protection using X-XSRF-TOKEN, which Angular supports out of the box.</li>
+                            </ul>
+                            <pre>
+imports: [
+  HttpClientXsrfModule.withOptions({
+    cookieName: 'MY-XSRF-COOKIE',
+    headerName: 'MY-XSRF-HEADER'
+  })
+]
+                            </pre>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                            <h6>Avoid Exposing Secrets </h6> 
+                            <ul>
+                                <li>make sure not to hardcode API keys or secrets in Angular, since all front-end code is publicly visible.</li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-8 col-lg-82 col-sm-6">
+                            <h6>Token Security</h6> 
+                            <ul>
+                                <li>we should prefer storing JWTs in HttpOnly cookies to avoid XSS risks. </li>
+                                <li>If localStorage or sessionStorage is used, we should ensure input sanitization and logout on suspicious activity.</li>
+                                 <li>HttpOnly cookies: They are stored by the browser itself, and not accessible via document.cookie or JavaScript. You only see them in the "Application → Cookies" tab in dev tools.</li>
+                                <li>this.http.get('/api/user-profile', { withCredentials: true }).subscribe(...)</li>
+                            </ul>
+                        </div> 
                        </div>
                     </div>
                 </div>
