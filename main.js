@@ -27,7 +27,7 @@ const BASE_PATH = "https://learningpartner.github.io/javaScript_interview_prepar
 const menu = [
   {
     
-    name: "Soft Architecture",
+    name: "Overall",
     image: "/logo/angular.png",
     children: [ 
       {
@@ -44,7 +44,7 @@ const menu = [
     ],
   },
   {
-    name: "JavaScript",
+    name: "JS",
     image: "/logo/javascript.png",
 
     children: [
@@ -193,7 +193,7 @@ function generateNavMenu() {
   testli.className = "nav-item";
   testli.innerHTML = `
     <a class="nav-link" href="${BASE_PATH}/test.html">
-      <i class="bi bi-arrow-right-short"></i>Test Snippets
+      <i class="bi bi-arrow-right-short"></i> Snippets
     </a>
   `;
   ul.appendChild(testli);
@@ -202,7 +202,7 @@ function generateNavMenu() {
   testli2.className = "nav-item";
   testli2.innerHTML = `
     <a class="nav-link" href="${BASE_PATH}/checkKnowledge.html">
-      <i class="bi bi-arrow-right-short"></i>checkKnowledge
+      <i class="bi bi-arrow-right-short"></i>Test
     </a>
   `;
   ul.appendChild(testli2);
