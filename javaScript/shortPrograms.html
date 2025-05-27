@@ -115,7 +115,7 @@ console.log(unique);
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const arr1 = [1, 2, 3, 2, 4, 1]; 
 const obj = {}; 
@@ -125,7 +125,7 @@ for (let index = 0; index < arr1.length; index++) {
 console.log(obj) 
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const arr1 = [1, 2, 3, 2, 4, 1]; 
 const obj = {};  
@@ -155,11 +155,58 @@ console.log(obj)
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
+                                <h6>get large no from array</h6>
+                                <pre>
+const noList = [1,3,5,11,4,2,5];
+//const noList = [-3,-5,-11,-4,-2,-1,-5];
+let largeNo = noList[0];
+for(let i= 0;i<= noList.length;i++) {
+    if(largeNo < noList[i]) {
+        largeNo = noList[i]
+    }
+}
+console.log(largeNo)</pre>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
+                                 <h6>given array of num , remove 0 and convert +ve to -ve</h6>
+                                <pre>
+const noList = [1,3,5,0,11,4,,0,2,5];
+         
+const newone = noList.filter(m=>m!= 0).map(num=> - num)
+        
+console.log(newone) 
+                                </pre>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            const noList = [1,3,5,11,4,2,5];
+        //const noList = [-3,-5,-11,-4,-2,-1,-5];
+        let largeNo = noList[0];
+        for(let i= 0;i<= noList.length;i++) {
+            if(largeNo < noList[i]) {
+                largeNo = noList[i]
+            }
+        }
+        console.log(largeNo)
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
                         check if string is palindrone
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6"> 
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6"> 
                                 <pre> 
  const originalStr = "naman";
  const strArra =  originalStr.split("");
@@ -169,7 +216,7 @@ console.log(obj)
                                 </pre>
                                 
                             </div>
-                            <div class="col-6"> 
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6"> 
                             <pre> 
 const newStr = originalStr.split("").reverse().join("");
 console.log(newStr)
@@ -196,7 +243,7 @@ console.log(newStr)
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const str = "aabccdb";
 const dupliCountObj = {}; 
@@ -212,7 +259,7 @@ Object.keys(dupliCountObj).forEach(ele => {
 console.log(firstEle)
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 <pre>
 const str = "aabccdb";
 const dupliCountObj = {}; 
@@ -320,7 +367,7 @@ console.log(getFact(5))
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 to get single large word
                                 <pre>
 var originalString = "The quick brown fox jumped";
@@ -335,7 +382,7 @@ for(let word of strArr) {
 console.log(longestWord)
                                 </pre>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-6">
                                 to get multple large word
                                 <pre> 
 let originalString = "The quick brown fox jumped and jumped";

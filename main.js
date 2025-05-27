@@ -106,15 +106,16 @@ const menu = [
           { name: "View Child", link: `${BASE_PATH}angular/viewChild.html` }, 
           { name: "Web Worker", link: `${BASE_PATH}angular/webworker.html` },
           { name: "Proxy & Polyfill", link: `${BASE_PATH}angular/dynamicPage.html?page='proxy'` },
+           { name: "Unit Testing", link: `${BASE_PATH}angular/dynamicPage.html?page='unit-testing'` },
         ],
       },
       {
-        name: "Component",
+        name: "Basic",
         link: `#`,
         children: [
           { name: "Life Cycle", link: `${BASE_PATH}angular/dynamicPage.html?page='life-cycle'` }, 
           { name: "ViewEncapsulation", link: `${BASE_PATH}angular/dynamicPage.html?page='view-encap'` }, 
-          
+           { name: "Component & Directive", link: `${BASE_PATH}angular/dynamicPage.html?page='component-basic'` }, 
         ],
       },
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },

@@ -356,6 +356,10 @@ console.log("End");
                             
                              
                         </div>
+                        <p>
+                            A callback function is just a function that is passed as an argument to another function and gets executed after some operation completes.
+                            whereas Promises give us a much cleaner and more structured way to deal with async operations, especially when chaining multiple tasks. 
+                        </p>
                     </div>
                 </div>
             </div>
@@ -540,6 +544,16 @@ function addNum(num1) {
     }
 }
 console.log(addNum(4)(7))//11
+                                </pre>
+                                <pre>
+function addNum(num1) {
+    return function (num2) {
+        return function (num3) {
+            return num1 + num2 + num3;
+        
+    }
+}
+console.log(addNum(2)(3)(4))//9
                                 </pre>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 col-sm-6">
