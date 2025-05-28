@@ -446,6 +446,41 @@ this.sanitizer.bypassSecurityTrustHtml(userInput);
                     </div>
                 </div>
             </div> 
+                <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       Accessibility  in angular 
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6>Core Concepts of Accessibility</h6>
+                               
+                                <ul>
+                                    <li>Keyboard Navigation: Users should be able to use the app using just a keyboard (Tab, Enter, Space, etc.).</li>
+                                    <li>Screen Readers: The UI should be understandable by screen readers (like NVDA, JAWS).</li>
+                                    <li>Semantic HTML: Use elements for what they mean (<button>, <label>, <nav>, etc.).</li>
+                                </ul>
+                            </div>
+                            <div class="col-6"> 
+                                <ul>
+                                    <li>Color Contrast: Make sure there's enough contrast between text and background.</li>
+                                    <li>Focus Management: Properly manage focus (especially after navigation/dialogs).</li>
+                                    <li>ARIA attributes: aria-label, aria-hidden, role, etc., to enhance semantics for assistive tech. </li>
+                                    <li>Live announcements with cdk/LiveAnnouncer</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>We ensure all interactive elements are keyboard-accessible using tabindex, role, and HostListener for key events."</p>
+                                <p>use LiveAnnouncer and FocusTrap from Angular CDK to make dynamic interactions accessible.</p>
+                                <p>avoid using divs or spans for interactivity unless I add the necessary ARIA roles and keyboard logic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
 
     </div>
