@@ -246,6 +246,148 @@ input:focus {
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        Flexbox and Grid
+                    </div>
+                    <div class="card-body">
+            
+                        <div class="row">
+                           
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+                                 <h6>Flexbox </h6>
+                            <ul>
+                                <li> You want to align items in one dimension — either row or column.</li>
+                                <li>One-dimensional layout: good for rows OR columns</li>
+                                <li>Parent becomes a flex container</li>
+                                <li>Children become flex items</li>
+                            </ul>
+                                <pre id="codeBlock6"></pre>
+                                <script>
+
+                                    function escapeHtml(html) {
+                                        return html
+                                            .replace(/&/g, '&amp;')
+                                            .replace(/</g, '&lt;')
+                                            .replace(/>/g, '&gt;')
+                                            .replace(/"/g, '&quot;')
+                                            .replace(/'/g, '&#39;');
+                                    }
+
+                                    const htmlCode6 = `
+.container {
+  display: flex;
+  flex-direction: row; /* or column */
+  justify-content: space-between; /* horizontal */
+  align-items: center;             /* vertical */
+}
+<div class="container">
+  <div>Box 1</div>
+  <div>Box 2</div>
+  <div>Box 3</div>
+</div>
+                                          `;
+
+                                    document.getElementById("codeBlock6").innerHTML = escapeHtml(htmlCode6);
+                                </script>
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+                                <h6>Grid </h6>
+                                <ul>
+                                    <li>You want to align items in two dimensions — rows AND columns.</li>
+                                    <li>Two-dimensional layout</li>
+                                    <li>Creates both rows and columns</li>
+                                    <li>You define a grid structure</li>
+                                </ul>
+                              <pre id="codeBlock5"></pre>
+                                <script>
+
+                                    function escapeHtml(html) {
+                                        return html
+                                            .replace(/&/g, '&amp;')
+                                            .replace(/</g, '&lt;')
+                                            .replace(/>/g, '&gt;')
+                                            .replace(/"/g, '&quot;')
+                                            .replace(/'/g, '&#39;');
+                                    }
+
+                                    const htmlCode5 = `
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+<div class="container">
+  <div>Box 1</div>
+  <div>Box 2</div>
+  <div>Box 3</div>
+</div>
+                                          `;
+
+                                    document.getElementById("codeBlock5").innerHTML = escapeHtml(htmlCode5);
+                                </script>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       px, em , rem
+                    </div>
+                    <div class="card-body">
+                         <div class="row">
+                            <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                                <h6>px </h6>
+                                <ul>
+                                    <li>Fixed size regardless of screen or parent</li>
+                                    <li>Not scalable for user settings (like zoom or accessibility)</li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                                <h6>em  </h6>
+                                <ul>
+                                    <li>Based on the font size of the parent element</li>
+                                    <li>Not scalable for user settings (like zoom or accessibility)</li>
+                                </ul>
+<pre>
+.container {
+  font-size: 16px;
+}
+/* Child */
+.text {
+  font-size: 1.5em; 
+  /* 1.5 × 16px = 24px */
+}
+                                </pre>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-4 col-sm-6">
+                                <h6>rem   </h6>
+                                <ul>
+                                    <li>Relative to the root font-size</li>
+                                    <li>Not scalable for user settings (like zoom or accessibility)</li>
+                                </ul>
+                                <pre>
+html {
+  font-size: 16px;
+}
+.title {
+  font-size: 2rem;
+   /* 2 × 16px = 32px */
+}
+                                </pre>
+
+                            </div>
+                         </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
