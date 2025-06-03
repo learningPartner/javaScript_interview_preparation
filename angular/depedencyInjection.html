@@ -49,6 +49,9 @@
                         Phases of Execution Context
                     </div>
                     <div class="card-body">
+                        <p>
+                            ngular has a built-in DI framework that manages how services or objects are instantiated and how they get injected into components, directives, pipes, or other services. This is done using metadata like the @Injectable() decorator and constructor injection.
+                        </p>
                         <p>If we dont add serice in any component provider array we have single instance of that service accorss all component,
                             so If I am storing some data from component that data i can read in another component
                         </p>
@@ -92,6 +95,43 @@ export class NgContanierTempComponent {
                             </div>
                            
                         </div>
+                    </div>
+                </div>
+            </div>  
+               <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        create a mock instance of a service
+                    </div>
+                    <div class="card-body">
+                        <p>
+                           To create a mock instance of a service, you typically want to simulate a service's behavior without actually calling its real implementation — especially useful in unit testing.
+                        </p>
+                        <p>
+                            basically we create a class where all fucntion with its parameter we create here in this class without function defination
+                        </p>
+                        <div class="row">
+                            <div class="col-6">
+                                <pre>
+class MockMyService {
+  getData() {
+    return of(['mock', 'data']);
+  }
+}
+                                </pre>
+                            </div>
+                             <div class="col-6">
+                                <pre>
+TestBed.configureTestingModule({
+  providers: [
+    { provide: MyService, useClass: MockMyService }
+  ]
+});
+                                </pre>
+                            </div>
+                        </div>
+                       
+                      
                     </div>
                 </div>
             </div>  
