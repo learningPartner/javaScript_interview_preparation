@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        pre {
+            display: block;
+            font-size: 87.5%;
+            width: max-content;
+            padding: 5px;
+            color: #ffff !important;
+            background-color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-code-square"></i> TechPrep Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="theme-toggle ms-auto" id="themeToggle">
+                    <i class="bi bi-sun-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">  
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       CSS Mixins
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>A mixin is a reusable block of CSS declarations you can include in multiple places.</li>
+                            <li>Native CSS doesn’t support mixins, but pre-processors like SASS/SCSS do.</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+ <pre>@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</pre>
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+ <pre>.box {
+  width: 100px;
+  height: 100px;
+  @include center;
+}</pre>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                      Pseudo-classes
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>A pseudo-class defines the special state of an element (hovered, focused, visited, etc.).</li>
+                            <li>:hover, :focus, :active, :nth-child(n), :not(selector), :disabled, :checked, :required</li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+ <pre>a:hover {
+  color: red;
+}
+input:focus {
+  border-color: blue;
+}</pre>
+                            </div>
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+ <pre>li:first-child {
+  font-weight: bold;
+}</pre>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       CSS Box Model
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>he box model describes how elements are rendered as rectangular boxes.</li> 
+                        </ul>
+                        <style>
+                            .box-model-demo {
+      margin: 30px;
+      border: 10px solid #007bff;
+      padding: 20px;
+      background-color: #ffffff;
+      width: 200px;
+    }
+
+    .label {
+      position: relative;
+      padding: 4px 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .margin-outline {
+      outline: 20px solid #ffc107; /* margin */
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .box-model-demo::before {
+      content: 'Content';
+      display: block;
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      padding: 8px;
+    }
+
+    /* Optional labels */
+    .legend {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .legend div {
+      padding: 4px 10px;
+      color: white;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    .margin { background-color: #ffc107; }
+    .border { background-color: #007bff; }
+    .padding { background-color: #6c757d; }
+    .content { background-color: #28a745; }
+                        </style>
+                        
+                        <div class="row">
+                            <div class="col-6 col-md-6 col-lg-6 col-sm-6">
+                        
+                                <div class="margin-outline">
+                                    <div class="box-model-demo">
+                                        This is content inside the box.
+                                    </div>
+                                </div>
+                        
+                                <div class="legend">
+                                    <div class="margin">Margin</div>
+                                    <div class="border">Border</div>
+                                    <div class="padding">Padding</div>
+                                    <div class="content">Content</div>
+                                </div>
+                        
+                            </div>
+                        
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                     postions in css
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>the position property defines how an element is placed in the document flow and how it can be moved using top, right, bottom, and left.</li>
+                        
+                        </ul>
+                        <div class="row">
+                            <div class="col-6 col-md-3 col-lg-3 col-sm-3">
+                                <h6>static (default)</h6>
+                                <ul>
+                                    <li>Normal document flow (no positioning).</li>
+                                    <li>top, left, etc. have no effect.</li>
+                                </ul> 
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-3 col-sm-3">
+                                <h6>relative</h6>
+                                <ul>
+                                    <li>Positioned relative to its normal position.</li>
+                                    <li>Space is still reserved for it in the document.</li>
+                                    <li>You can shift it using top, left, etc.</li>
+                                </ul> 
+                            </div>
+                             <div class="col-6 col-md-3 col-lg-3 col-sm-3">
+                                <h6>absolute</h6>
+                                <ul>
+                                    <li>Positioned relative to the nearest positioned ancestor (non-static).</li>
+                                    <li>If no such ancestor, it’s positioned relative to the html (viewport).</li>
+                                    <li>Removed from document flow (other elements ignore its space).</li>
+                                </ul> 
+                            </div>
+                             <div class="col-6 col-md-3 col-lg-3 col-sm-3">
+                                <h6>fixed</h6>
+                                <ul>
+                                    <li>Positioned relative to the viewport (browser window).</li>
+                                    <li>Doesn’t move on scroll.</li>
+                                    <li>Useful for sticky headers, buttons, etc.</li>
+                                </ul> 
+                            </div>
+                             <div class="col-6 col-md-3 col-lg-3 col-sm-3">
+                                <h6>sticky</h6>
+                                <ul>
+                                    <li>Hybrid of relative and fixed.</li>
+                                    <li>Behaves like relative until it hits a scroll threshold, then becomes fixed.</li>
+                                    <li>Useful for sticky headers, buttons, etc.</li>
+                                </ul> 
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../main.js"></script>
+  
+
+</body>
+
+</html>

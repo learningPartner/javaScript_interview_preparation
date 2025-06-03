@@ -129,6 +129,13 @@ const menu = [
       { name: "Coming Soon", link: "comingsoon.html" },
     ],
   },
+   {
+    name: "CSS",
+    children: [
+      { name: "Basic Interview Question",  link: `${BASE_PATH}css/basicCss.html`},
+      { name: "Coming Soon", link: "comingsoon.html" },
+    ],
+  },
   // {
   //   name: "Dot Net",
   //   children: [{ name: "Coming Soon", link: "comingsoon.html" }],
