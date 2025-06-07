@@ -96,14 +96,100 @@ const unique = [...new Set(arr)];
 console.log(unique);
                             </pre>
                             </div>
+                             <div class="col-12 col-md-6 col-sm-12 col-lg-6">
+                            without using 2nd Array Remove duplicate from original array
+                            <pre>
+const arr = [1, 2, 3, 2, 4, 1, 3, 6, 7, 8, 6];
+for (let i = 0; i <= arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+            arr.splice(j, 1)
+        }
+    }
+};
+console.log(arr)
+//[1, 2, 3, 4, 6, 7, 8]
+                            </pre>
+                            </div>
+                              <div class="col-12 col-md-6 col-sm-12 col-lg-6">
+                             get array of element which are not repeated
+                            <pre>
+const arr = [1, 2, 3, 2, 4, 1, 3, 6, 7, 8, 6];
+       
+const newArr =  arr.filter((item)=> 
+arr.indexOf(item) == arr.lastIndexOf(item))
+
+console.log(newArr)
+                            </pre>
+                            <pre>
+const arr = [1, 2, 3, 2, 4, 1, 3, 6, 7, 8, 6];
+const eleCountObj = {};
+arr.forEach(element => {
+    eleCountObj[element] = (eleCountObj[element] || 0) + 1
+});
+const newArray = arr.filter(item => eleCountObj[item] == 1)
+console.log(newArray)
+                            </pre>
+                            </div>
+                             <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+                              remove Duplicate from array of Object
+                            <pre>
+var list = [
+    {name:'chetan', id:111, city: 'Mumbai'},
+    {name:'Rahul', id:112, city: 'pune'},
+    {name:'chetan', id:113, city: 'Mumbai'},
+    {name:'Aniket', id:114, city: 'Nagpur'}
+ ];
+var newArr =  list.filter((item, index) => list.findIndex(m=>m.name == item.name) == index);
+or
+var newArr =  list.filter((item, index) => {
+    return list.findIndex(m=>m.name == item.name) == index
+})
+
+console.log(newArr)
+                            </pre>
+                           
+                            </div>
+                            <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+                              remove Duplicate from array of Object with more than 2 fields
+                            <pre>
+var list = [
+    { name: 'chetan', id: 111, city: 'Mumbai' },
+    { name: 'Rahul', id: 112, city: 'pune' },
+    { name: 'chetan', id: 113, city: 'Mumbai' },
+    { name: 'Aniket', id: 114, city: 'Nagpur' }
+];
+
+var uniqueFields = ['name', 'city'];
+
+const newArr = list.filter((item, index, self) => {
+    return index === self.findIndex(otherItem => {
+        return uniqueFields.every(field => item[field] === otherItem[field]);
+    });
+});
+
+console.log(newArr);
+                            </pre>
+                           
+                            </div>
                         </div> 
                         <script>
-                            const arr = [1, 2, 3, 2, 4, 1];
-                            const newArr = arr.filter((item,index) => arr.indexOf(item) === index);
-                            console.log(newArr)
+                            const arr = [1, 2, 3, 2, 4, 1, 3, 6, 7, 8, 6];
+                            for (let i = 0; i <= arr.length; i++) {
+                                for (let j = i + 1; j < arr.length; j++) {
+                                    if (arr[i] == arr[j]) {
+                                        arr.splice(j, 1)
+                                    }
+                                }
+                            };
+                            console.log(arr)
 
-                           const newUniq = [...new Set(arr)]
-                           console.log(newUniq)
+                            const newArr = arr.filter((item, index) => arr.indexOf(item) === index);
+                            console.log(newArr);
+
+
+                            const newUniq = [...new Set(arr)]
+                            console.log(newUniq)
                         </script>
                     </div>
                 </div>
@@ -569,6 +655,74 @@ console.log(sum2);
                             }
                             console.log(valueArray)
                         </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                       Object Map , nested array
+                    </div>
+                    <div class="card-body">
+                        <div class="row"> 
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-12"> 
+                                <pre> 
+const people = [
+    { name: 'john', skills: ['js', 'c#', 'html'] },
+    { name: 'doe', skills: ['js'] },
+    { name: 'dennis', skills: ['js', 'c++', 'html'] }
+];
+Output Shoud be
+{
+  js: [ 'john', 'doe', 'dennis' ],
+  'c#': [ 'john' ],
+  html: [ 'john', 'dennis' ],
+  'c++': [ 'dennis' ]
+}
+                                </pre>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6 col-sm-12"> 
+                                <pre> 
+ const newObj = {};
+ for (const person of people) {
+     for (const skill of person.skills) {
+         if (!newObj[skill]) {
+             newObj[skill] = [];
+         }
+         newObj[skill].push(person.name)
+     }
+ }
+ console.log(newObj)
+                                </pre>
+                            </div>
+                             <div class="col-12 col-md-6 col-lg-6 col-sm-12"> 
+                                <pre> 
+const valueList  = [];
+
+people.forEach(item =>{
+   item.skills.forEach((skill)=> {
+       const isSkillPresent =  valueList.find(m=>m ==skill);
+       if(isSkillPresent == undefined) {
+           valueList.push(skill)
+       }
+   })
+})
+const newObj = {};
+valueList.forEach(value=>{
+    const peopleWithSkill =  people.filter(m=>m.skills.includes(value));
+if(peopleWithSkill.length != 0) {
+    if(!newObj[value]) {
+        newObj[value] = peopleWithSkill.map(item=> item.name)
+    }
+}   
+})
+console.log(valueList)
+console.log(newObj)
+                                </pre>
+                            </div>
+                        </div>
+                      
+                     
                     </div>
                 </div>
             </div>

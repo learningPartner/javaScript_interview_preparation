@@ -179,6 +179,40 @@ counter2.increment(); //1
                             </div>
                         </div>
                     </div>
+                       <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                        <div class="card">
+                            <div class="card-header bg-secondary">
+                                In above example Problem with closure that it count variable won't be garbage collected, so how to solve this 
+                            </div>
+                            <div class="card-body">
+                             <div class="row">
+                                <div class="col-12 col-md-6 col-lg-6 col-sm-6">
+                                    <p>once we do counter = null, the closure is dereferenced, and the JavaScript engine’s garbage collector can safely clean up the memory used by count</p>
+                                </div>
+                            </div>
+                                <pre>
+function createCounter() {
+    let count = 0;
+    return {
+        increment: function () {
+            count++;
+            console.log(count);
+        },
+        decrement: function () {
+            count--;
+            console.log(count);
+        }
+    };
+}
+const counter = createCounter(); 
+counter.increment(); // 1
+counter.increment(); // 2
+counter.decrement(); // 1   
+counter =  null;       
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                         <div class="card">
                             <div class="card-header bg-secondary">
