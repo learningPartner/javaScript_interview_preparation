@@ -115,7 +115,8 @@ const menu = [
         children: [
           { name: "Life Cycle", link: `${BASE_PATH}angular/dynamicPage.html?page='life-cycle'` }, 
           { name: "ViewEncapsulation", link: `${BASE_PATH}angular/dynamicPage.html?page='view-encap'` }, 
-           { name: "Component & Directive", link: `${BASE_PATH}angular/dynamicPage.html?page='component-basic'` }, 
+           { name: "Component", link: `${BASE_PATH}angular/dynamicPage.html?page='component-basic'` }, 
+           { name: "Directives", link: `${BASE_PATH}angular/dynamicPage.html?page='directive'` }, 
         ],
       },
       { name: "Coming Soon", link: `${BASE_PATH}comingsoon.html` },
