@@ -137,10 +137,10 @@ const menu = [
       { name: "Coming Soon", link: "comingsoon.html" },
     ],
   },
-  // {
-  //   name: "Dot Net",
-  //   children: [{ name: "Coming Soon", link: "comingsoon.html" }],
-  // },
+  {
+    name: "Basic Questions",
+    children: [{ name: "All Question", link: `${BASE_PATH}angular/dynamicPage.html?page='home'` }],
+  },
 ];
 
 // Initialize AOS and theme
