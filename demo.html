@@ -8,6 +8,8 @@
 </head>
 
 <body>
+
+
     <style>
         .container {
             display: grid;
@@ -22,6 +24,31 @@
         <div>Box 3</div>
         <div>Box 3</div>
     </div>
+    <script>
+        function Animal(name) {
+            this.name = name;
+        }
+        Animal.prototype.eat = function () {
+            console.log(' is eating');
+        };
+        function Dog(name) {
+            Animal.call(this, name);
+        }
+        Dog.prototype = Object.create(Animal.prototype);
+        Dog.prototype.constructor = Dog;
+        Dog.prototype.bark = function () {
+            console.log('says woof');
+        };
+        const dog = new Dog("Bruno");
+        dog.eat();
+        dog.bark();
+    </script>
+    => Hoisting ??
+
+
+
+
+
 </body>
 
 </html>

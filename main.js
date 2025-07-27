@@ -40,6 +40,8 @@ const menu = [
           {  name: "CI-CD Questions", link: `${BASE_PATH}git/cicd.html`},
         ],
       },
+      { name: "CSS",  link: `${BASE_PATH}css/basicCss.html`},
+      
       
     ],
   },
@@ -130,13 +132,7 @@ const menu = [
       { name: "Coming Soon", link: "comingsoon.html" },
     ],
   },
-   {
-    name: "CSS",
-    children: [
-      { name: "Basic Interview Question",  link: `${BASE_PATH}css/basicCss.html`},
-      { name: "Coming Soon", link: "comingsoon.html" },
-    ],
-  },
+  
   {
     name: "Basic Questions",
     children: [{ name: "All Question", link: `${BASE_PATH}angular/dynamicPage.html?page='home'` }],
