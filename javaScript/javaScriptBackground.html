@@ -46,6 +46,37 @@
             <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
                 <div class="card">
                     <div class="card-header bg-secondary">
+                        What is a JavaScript Engine?
+                    </div>
+                    <div class="card-body">
+                        <h4>A JavaScript Engine is a program that executes JavaScript code.</h4>
+
+                        <h5>It consists of the following components:</h5>
+                        <ul>
+                            <li><strong>Parser</strong> → Converts JS code into an Abstract Syntax Tree (AST)</li>
+                            <li><strong>Interpreter</strong> → Executes the code line-by-line (or via bytecode)</li>
+                            <li><strong>Compiler (JIT)</strong> → Converts frequently executed "hot code" into optimized
+                                machine code</li>
+                            <li><strong>Garbage Collector</strong> → Automatically manages memory by cleaning unused
+                                objects</li>
+                            <li><strong>Runtime</strong> → Provides environment APIs (like DOM, timers, Web APIs) — not
+                                technically part of the engine</li>
+                        </ul>
+
+                        <h5>Popular JavaScript Engines:</h5>
+                        <ul>
+                            <li><strong>V8</strong> – Used in Chrome & Node.js (most widely used)</li>
+                            <li><strong>SpiderMonkey</strong> – Firefox</li>
+                            <li><strong>JavaScriptCore (Nitro)</strong> – Safari</li>
+                            <li><strong>Chakra (Legacy)</strong> – Old Microsoft Edge, now replaced with V8</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 col-lg-12 col-sm-12 pt-2">
+                <div class="card">
+                    <div class="card-header bg-secondary">
                         JavaScript Execution in the Browser
                     </div>
                     <div class="card-body">
@@ -216,7 +247,7 @@ function example() {
                                 </ul>
                             </div>
                             <div class="col-6">
-                                 Heap : Objects & Arrays, functions
+                                Heap : Objects & Arrays, functions
                                 <ul>
                                     <li>They can have dynamic size and structure</li>
                                     <li>Not fixed in memory</li>
@@ -224,7 +255,10 @@ function example() {
                                 </ul>
                             </div>
                         </div>
-                        <p>Primitive types are stored in the stack because they are small and fixed in size, allowing fast access and cleanup. Objects and arrays are stored in the heap because they can grow dynamically and need flexible memory allocation. The stack stores a reference to the object in the heap, not the object itself.</p>
+                        <p>Primitive types are stored in the stack because they are small and fixed in size, allowing
+                            fast access and cleanup. Objects and arrays are stored in the heap because they can grow
+                            dynamically and need flexible memory allocation. The stack stores a reference to the object
+                            in the heap, not the object itself.</p>
                     </div>
                 </div>
             </div>
